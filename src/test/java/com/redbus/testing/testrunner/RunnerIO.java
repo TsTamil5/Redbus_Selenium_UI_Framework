@@ -16,9 +16,9 @@ import io.cucumber.testng.CucumberOptions;
 	dryRun = false
 )
 public class RunnerIO extends AbstractTestNGCucumberTests {
-	@Override
-	@DataProvider(parallel = true)
-	public Object[][] scenarios() {
-	    return super.scenarios();
-}
+//	@Override
+//	@DataProvider(parallel = true)
+//	public Object[][] scenarios() {
+//	    return super.scenarios();
+//	}
 }

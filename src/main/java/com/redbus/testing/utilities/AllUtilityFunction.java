@@ -207,7 +207,7 @@ public class AllUtilityFunction {
 
 	// ==================== EXCEL UTILITY =========================
 
-	private static final String FILE_PATH = "./src/test/resources/Readers/Config (2).xlsx";
+	private static final String FILE_PATH = "./src/test/resources/Readers/Config.xlsx";
 
 	Workbook workbook;
 	Sheet sheet;

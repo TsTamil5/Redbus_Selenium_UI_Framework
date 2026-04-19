@@ -39,7 +39,7 @@ public class Hooks extends AllUtilityFunction {
 	@After
 	public void closeBrowser(Scenario scenario) {
 
-		// Close Browser
+//		 Close Browser
 		if (Base.driver != null) {
 			Base.driver.quit();
 		}

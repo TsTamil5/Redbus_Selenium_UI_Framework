@@ -3,6 +3,7 @@ package com.redbus.testing.pages;
 import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -64,9 +65,13 @@ public class HotelsPage {
 	}
 	
 	public WebElement getInputField() {
-		return Base.driver.findElement(
-			RelativeLocator.with(By.tagName("input")).below(cityField));
+
+		WebDriverWait wait = new WebDriverWait(Base.driver, Duration.ofSeconds(15));
+
+		return wait.until(ExpectedConditions.elementToBeClickable(
+				By.xpath("(//input[not(@type='hidden') and not(@disabled)])[last()]")));
 	}
+	
 	
 	public WebElement getFirstCitySuggestion() {
 		return firstCitySuggestion;
@@ -85,7 +90,8 @@ public class HotelsPage {
 	}
 	
 	public void clickCheckIn() {
-		getCheckIn().click();
+	    WebDriverWait wait = new WebDriverWait(Base.driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.elementToBeClickable(checkIn)).click();
 	}
 
 	public WebElement getCheckOut() {
@@ -94,6 +100,20 @@ public class HotelsPage {
 	
 	public void clickCheckOut() {
 		getCheckOut().click();
+	}
+	
+	public WebElement getMonthYearText() {
+	    return Base.driver.findElement(
+	        By.cssSelector("[class='monthYearHolidayWrap___248d1b']"));
+	}
+
+	public WebElement getNextMonthArrow() {
+		return Base.driver.findElement(
+				By.cssSelector("[class='icon icon-arrow arrow___d32c04 right___1dcefa ']"));
+	}
+
+	public void clickNextMonthArrow() {
+		getNextMonthArrow().click();
 	}
 
 	public WebElement getRoomsAndGuests() {
@@ -197,25 +217,54 @@ public class HotelsPage {
 	public void clickFlashDealCard(int index) {
 		getFlashDealCards().get(index).click();
 	}
-	
-	
+
 	public void selectCity(String cityNameValue) {
+
+		WebDriverWait wait = new WebDriverWait(Base.driver, Duration.ofSeconds(15));
 
 		clickCityField();
 
-		WebDriverWait wait = new WebDriverWait(Base.driver, Duration.ofSeconds(10));
-
-		WebElement inputField = wait.until(
-				ExpectedConditions.visibilityOf(getInputField()));
+		WebElement inputField = getInputField();
 
 		Actions action = new Actions(Base.driver);
 
-		action.sendKeys(inputField, cityNameValue).perform();
+		action.click(inputField)
+		      .sendKeys(inputField, cityNameValue).pause(Duration.ofSeconds(3))
+		      .perform();
 
-		WebElement firstSuggestion = wait.until(
-				ExpectedConditions.elementToBeClickable(getFirstCitySuggestion()));
+		wait.until(ExpectedConditions.elementToBeClickable(firstCitySuggestion));
 
 		clickFirstCitySuggestion();
 	}
-	
+	public void selectCheckInAndCheckOutDate(String checkInDate, String checkOutDate) throws InterruptedException {
+
+		String[] inDate = checkInDate.split(" ");
+		String[] outDate = checkOutDate.split(" ");
+
+		clickCheckIn();
+
+		navigateToMonthYear(inDate[1], inDate[2]);
+		Base.driver.findElement(By.xpath("//span[text()='" + inDate[0] + "']")).click();
+
+		Thread.sleep(2000);
+
+		navigateToMonthYear(outDate[1], outDate[2]);
+		Base.driver.findElement(By.xpath("//span[text()='" + outDate[0] + "']")).click();
+
+		Thread.sleep(2000);
+	}
+
+	public void navigateToMonthYear(String month, String year) {
+
+		while (true) {
+
+			String currentMonthYear = getMonthYearText().getText();
+
+			if (currentMonthYear.contains(month) && currentMonthYear.contains(year)) {
+				break;
+			}
+
+			clickNextMonthArrow();
+		}
+	}
 }

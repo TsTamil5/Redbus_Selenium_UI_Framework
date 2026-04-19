@@ -1,8 +1,13 @@
 package com.redbus.testing.stepdefinition;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.redbus.testing.utilities.AllUtilityFunction;
 import com.redbus.testing.utilities.Base;
 import com.redbus.testing.utilities.Pages;
 
@@ -10,28 +15,28 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class HotelsStepDefinition {
+public class HotelsStepDefinition extends AllUtilityFunction{
 
 	@Given("Open the Browser")
 	public void open_the_browser() {
-
-		// Browser already launched from Hooks.java
-		System.out.println("Browser launched from Hooks");
+		System.out.println("Browser launched");
 	}
 
 	@Given("Navigate to RedBus Application {string}")
 	public void navigate_to_red_bus_application(String url) throws Exception {
-
+		
 		Base.driver.get(url);
 		Thread.sleep(3000);
+		System.out.println("Sucessfully navigated to redbus application");
 	}
 
 	@When("Click on Hotels tab")
-	public void click_on_hotels_tab() throws Exception {
+	public void click_on_hotels_tab() {
 
-		Thread.sleep(3000);
 		Pages.dashboardPage.clickHotels();
-		Thread.sleep(3000);
+
+		WebDriverWait wait = new WebDriverWait(Base.driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.urlContains("hotels"));
 	}
 
 	@Then("Verify Hotels page is displayed")
@@ -70,35 +75,49 @@ public class HotelsStepDefinition {
 	}
 
 	@When("Enter city name from excel sheet {string} row {int}")
-	public void enter_city_name_from_excel_sheet_row(String sheet, Integer row) throws Exception {
+	public void enter_city_name_from_excel_sheet_row(String sheetName, Integer rowNum) {
 
-		Pages.hotelsPage.selectCity("Chennai");
+		init(sheetName);
+
+		String cityName = getData(rowNum, 0);
+
+		if (cityName == null || cityName.trim().isEmpty()) {
+			throw new RuntimeException("Excel City Name is NULL or EMPTY");
+		}
+
+		Pages.hotelsPage.selectCity(cityName);
 	}
 
-	@When("Select check-in date from excel sheet {string} row {int}")
-	public void select_check_in_date_from_excel_sheet_row(String sheet, Integer row) throws Exception {
+	@When("Select check-in and check-out dates from excel sheet {string} row {int}")
+	public void select_check_in_and_check_out_dates_from_excel_sheet_row(String sheetName, Integer rowNum)
+			throws Exception {
 
-		Thread.sleep(2000);
-		Pages.hotelsPage.clickCheckIn();
-	}
+		init(sheetName);
 
-	@When("Select check-out date from excel sheet {string} row {int}")
-	public void select_check_out_date_from_excel_sheet_row(String sheet, Integer row) throws Exception {
+		String checkInDate = getData(rowNum, 1);
+		String checkOutDate = getData(rowNum, 2);
 
-		Thread.sleep(2000);
-		Pages.hotelsPage.clickCheckOut();
+		if (checkInDate == null || checkInDate.trim().isEmpty()) {
+			throw new RuntimeException("Excel CheckIn Date is NULL or EMPTY");
+		}
+
+		if (checkOutDate == null || checkOutDate.trim().isEmpty()) {
+			throw new RuntimeException("Excel CheckOut Date is NULL or EMPTY");
+		}
+
+		Pages.hotelsPage.selectCheckInAndCheckOutDate(checkInDate, checkOutDate);
 	}
 
 	@When("Click on rooms and guests field")
 	public void click_on_rooms_and_guests_field() throws Exception {
 
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		Pages.hotelsPage.clickRoomsAndGuests();
 	}
 
 	@When("Select rooms count from excel sheet {string} row {int}")
-	public void select_rooms_count_from_excel_sheet_row(String sheet, Integer row) {
-
+	public void select_rooms_count_from_excel_sheet_row(String sheet, Integer row) throws InterruptedException {
+		Thread.sleep(2000);
 		Pages.hotelsPage.increaseRooms(2);
 	}
 
