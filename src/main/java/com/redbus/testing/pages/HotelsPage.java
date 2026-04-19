@@ -60,6 +60,8 @@ public class HotelsPage {
 	@FindBy(xpath="//section[@data-autoid='flashDeals']//article[@role='button']")
 	private List<WebElement> flashDealCards;
 	
+	
+	
 	public WebElement getCityField() {
 		return cityField;
 	}
@@ -266,5 +268,16 @@ public class HotelsPage {
 
 			clickNextMonthArrow();
 		}
+	}
+	
+	public boolean isChildAgeValidationDisplayed() {
+
+		WebDriverWait wait = new WebDriverWait(Base.driver, Duration.ofSeconds(10));
+
+		WebElement message = wait.until(
+			ExpectedConditions.visibilityOfElementLocated(
+					By.xpath("//div[contains(text(),\"Select child's age to proceed\")]")));
+
+		return message.isDisplayed();
 	}
 }

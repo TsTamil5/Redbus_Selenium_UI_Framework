@@ -160,12 +160,19 @@ public class HotelsStepDefinition extends AllUtilityFunction{
 		Assert.assertTrue(Pages.hotelSearchResultsPage.getHotelCardsCount() > 0);
 	}
 
+//	@Then("Verify child age selection validation message is displayed")
+//	public void verify_child_age_selection_validation_message_is_displayed() {
+//
+//		Assert.assertTrue(Base.driver.getPageSource().contains("Select child age"));
+//	}
+
 	@Then("Verify child age selection validation message is displayed")
 	public void verify_child_age_selection_validation_message_is_displayed() {
 
-		Assert.assertTrue(Base.driver.getPageSource().contains("Select child age"));
+		Assert.assertTrue(
+			Pages.hotelsPage.isChildAgeValidationDisplayed());
 	}
-
+	
 	@When("Apply hotel filter {string} with value {string}")
 	public void apply_hotel_filter_with_value(String type, String value) throws Exception {
 

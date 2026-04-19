@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>4/6/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>5/5/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sun Apr 19 20:14:02 IST 2026</td>
+<td>Started on:</td><td>Sun Apr 19 22:22:43 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>320 seconds (320460 ms)</td>
+<tr><td>Total time:</td><td>324 seconds (324193 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,16 +76,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify property count mismatch bug after applying filters", "RedBus Hotels Booking Functionality"</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[class=&apos;oopsInfoWrapper___e8728b &apos;]&quot;}
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Apply hotel filters and validate clear all button with filtered results", "RedBus Hotels Booking Functionality"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[aria-label=&apos;Clear all filters&apos;]&quot;}
   (Session info: MicrosoftEdge=147.0.3912.72)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [80f42428fd52a53b3e2b70c6f36da0fe, findElement {value=[class=&apos;oopsInfoWrapper___e8728b &apos;], using=css selector}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 21444, ms:edgeOptions: {debuggerAddress: localhost:59011}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59011/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 80f42428fd52a53b3e2b70c6f36da0fe
+Command: [fa7cad9e8545812c88d2681d991f755c, findElement {using=css selector, value=[aria-label=&apos;Clear all filters&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 1908, ms:edgeOptions: {debuggerAddress: localhost:57940}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57940/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: fa7cad9e8545812c88d2681d991f755c
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -104,21 +104,20 @@ Session ID: 80f42428fd52a53b3e2b70c6f36da0fe
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
 	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy23.getText(Unknown Source)
-	at com.redbus.testing.pages.HotelSearchResultsPage.fetchOopsMessageText(HotelSearchResultsPage.java:308)
-	at com.redbus.testing.pages.HotelSearchResultsPage.isPropertyCountMismatchBugDisplayed(HotelSearchResultsPage.java:314)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:207)
-	at ✽.Verify property count mismatch bug is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:80)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1590842898", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1590842898'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[class=&apos;oopsInfoWrapper___e8728b &apos;]&quot;}
+	at jdk.proxy2/jdk.proxy2.$Proxy23.isDisplayed(Unknown Source)
+	at com.redbus.testing.pages.HotelSearchResultsPage.isClearFilterDisplayed(HotelSearchResultsPage.java:292)
+	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_clear_filter_button_is_displayed(HotelsStepDefinition.java:208)
+	at ✽.Verify Clear Filter button is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:63)
+</pre></div><a href='#' onClick='toggleBox("stack-trace630669831", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace630669831'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[aria-label=&apos;Clear all filters&apos;]&quot;}
   (Session info: MicrosoftEdge=147.0.3912.72)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [80f42428fd52a53b3e2b70c6f36da0fe, findElement {value=[class=&apos;oopsInfoWrapper___e8728b &apos;], using=css selector}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 21444, ms:edgeOptions: {debuggerAddress: localhost:59011}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59011/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 80f42428fd52a53b3e2b70c6f36da0fe
+Command: [fa7cad9e8545812c88d2681d991f755c, findElement {using=css selector, value=[aria-label=&apos;Clear all filters&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 1908, ms:edgeOptions: {debuggerAddress: localhost:57940}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57940/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: fa7cad9e8545812c88d2681d991f755c
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -137,13 +136,12 @@ Session ID: 80f42428fd52a53b3e2b70c6f36da0fe
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
 	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy23.getText(Unknown Source)
-	at com.redbus.testing.pages.HotelSearchResultsPage.fetchOopsMessageText(HotelSearchResultsPage.java:308)
-	at com.redbus.testing.pages.HotelSearchResultsPage.isPropertyCountMismatchBugDisplayed(HotelSearchResultsPage.java:314)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:207)
-	at ✽.Verify property count mismatch bug is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:80)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.isDisplayed(Unknown Source)
+	at com.redbus.testing.pages.HotelSearchResultsPage.isClearFilterDisplayed(HotelSearchResultsPage.java:292)
+	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_clear_filter_button_is_displayed(HotelsStepDefinition.java:208)
+	at ✽.Verify Clear Filter button is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:63)
 </pre></div></td>
-<td>36</td>
+<td>39</td>
 <td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
 <tr>
 <td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify property count mismatch bug after applying filters", "RedBus Hotels Booking Functionality"</td>
@@ -153,9 +151,9 @@ For documentation on this error, please visit: https://www.selenium.dev/document
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [c13fbc0d707b3b0187d34d04a51c6c28, findElement {value=[class=&apos;oopsInfoWrapper___e8728b &apos;], using=css selector}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 26804, ms:edgeOptions: {debuggerAddress: localhost:57787}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57787/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c13fbc0d707b3b0187d34d04a51c6c28
+Command: [cfd2e9f32c20006fcd5bfa9436926ebb, findElement {using=css selector, value=[class=&apos;oopsInfoWrapper___e8728b &apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 5440, ms:edgeOptions: {debuggerAddress: localhost:51696}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51696/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cfd2e9f32c20006fcd5bfa9436926ebb
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -177,18 +175,18 @@ Session ID: c13fbc0d707b3b0187d34d04a51c6c28
 	at jdk.proxy2/jdk.proxy2.$Proxy23.getText(Unknown Source)
 	at com.redbus.testing.pages.HotelSearchResultsPage.fetchOopsMessageText(HotelSearchResultsPage.java:308)
 	at com.redbus.testing.pages.HotelSearchResultsPage.isPropertyCountMismatchBugDisplayed(HotelSearchResultsPage.java:314)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:207)
+	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:214)
 	at ✽.Verify property count mismatch bug is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:80)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1803756881", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1803756881'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[class=&apos;oopsInfoWrapper___e8728b &apos;]&quot;}
+</pre></div><a href='#' onClick='toggleBox("stack-trace1629241006", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1629241006'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[class=&apos;oopsInfoWrapper___e8728b &apos;]&quot;}
   (Session info: MicrosoftEdge=147.0.3912.72)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [c13fbc0d707b3b0187d34d04a51c6c28, findElement {value=[class=&apos;oopsInfoWrapper___e8728b &apos;], using=css selector}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 26804, ms:edgeOptions: {debuggerAddress: localhost:57787}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57787/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c13fbc0d707b3b0187d34d04a51c6c28
+Command: [cfd2e9f32c20006fcd5bfa9436926ebb, findElement {using=css selector, value=[class=&apos;oopsInfoWrapper___e8728b &apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 5440, ms:edgeOptions: {debuggerAddress: localhost:51696}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51696/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: cfd2e9f32c20006fcd5bfa9436926ebb
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -210,10 +208,80 @@ Session ID: c13fbc0d707b3b0187d34d04a51c6c28
 	at jdk.proxy2/jdk.proxy2.$Proxy23.getText(Unknown Source)
 	at com.redbus.testing.pages.HotelSearchResultsPage.fetchOopsMessageText(HotelSearchResultsPage.java:308)
 	at com.redbus.testing.pages.HotelSearchResultsPage.isPropertyCountMismatchBugDisplayed(HotelSearchResultsPage.java:314)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:207)
+	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:214)
 	at ✽.Verify property count mismatch bug is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:80)
 </pre></div></td>
-<td>43</td>
+<td>41</td>
+<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify property count mismatch bug after applying filters", "RedBus Hotels Booking Functionality"</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[class=&apos;oopsInfoWrapper___e8728b &apos;]&quot;}
+  (Session info: MicrosoftEdge=147.0.3912.72)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [0c18af9bd65917543c37b07f4c3c4b68, findElement {using=css selector, value=[class=&apos;oopsInfoWrapper___e8728b &apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 18860, ms:edgeOptions: {debuggerAddress: localhost:62648}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62648/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0c18af9bd65917543c37b07f4c3c4b68
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:380)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.getText(Unknown Source)
+	at com.redbus.testing.pages.HotelSearchResultsPage.fetchOopsMessageText(HotelSearchResultsPage.java:308)
+	at com.redbus.testing.pages.HotelSearchResultsPage.isPropertyCountMismatchBugDisplayed(HotelSearchResultsPage.java:314)
+	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:214)
+	at ✽.Verify property count mismatch bug is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:80)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1209981276", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1209981276'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[class=&apos;oopsInfoWrapper___e8728b &apos;]&quot;}
+  (Session info: MicrosoftEdge=147.0.3912.72)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [0c18af9bd65917543c37b07f4c3c4b68, findElement {using=css selector, value=[class=&apos;oopsInfoWrapper___e8728b &apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 18860, ms:edgeOptions: {debuggerAddress: localhost:62648}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62648/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0c18af9bd65917543c37b07f4c3c4b68
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:380)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.getText(Unknown Source)
+	at com.redbus.testing.pages.HotelSearchResultsPage.fetchOopsMessageText(HotelSearchResultsPage.java:308)
+	at com.redbus.testing.pages.HotelSearchResultsPage.isPropertyCountMismatchBugDisplayed(HotelSearchResultsPage.java:314)
+	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:214)
+	at ✽.Verify property count mismatch bug is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:80)
+</pre></div></td>
+<td>42</td>
 <td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
 <tr>
 <td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Apply hotel filters and validate clear all button with filtered results", "RedBus Hotels Booking Functionality"</td>
@@ -223,9 +291,9 @@ For documentation on this error, please visit: https://www.selenium.dev/document
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [9d896fa2080ab70253a152aef716e75c, findElement {value=[aria-label=&apos;Clear all filters&apos;], using=css selector}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 9756, ms:edgeOptions: {debuggerAddress: localhost:64665}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64665/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9d896fa2080ab70253a152aef716e75c
+Command: [48869ed5e761a7debff4e95ca534226b, findElement {using=css selector, value=[aria-label=&apos;Clear all filters&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 20144, ms:edgeOptions: {debuggerAddress: localhost:51024}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51024/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 48869ed5e761a7debff4e95ca534226b
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -246,18 +314,18 @@ Session ID: 9d896fa2080ab70253a152aef716e75c
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
 	at jdk.proxy2/jdk.proxy2.$Proxy23.isDisplayed(Unknown Source)
 	at com.redbus.testing.pages.HotelSearchResultsPage.isClearFilterDisplayed(HotelSearchResultsPage.java:292)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_clear_filter_button_is_displayed(HotelsStepDefinition.java:201)
+	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_clear_filter_button_is_displayed(HotelsStepDefinition.java:208)
 	at ✽.Verify Clear Filter button is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:63)
-</pre></div><a href='#' onClick='toggleBox("stack-trace568717494", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace568717494'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[aria-label=&apos;Clear all filters&apos;]&quot;}
+</pre></div><a href='#' onClick='toggleBox("stack-trace678858277", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace678858277'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[aria-label=&apos;Clear all filters&apos;]&quot;}
   (Session info: MicrosoftEdge=147.0.3912.72)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [9d896fa2080ab70253a152aef716e75c, findElement {value=[aria-label=&apos;Clear all filters&apos;], using=css selector}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 9756, ms:edgeOptions: {debuggerAddress: localhost:64665}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64665/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9d896fa2080ab70253a152aef716e75c
+Command: [48869ed5e761a7debff4e95ca534226b, findElement {using=css selector, value=[aria-label=&apos;Clear all filters&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 20144, ms:edgeOptions: {debuggerAddress: localhost:51024}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51024/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 48869ed5e761a7debff4e95ca534226b
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -278,7 +346,7 @@ Session ID: 9d896fa2080ab70253a152aef716e75c
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
 	at jdk.proxy2/jdk.proxy2.$Proxy23.isDisplayed(Unknown Source)
 	at com.redbus.testing.pages.HotelSearchResultsPage.isClearFilterDisplayed(HotelSearchResultsPage.java:292)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_clear_filter_button_is_displayed(HotelsStepDefinition.java:201)
+	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_clear_filter_button_is_displayed(HotelsStepDefinition.java:208)
 	at ✽.Verify Clear Filter button is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:63)
 </pre></div></td>
 <td>35</td>
@@ -291,9 +359,9 @@ For documentation on this error, please visit: https://www.selenium.dev/document
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [ededf56d7a289aad605d97f2be8d9965, findElement {value=[class=&apos;oopsInfoWrapper___e8728b &apos;], using=css selector}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 3744, ms:edgeOptions: {debuggerAddress: localhost:58180}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58180/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: ededf56d7a289aad605d97f2be8d9965
+Command: [d05f299383aeaabfa55e5388505d2f80, findElement {using=css selector, value=[class=&apos;oopsInfoWrapper___e8728b &apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 9912, ms:edgeOptions: {debuggerAddress: localhost:50975}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50975/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d05f299383aeaabfa55e5388505d2f80
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -315,18 +383,18 @@ Session ID: ededf56d7a289aad605d97f2be8d9965
 	at jdk.proxy2/jdk.proxy2.$Proxy23.getText(Unknown Source)
 	at com.redbus.testing.pages.HotelSearchResultsPage.fetchOopsMessageText(HotelSearchResultsPage.java:308)
 	at com.redbus.testing.pages.HotelSearchResultsPage.isPropertyCountMismatchBugDisplayed(HotelSearchResultsPage.java:314)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:207)
+	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:214)
 	at ✽.Verify property count mismatch bug is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:80)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1187406578", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1187406578'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[class=&apos;oopsInfoWrapper___e8728b &apos;]&quot;}
+</pre></div><a href='#' onClick='toggleBox("stack-trace26030311", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace26030311'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[class=&apos;oopsInfoWrapper___e8728b &apos;]&quot;}
   (Session info: MicrosoftEdge=147.0.3912.72)
 For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [ededf56d7a289aad605d97f2be8d9965, findElement {value=[class=&apos;oopsInfoWrapper___e8728b &apos;], using=css selector}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 3744, ms:edgeOptions: {debuggerAddress: localhost:58180}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58180/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: ededf56d7a289aad605d97f2be8d9965
+Command: [d05f299383aeaabfa55e5388505d2f80, findElement {using=css selector, value=[class=&apos;oopsInfoWrapper___e8728b &apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 9912, ms:edgeOptions: {debuggerAddress: localhost:50975}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50975/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d05f299383aeaabfa55e5388505d2f80
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -348,98 +416,10 @@ Session ID: ededf56d7a289aad605d97f2be8d9965
 	at jdk.proxy2/jdk.proxy2.$Proxy23.getText(Unknown Source)
 	at com.redbus.testing.pages.HotelSearchResultsPage.fetchOopsMessageText(HotelSearchResultsPage.java:308)
 	at com.redbus.testing.pages.HotelSearchResultsPage.isPropertyCountMismatchBugDisplayed(HotelSearchResultsPage.java:314)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:207)
+	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_property_count_mismatch_bug_is_displayed(HotelsStepDefinition.java:214)
 	at ✽.Verify property count mismatch bug is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:80)
 </pre></div></td>
-<td>38</td>
-<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
-<tr>
-<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Apply hotel filters and validate clear all button with filtered results", "RedBus Hotels Booking Functionality"</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[aria-label=&apos;Clear all filters&apos;]&quot;}
-  (Session info: MicrosoftEdge=147.0.3912.72)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [fdbfc9261a6bdcaa854701089fbdb8d0, findElement {value=[aria-label=&apos;Clear all filters&apos;], using=css selector}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 26832, ms:edgeOptions: {debuggerAddress: localhost:58061}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58061/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: fdbfc9261a6bdcaa854701089fbdb8d0
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:380)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy23.isDisplayed(Unknown Source)
-	at com.redbus.testing.pages.HotelSearchResultsPage.isClearFilterDisplayed(HotelSearchResultsPage.java:292)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_clear_filter_button_is_displayed(HotelsStepDefinition.java:201)
-	at ✽.Verify Clear Filter button is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:63)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1197430386", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1197430386'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;[aria-label=&apos;Clear all filters&apos;]&quot;}
-  (Session info: MicrosoftEdge=147.0.3912.72)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
-Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.13&apos;
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [fdbfc9261a6bdcaa854701089fbdb8d0, findElement {value=[aria-label=&apos;Clear all filters&apos;], using=css selector}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 26832, ms:edgeOptions: {debuggerAddress: localhost:58061}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\sivap\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58061/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: fdbfc9261a6bdcaa854701089fbdb8d0
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:380)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy23.isDisplayed(Unknown Source)
-	at com.redbus.testing.pages.HotelSearchResultsPage.isClearFilterDisplayed(HotelSearchResultsPage.java:292)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_clear_filter_button_is_displayed(HotelsStepDefinition.java:201)
-	at ✽.Verify Clear Filter button is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:63)
-</pre></div></td>
-<td>41</td>
-<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
-<tr>
-<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search hotels with children added but child age not selected", "RedBus Hotels Booking Functionality"</td>
-<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at org.testng.Assert.assertTrue(Assert.java:67)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_child_age_selection_validation_message_is_displayed(HotelsStepDefinition.java:166)
-	at ✽.Verify child age selection validation message is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:40)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1523683407", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1523683407'><pre>java.lang.AssertionError: expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at org.testng.Assert.assertTrue(Assert.java:67)
-	at com.redbus.testing.stepdefinition.HotelsStepDefinition.verify_child_age_selection_validation_message_is_displayed(HotelsStepDefinition.java:166)
-	at ✽.Verify child age selection validation message is displayed(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:40)
-</pre></div></td>
-<td>25</td>
+<td>36</td>
 <td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
@@ -451,9 +431,14 @@ Session ID: fdbfc9261a6bdcaa854701089fbdb8d0
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search hotels with children added but child age not selected", "RedBus Hotels Booking Functionality"</td>
+<td></td>
+<td>28</td>
+<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
+<tr>
 <td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search hotels with city, dates, rooms and adults using excel data", "RedBus Hotels Booking Functionality"</td>
 <td></td>
-<td>36</td>
+<td>35</td>
 <td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
 <tr>
 <td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Click any hotel card in Flash Deals and validate Download App popup is displayed", "RedBus Hotels Booking Functionality"</td>
@@ -463,12 +448,12 @@ Session ID: fdbfc9261a6bdcaa854701089fbdb8d0
 <tr>
 <td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search hotels with children and child age using excel data", "RedBus Hotels Booking Functionality"</td>
 <td></td>
-<td>32</td>
+<td>33</td>
 <td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
 <tr>
 <td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify user can navigate to Hotels page", "RedBus Hotels Booking Functionality"</td>
 <td></td>
-<td>12</td>
+<td>13</td>
 <td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
 </table><p>
 </body>
