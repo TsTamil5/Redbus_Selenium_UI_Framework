@@ -7,16 +7,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import com.RedBus.testing.utilities.AllUtilitiesFunctions;
+import com.redbus.testing.utilities.AllUtilityFunction;
+
 
 public class BusSearchPage {
 
-	AllUtilitiesFunctions util;
+	AllUtilityFunction util;
 	WebDriver driver;
 
 	public BusSearchPage(WebDriver driver) {
 		this.driver=driver;
-		this.util = new AllUtilitiesFunctions();
+		this.util = new AllUtilityFunction();
 		PageFactory.initElements(driver, this);
 	}
 
@@ -178,7 +179,7 @@ public class BusSearchPage {
 	}
 
 	public void clickDate() {
-		util.waitForElementClickable(date, 10);
+		util.waitForElementVisible(driver, date, 10);
 		getDate().click();
 	}
 
@@ -187,7 +188,7 @@ public class BusSearchPage {
 	}
 
 	public String verifyBusListShown() {
-		util.waitForElementVisible(verifyBusList, 15);
+		util.waitForElementVisible(driver, verifyBusList, 15);
 		return verifyBusList.getText();
 	}
 
