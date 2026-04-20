@@ -12,6 +12,9 @@ public class HotelSearchResultsPage {
 
 	@FindBy(xpath = "//div[contains(@class,'hotel')]")
 	private List<WebElement> hotelCards;
+	
+	@FindBy(xpath="//div[contains(@class,'tupleWrapper')]")
+	private List<WebElement> hotelsCount;
 
 	@FindBy(xpath = "//nav[@data-autoid='filters-hotels-desktop']")
 	private WebElement filtersSection;
@@ -100,7 +103,7 @@ public class HotelSearchResultsPage {
 	@FindBy(css="[data-autoid='sortBarCount']")
 	private WebElement propertyCount;
 	
-	@FindBy(css="[class='oopsInfoWrapper___e8728b ']")
+	@FindBy(xpath = "//*[contains(@class,'oopsInfoWrapper')]")
 	private WebElement oopsMsg;
 	
 	public WebElement getHotelResultsPage() {
@@ -223,63 +226,6 @@ public class HotelSearchResultsPage {
 		return selectRoom;
 	}
 	
-	public void selectOptionByText(List<WebElement> options, String value) {
-		for (WebElement option : options) {
-			if (option.getAttribute("aria-label").trim().equalsIgnoreCase(value.trim())) {
-				option.click();
-				break;
-			}
-		}
-	}
-	
-	public void selectPriceFilter(String value) {
-		selectOptionByText(priceFilterOptions, value);
-	}
-
-	public void selectCustomerRating(String value) {
-		selectOptionByText(customerRatingsOptions, value);
-	}
-
-	public void selectStarRating(String value) {
-		selectOptionByText(ratingOptions, value);
-	}
-
-	public void selectDeals(String value) {
-		selectOptionByText(dealsOptions, value);
-	}
-
-	public void selectMealPreference(String value) {
-		selectOptionByText(mealPreferenceOptions, value);
-	}
-
-	public void selectAmenity(String value) {
-		selectOptionByText(amenitiesOptions, value);
-	}
-
-	public void selectRoomAmenity(String value) {
-		selectOptionByText(roomAmenitiesOptions, value);
-	}
-
-	public void selectHotelChain(String value) {
-		selectOptionByText(hotelChainOptions, value);
-	}
-
-	public void selectPropertyType(String value) {
-		selectOptionByText(propertyTypeOptions, value);
-	}
-
-	public void selectPolicy(String value) {
-		selectOptionByText(policiesOptions, value);
-	}
-
-	public void selectPayAtHotel(String value) {
-		selectOptionByText(payAtHotelOptions, value);
-	}
-
-	public void selectLocation(String value) {
-		selectOptionByText(locationOptions, value);
-	}
-	
 	public boolean isResultsPageDisplayed() {
 		return getHotelResultsPage().isDisplayed();
 	}
@@ -305,7 +251,12 @@ public class HotelSearchResultsPage {
 	}
 
 	public String fetchOopsMessageText() {
-		return getOopsMsg().getText();
+
+	    try {
+	        return getOopsMsg().getText().trim();
+	    } catch (Exception e) {
+	        return "";
+	    }
 	}
 	
 	public boolean isPropertyCountMismatchBugDisplayed() {
@@ -317,16 +268,120 @@ public class HotelSearchResultsPage {
 				&& oopsText.contains("No properties found");
 	}
 	
+	public void selectOptionByText(List<WebElement> options, String value) {
+
+	    for (WebElement option : options) {
+
+	        String text = option.getAttribute("aria-label");
+
+	        if (text != null && text.trim().equalsIgnoreCase(value.trim())) {
+
+	            option.click();  
+	            return;
+	        }
+	    }
+	}
+	
+	
+	public void selectPriceFilter(String value) {
+	    getPricePerNight().click();
+	    selectOptionByText(priceFilterOptions, value);
+	}
+
+	public void selectCustomerRating(String value) {
+	    getCustomerRatings().click();
+	    selectOptionByText(customerRatingsOptions, value);
+	}
+
+	public void selectStarRating(String value) {
+	    getStarRatings().click();
+	    selectOptionByText(ratingOptions, value);
+	}
+
+	public void selectDeals(String value) {
+	    getDeals().click();
+	    selectOptionByText(dealsOptions, value);
+	}
+
+	public void selectMealPreference(String value) {
+	    getMealPreference().click();
+	    selectOptionByText(mealPreferenceOptions, value);
+	}
+
+	public void selectAmenity(String value) {
+	    getAmenities().click();
+	    selectOptionByText(amenitiesOptions, value);
+	}
+
+	public void selectRoomAmenity(String value) {
+	    getRoomAmenities().click();
+	    selectOptionByText(roomAmenitiesOptions, value);
+	}
+
+	public void selectHotelChain(String value) {
+	    getHotelChain().click();
+	    selectOptionByText(hotelChainOptions, value);
+	}
+
+	public void selectPropertyType(String value) {
+	    getPropertyType().click();
+	    selectOptionByText(propertyTypeOptions, value);
+	}
+
+	public void selectPolicy(String value) {
+	    getPolicies().click();
+	    selectOptionByText(policiesOptions, value);
+	}
+
+	public void selectPayAtHotel(String value) {
+	    getPayAtHotel().click();
+	    selectOptionByText(payAtHotelOptions, value);
+	}
+
+	public void selectLocation(String value) {
+	    getLocation().click();
+	    selectOptionByText(locationOptions, value);
+	}
+	
+	public boolean isResultsConsistent() {
+
+	    int actualHotels = hotelsCount.size();
+
+	    String countText = fetchPropertyCountText();
+
+	    int displayedCount = 0;
+
+	    try {
+	        displayedCount = Integer.parseInt(
+	            countText.replaceAll("[^0-9]", "")
+	        );
+	    } catch (Exception e) {
+	        displayedCount = 0;
+	    }
+
+	    boolean oopsVisible = false;
+
+	    try {
+	        oopsVisible = getOopsMsg().isDisplayed();
+	    } catch (Exception e) {
+	        oopsVisible = false;
+	    }
+
+	    // Debug
+	    System.out.println("Displayed Count: " + displayedCount);
+	    System.out.println("Actual Hotels: " + actualHotels);
+	    System.out.println("Oops Visible: " + oopsVisible);
+
+	    boolean countCorrect =
+	        displayedCount == actualHotels;
+
+	    boolean messageCorrect =
+	        (actualHotels == 0 && oopsVisible) ||
+	        (actualHotels > 0 && !oopsVisible);
+
+	    return countCorrect && messageCorrect;
+	}
 }
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	

@@ -51,7 +51,7 @@ And Select child age from excel sheet "HotelsData" row 3
 And Click on Search button
 Then Verify hotel results page is displayed
 
-Scenario Outline: Apply hotel filters and validate clear all button with filtered results
+Scenario: Apply hotel filters and validate clear all button with filtered results
 When Click on Hotels tab
 And Enter city name from excel sheet "HotelsData" row 4
 And Select check-in and check-out dates from excel sheet "HotelsData" row 4
@@ -59,16 +59,14 @@ And Click on rooms and guests field
 And Select rooms count from excel sheet "HotelsData" row 4
 And Select adults count from excel sheet "HotelsData" row 4
 And Click on Search button
-And Apply hotel filter "<FilterType>" with value "<FilterValue>"
-Then Verify Clear Filter button is displayed
-And Verify hotel results page is displayed
-
-Examples:
+And Apply hotel filters:
 | FilterType      | FilterValue |
 | Customer Rating | Excellent   |
 | Price           | ₹0 - ₹1,000 |
+Then Verify Clear Filter button is displayed
+And Verify hotel results page is displayed
 
-Scenario Outline: Verify property count mismatch bug after applying filters
+Scenario: Verify property count matches actual hotel results after applying filters
 When Click on Hotels tab
 And Enter city name from excel sheet "HotelsData" row 5
 And Select check-in and check-out dates from excel sheet "HotelsData" row 5
@@ -76,11 +74,9 @@ And Click on rooms and guests field
 And Select rooms count from excel sheet "HotelsData" row 5
 And Select adults count from excel sheet "HotelsData" row 5
 And Click on Search button
-And Apply hotel filter "<FilterType>" with value "<FilterValue>"
-Then Verify property count mismatch bug is displayed
-
-Examples:
+And Apply hotel filters:
 | FilterType      | FilterValue     |
 | Customer Rating | Excellent       |
 | Price           | ₹0 - ₹1,000     |
 | Meal Preference | Free Breakfast  |
+Then Verify hotel results count and message behavior are correct

@@ -1,6 +1,8 @@
 package com.redbus.testing.stepdefinition;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -160,12 +162,6 @@ public class HotelsStepDefinition extends AllUtilityFunction{
 		Assert.assertTrue(Pages.hotelSearchResultsPage.getHotelCardsCount() > 0);
 	}
 
-//	@Then("Verify child age selection validation message is displayed")
-//	public void verify_child_age_selection_validation_message_is_displayed() {
-//
-//		Assert.assertTrue(Base.driver.getPageSource().contains("Select child age"));
-//	}
-
 	@Then("Verify child age selection validation message is displayed")
 	public void verify_child_age_selection_validation_message_is_displayed() {
 
@@ -173,33 +169,45 @@ public class HotelsStepDefinition extends AllUtilityFunction{
 			Pages.hotelsPage.isChildAgeValidationDisplayed());
 	}
 	
-	@When("Apply hotel filter {string} with value {string}")
-	public void apply_hotel_filter_with_value(String type, String value) throws Exception {
+	@When("Apply hotel filters:")
+	public void apply_hotel_filters(io.cucumber.datatable.DataTable dataTable) throws Exception {
 
-		Thread.sleep(3000);
+	    List<Map<String, String>> filters = dataTable.asMaps(String.class, String.class);
 
-		switch (type) {
+	    for (Map<String, String> row : filters) {
 
-		case "Meal Preference":
-			Pages.hotelSearchResultsPage.selectMealPreference(value);
-			break;
+	        String type = row.get("FilterType");
+	        String value = row.get("FilterValue");
 
-		case "Customer Rating":
-			Pages.hotelSearchResultsPage.selectCustomerRating(value);
-			break;
+	        Thread.sleep(2000);
 
-		case "Star Rating":
-			Pages.hotelSearchResultsPage.selectStarRating(value);
-			break;
+	        switch (type) {
 
-		case "Amenities":
-			Pages.hotelSearchResultsPage.selectAmenity(value);
-			break;
+	        case "Price":
+	            Pages.hotelSearchResultsPage.selectPriceFilter(value);
+	            break;
 
-		case "Property Type":
-			Pages.hotelSearchResultsPage.selectPropertyType(value);
-			break;
-		}
+	        case "Meal Preference":
+	            Pages.hotelSearchResultsPage.selectMealPreference(value);
+	            break;
+
+	        case "Customer Rating":
+	            Pages.hotelSearchResultsPage.selectCustomerRating(value);
+	            break;
+
+	        case "Star Rating":
+	            Pages.hotelSearchResultsPage.selectStarRating(value);
+	            break;
+
+	        case "Amenities":
+	            Pages.hotelSearchResultsPage.selectAmenity(value);
+	            break;
+
+	        case "Property Type":
+	            Pages.hotelSearchResultsPage.selectPropertyType(value);
+	            break;
+	        }
+	    }
 	}
 
 	@Then("Verify Clear Filter button is displayed")
@@ -207,10 +215,12 @@ public class HotelsStepDefinition extends AllUtilityFunction{
 
 		Assert.assertTrue(Pages.hotelSearchResultsPage.isClearFilterDisplayed());
 	}
+	
+	@Then("Verify hotel results count and message behavior are correct")
+	public void verify_hotel_results_count_and_message_behavior_are_correct() {
 
-	@Then("Verify property count mismatch bug is displayed")
-	public void verify_property_count_mismatch_bug_is_displayed() {
-
-		Assert.assertTrue(Pages.hotelSearchResultsPage.isPropertyCountMismatchBugDisplayed());
+	    Assert.assertTrue(
+	        Pages.hotelSearchResultsPage.isResultsConsistent()
+	    );
 	}
 }
