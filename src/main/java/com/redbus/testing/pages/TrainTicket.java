@@ -6,7 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 	public class TrainTicket {
 
-	    WebDriver driver;
+	    
+		WebDriver driver;
 	    WebDriverWait wait;
 
 	    public TrainTicket(WebDriver driver) {
