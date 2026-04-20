@@ -1,7 +1,6 @@
 package com.redbus.testing.utilities;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
@@ -15,6 +14,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +28,8 @@ public class AllUtilityFunction {
 
 	public AllUtilityFunction() {
 	}
+
+	// ================= WINDOW MANAGEMENT =================
 
 	public void setMaximizeBrowser(WebDriver driver) {
 		driver.manage().window().maximize();
@@ -57,6 +59,7 @@ public class AllUtilityFunction {
 		driver.manage().window().setPosition(new Point(x, y));
 	}
 
+	// ================= NAVIGATION =================
 
 	public void navigateToApplication(WebDriver driver,String url) {
 		driver.navigate().to(url);
@@ -77,6 +80,8 @@ public class AllUtilityFunction {
 		driver.get(url);
 	}
 
+// ================= DETAILS =================
+
 	public String getTitle(WebDriver driver) {
 		return driver.getTitle();
 	}
@@ -85,6 +90,8 @@ public class AllUtilityFunction {
 		return driver.getCurrentUrl();
 	}
 
+	// ================= TIMEOUTS =================
+
 	public void implicitlyWait(WebDriver driver, int seconds) {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
 	}
@@ -92,6 +99,8 @@ public class AllUtilityFunction {
 	public void pageLoadTimeout(WebDriver driver, int seconds) {
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(seconds));
 	}
+
+	// ================= EXPLICIT WAIT =================
 
 	public void waitForElementVisible(WebDriver driver, WebElement element, int seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOf(element));
@@ -104,6 +113,7 @@ public class AllUtilityFunction {
 	public void waitForTitleContains(WebDriver driver, String title, int seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.titleContains(title));
 	}
+	// ================= ALERT / POPUPS =================
 
 	public void acceptPopup(WebDriver driver) {
 		driver.switchTo().alert().accept();
@@ -124,6 +134,8 @@ public class AllUtilityFunction {
 	public void sendTextToPopup(WebDriver driver, String text) {
 		driver.switchTo().alert().sendKeys(text);
 	}
+
+	// ================= WINDOW HANDLES =================
 
 	public void switchToWindowByTitle(WebDriver driver, String textTitle) {
 		Set<String> all = driver.getWindowHandles();
@@ -151,6 +163,8 @@ public class AllUtilityFunction {
 		}
 	}
 
+	// ================= WINDOW CLOSE =================
+
 	public void closeBrowser(WebDriver driver) {
 		driver.close();
 	}
@@ -158,6 +172,8 @@ public class AllUtilityFunction {
 	public void quitBrowser(WebDriver driver) {
 		driver.quit();
 	}
+
+	// ==================== PROPERTIES UTILITIES ===============
 
 	public void initPropertiesUtility(String path) {
 
@@ -179,6 +195,7 @@ public class AllUtilityFunction {
 		}
 	}
 
+	// ==================== JAVA UTILITIES ===============
 	public int getRandomNumber(int range) {
 		return new Random().nextInt(range);
 	}
@@ -187,6 +204,8 @@ public class AllUtilityFunction {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
 		return simpleDateFormat.format(new Date());
 	}
+
+	// ==================== EXCEL UTILITY =========================
 
 	private static final String FILE_PATH = "./src/test/resources/Readers/Config.xlsx";
 
@@ -290,5 +309,3 @@ public class AllUtilityFunction {
 
 	}
 }
-
-
