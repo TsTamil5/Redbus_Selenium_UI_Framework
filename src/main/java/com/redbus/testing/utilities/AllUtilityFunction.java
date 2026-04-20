@@ -1,35 +1,32 @@
 package com.redbus.testing.utilities;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
-
-import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AllUtilityFunction {
+
 	Properties properties;
 
-	public void AllUtililtyFunction() {
+	public AllUtilityFunction() {
 	}
 
 	// ================= WINDOW MANAGEMENT =================
@@ -62,20 +59,26 @@ public class AllUtilityFunction {
 		driver.manage().window().setPosition(new Point(x, y));
 	}
 
-	/*
-	 * 
-	 * // ================= NAVIGATION =================
-	 * 
-	 * public void navigateTo(String url) { driver.navigate().to(url); }
-	 * 
-	 * public void navigateBack() { driver.navigate().back(); }
-	 * 
-	 * public void navigateForward() { driver.navigate().forward(); }
-	 * 
-	 * public void refreshPage() { driver.navigate().refresh(); }
-	 * 
-	 * 
-	 */
+	// ================= NAVIGATION =================
+
+	public void navigateToApplication(WebDriver driver,String url) {
+		driver.navigate().to(url);
+	}
+	//forward
+	public void navigateForward(WebDriver driver) {
+		driver.navigate().forward();
+	}
+	public void navigateBackward(WebDriver driver) {
+		driver.navigate().back();
+	}
+	public void refreshPage(WebDriver driver) {
+		driver.navigate().refresh();
+	}
+	
+	//get
+	public void enterUrl(WebDriver driver,String url) {
+		driver.get(url);
+	}
 
 // ================= DETAILS =================
 
@@ -86,7 +89,7 @@ public class AllUtilityFunction {
 	public String getUrl(WebDriver driver) {
 		return driver.getCurrentUrl();
 	}
-	
+
 	// ================= TIMEOUTS =================
 
 	public void implicitlyWait(WebDriver driver, int seconds) {
@@ -203,104 +206,106 @@ public class AllUtilityFunction {
 	}
 
 	// ==================== EXCEL UTILITY =========================
-	
+
 	private static final String FILE_PATH = "./src/test/resources/Readers/Config.xlsx";
 
 	Workbook workbook;
 	Sheet sheet;
 
-	 public void initWorkbook() {
-	        try {
-	            FileInputStream fis = new FileInputStream(FILE_PATH);
-	            workbook = WorkbookFactory.create(fis);
-	            fis.close();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
+	public void init(String sheetName) {
 
+		try {
+			FileInputStream fileInputStream = new FileInputStream(FILE_PATH);
+			workbook = WorkbookFactory.create(fileInputStream);
+			sheet = workbook.getSheet(sheetName);
+			fileInputStream.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 
-	    public void setSheet(String sheetName) {
-	        sheet = workbook.getSheet(sheetName);
-	    }
+	}
 
+	public Row getRow(int rowNumber) {
+		if (sheet == null) {
+			System.out.println("Invaid Sheet : Initilize");
+			return null;
+		}
+		return sheet.getRow(rowNumber);
+	}
 
-	    public String getData(int row, int col) {
+	public int getNumberOfRows() {
+		if (sheet == null) {
+			System.out.println("Invaid Sheet : Initilize");
+			return -1;
+		}
+		return sheet.getPhysicalNumberOfRows();
+	}
 
-	        if (sheet == null) {
-	            throw new RuntimeException("Sheet not initialized. Call setSheet()");
-	        }
+	public int getNumberOfCols() {
+		if (sheet == null) {
+			System.out.println("Invaid Sheet : Initilize");
+			return -1;
+		}
+		return sheet.getRow(0).getPhysicalNumberOfCells();
+	}
 
-	        Cell cell = sheet.getRow(row).getCell(col);
+	public String getData(int row, int col) {
 
-	        if (cell == null) return "";
+		if (sheet == null) {
+			System.out.println("Invaid Sheet : Initilize");
+			return null;
+		}
+		CellType type = sheet.getRow(row).getCell(col).getCellType();
 
-	        switch (cell.getCellType()) {
-	            case NUMERIC:
-	                return String.valueOf((long) cell.getNumericCellValue());
-	            case BOOLEAN:
-	                return String.valueOf(cell.getBooleanCellValue());
-	            default:
-	                return cell.toString();
-	        }
-	    }
+		if (type == CellType.NUMERIC) {
+			String value = sheet.getRow(row).getCell(col).toString();
+			return value.split("\\.")[0];
+		}
+		return sheet.getRow(row).getCell(col).toString();
+	}
 
+	public Object[][] getExcelDataAsArray(String sheetName) throws Exception {
 
-	    public int getRowCount() {
-	        return sheet.getPhysicalNumberOfRows();
-	    }
+		try (FileInputStream fis = new FileInputStream(FILE_PATH); Workbook wb = WorkbookFactory.create(fis)) {
 
+			Sheet sheet = wb.getSheet(sheetName);
 
-	    public int getColCount() {
-	        return sheet.getRow(0).getPhysicalNumberOfCells();
-	    }
+			if (sheet == null) {
+				throw new Exception("Sheet not found: " + sheetName);
+			}
+			int row = sheet.getLastRowNum();
+			int col = sheet.getRow(0).getLastCellNum();
+			Object[][] data = new Object[row][col];
+			DataFormatter formatter = new DataFormatter();
+			for (int i = 1; i <= row; i++) {
+				Row currentRow = sheet.getRow(i);
+				if (currentRow == null)
+					continue;
+				for (int j = 0; j < col; j++) {
+					Cell cell = currentRow.getCell(j);
+					if (cell == null) {
+						data[i - 1][j] = "";
+						continue;
+					}
+					switch (cell.getCellType()) {
+					case NUMERIC:
+						data[i - 1][j] = formatter.formatCellValue(cell);
+						break;
+					case BOOLEAN:
+						data[i - 1][j] = cell.getBooleanCellValue();
+						break;
+					case STRING:
+						data[i - 1][j] = cell.getStringCellValue();
+						break;
+					default:
+						data[i - 1][j] = formatter.formatCellValue(cell);
+						break;
+					}
+				}
+			}
 
+			return data;
+		}
 
-	    public Object[][] getExcelDataAsArray(String sheetName) {
-
-	        Sheet s = workbook.getSheet(sheetName);
-
-	        int rows = s.getLastRowNum();
-	        int cols = s.getRow(0).getLastCellNum();
-
-	        Object[][] data = new Object[rows][cols];
-
-	        DataFormatter formatter = new DataFormatter();
-
-	        for (int i = 1; i <= rows; i++) {
-
-	            Row row = s.getRow(i);
-
-	            for (int j = 0; j < cols; j++) {
-
-	                Cell cell = row.getCell(j);
-
-	                data[i - 1][j] = formatter.formatCellValue(cell);
-	            }
-	        }
-
-	        return data;
-	    }
-	    //screenshot utility
-	    public class ScreenshotUtil {
-
-	        public String takeScreenshot(WebDriver driver, String fileName) {
-
-	            TakesScreenshot ts = (TakesScreenshot) driver;
-	            File src = ts.getScreenshotAs(OutputType.FILE);
-
-	            String path = System.getProperty("user.dir") + "/screenshots/" + fileName + ".png";
-
-	            try {
-	                FileUtils.copyFile(src, new File(path));
-	            } catch (IOException e) {
-	                e.printStackTrace();
-	            }
-
-	            return path;
-	        }
-	    }
-
-	
-
+	}
 }
