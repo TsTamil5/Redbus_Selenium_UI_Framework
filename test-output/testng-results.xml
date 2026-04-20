@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="0" failed="2" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-04-19T22:34:04 IST" name="Default suite" finished-at="2026-04-19T22:34:05 IST" duration-ms="774">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@4c583ecf]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2026-04-19T22:34:04 IST" name="Default test" finished-at="2026-04-19T22:34:05 IST" duration-ms="774">
+      <class name="com.redbus.testing.testrunner.RunnerIO">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@4c583ecf]" started-at="2026-04-19T22:34:04 IST" name="setUpClass" finished-at="2026-04-19T22:34:05 IST" duration-ms="458" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@352c1b98]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@4c583ecf]" started-at="2026-04-19T22:34:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-19T22:34:05 IST" duration-ms="268" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Enter passenger details and proceed to payment"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "com.redbus.testing.utilities.Base.driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "com.redbus.testing.utilities.Base.driver" is null
+at com.redbus.testing.stepdefinition.Hooks.setup(Hooks.java:44)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@4c583ecf]" started-at="2026-04-19T22:34:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-19T22:34:05 IST" duration-ms="268" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Enter passenger details and proceed to payment"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "com.redbus.testing.utilities.Base.driver" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.WebDriver.get(String)" because "com.redbus.testing.utilities.Base.driver" is null
+at com.redbus.testing.stepdefinition.Hooks.setup(Hooks.java:44)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@4c583ecf]" started-at="2026-04-19T22:34:05 IST" name="tearDownClass" finished-at="2026-04-19T22:34:05 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.redbus.testing.testrunner.RunnerIO -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
