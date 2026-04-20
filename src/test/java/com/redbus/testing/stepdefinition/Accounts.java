@@ -19,8 +19,8 @@ import org.testng.Reporter;
 import com.redbus.testing.pages.BookingsPage;
 import com.redbus.testing.pages.LoginPage;
 import com.redbus.testing.pages.OffersPage;
-import com.redbus.testing.utilities.AllUtililtyFunction;
-import com.redbus.testing.utilities.AllUtililtyFunction.ScreenshotUtil;
+
+import com.redbus.testing.utilities.AllUtilityFunction;
 import com.redbus.testing.utilities.Pages;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
@@ -31,7 +31,7 @@ import io.cucumber.java.en.When;
 public class Accounts {
 	
 	
-	AllUtililtyFunction util = Hooks.util;
+	AllUtilityFunction util = Hooks.util;
 	@Given("user is on RedBus homepage")
 	public void user_is_on_red_bus_homepage() {
 	   
@@ -215,12 +215,12 @@ public class Accounts {
 //	
 	@Then("the FAQ page title should be displayed")
 	public void the_faq_page_title_should_be_displayed() {
-////		 Assert.assertTrue(Pages.helpPage.getFAQTitle().length() > 0, "FAQ title is NOT displayed");
-//		Assert.assertTrue(Pages.helpPage.isFAQPageDisplayed(),
-//	            "FAQ title is NOT displayed");
-//
-	    System.out.println("FAQ Title: " + Pages.helpPage.getFAQTitle());
-		
+
+	    String title = Pages.helpPage.getFAQTitle();
+	    System.out.println("FAQ Title: " + title);
+
+	    Assert.assertEquals(title.trim(), "Bus Cancellation",
+	            "FAQ title mismatch or not displayed");
 	}
 
 }
