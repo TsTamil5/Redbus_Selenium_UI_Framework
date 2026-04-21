@@ -6,9 +6,8 @@
       <class name="com.redbus.testing.testrunner.RunnerIO">
         <methods>
           <include name="setUpClass"/>
-          <include name="tearDownReport"/>
-          <include name="tearDownClass"/>
           <include name="runScenario" invocation-numbers="6"/>
+          <include name="tearDownClass"/>
         </methods>
       </class> <!-- com.redbus.testing.testrunner.RunnerIO -->
     </classes>

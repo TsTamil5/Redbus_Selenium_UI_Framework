@@ -2,7 +2,6 @@ package com.redbus.testing.utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import com.redbus.testing.pages.DashboardPage;
 import com.redbus.testing.pages.HotelSearchResultsPage;
 import com.redbus.testing.pages.HotelsPage;
@@ -28,9 +27,5 @@ public class Pages {
 
     public static Pages getInstance() {
         return pages.get();
-    }
-
-    public static void unload() {
-        pages.remove();
     }
 }

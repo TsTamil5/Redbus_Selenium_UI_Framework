@@ -6,15 +6,16 @@ public class Base {
 
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static void setDriver(WebDriver dr) {
-        driver.set(dr);
+    public static void setDriver(WebDriver driverInstance) {
+        driver.set(driverInstance);
     }
 
     public static WebDriver getDriver() {
         return driver.get();
     }
-
-    public static void unload() {
+    
+    public static void removeDriver() {
         driver.remove();
     }
+   
 }
