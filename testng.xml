@@ -3,7 +3,7 @@
 <suite parallel="methods" name="Suite">
   <test thread-count="5" parallel="methods" name="Test">
     <classes>
-      <class name="com.redbus.testing.stepdefinition.Hooks"/>
+      <class name="com.redbus.testing.testrunner.RunnerIO"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

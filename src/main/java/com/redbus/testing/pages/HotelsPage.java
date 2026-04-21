@@ -68,7 +68,7 @@ public class HotelsPage {
 	
 	public WebElement getInputField() {
 
-		WebDriverWait wait = new WebDriverWait(Base.driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(Base.getDriver(), Duration.ofSeconds(15));
 
 		return wait.until(ExpectedConditions.elementToBeClickable(
 				By.xpath("(//input[not(@type='hidden') and not(@disabled)])[last()]")));
@@ -92,7 +92,7 @@ public class HotelsPage {
 	}
 	
 	public void clickCheckIn() {
-	    WebDriverWait wait = new WebDriverWait(Base.driver, Duration.ofSeconds(10));
+	    WebDriverWait wait = new WebDriverWait(Base.getDriver(), Duration.ofSeconds(10));
 	    wait.until(ExpectedConditions.elementToBeClickable(checkIn)).click();
 	}
 
@@ -105,12 +105,12 @@ public class HotelsPage {
 	}
 	
 	public WebElement getMonthYearText() {
-	    return Base.driver.findElement(
+	    return Base.getDriver().findElement(
 	        By.cssSelector("[class='monthYearHolidayWrap___248d1b']"));
 	}
 
 	public WebElement getNextMonthArrow() {
-		return Base.driver.findElement(
+		return Base.getDriver().findElement(
 				By.cssSelector("[class='icon icon-arrow arrow___d32c04 right___1dcefa ']"));
 	}
 
@@ -222,13 +222,13 @@ public class HotelsPage {
 
 	public void selectCity(String cityNameValue) {
 
-		WebDriverWait wait = new WebDriverWait(Base.driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(Base.getDriver(), Duration.ofSeconds(15));
 
 		clickCityField();
 
 		WebElement inputField = getInputField();
 
-		Actions action = new Actions(Base.driver);
+		Actions action = new Actions(Base.getDriver());
 
 		action.click(inputField)
 		      .sendKeys(inputField, cityNameValue).pause(Duration.ofSeconds(3))
@@ -246,12 +246,12 @@ public class HotelsPage {
 		clickCheckIn();
 
 		navigateToMonthYear(inDate[1], inDate[2]);
-		Base.driver.findElement(By.xpath("//span[text()='" + inDate[0] + "']")).click();
+		Base.getDriver().findElement(By.xpath("//span[text()='" + inDate[0] + "']")).click();
 
 		Thread.sleep(2000);
 
 		navigateToMonthYear(outDate[1], outDate[2]);
-		Base.driver.findElement(By.xpath("//span[text()='" + outDate[0] + "']")).click();
+		Base.getDriver().findElement(By.xpath("//span[text()='" + outDate[0] + "']")).click();
 
 		Thread.sleep(2000);
 	}
@@ -272,7 +272,7 @@ public class HotelsPage {
 	
 	public boolean isChildAgeValidationDisplayed() {
 
-		WebDriverWait wait = new WebDriverWait(Base.driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(Base.getDriver(), Duration.ofSeconds(10));
 
 		WebElement message = wait.until(
 			ExpectedConditions.visibilityOfElementLocated(

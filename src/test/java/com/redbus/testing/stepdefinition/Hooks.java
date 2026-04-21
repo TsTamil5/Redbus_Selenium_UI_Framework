@@ -3,10 +3,13 @@ package com.redbus.testing.stepdefinition;
 import java.io.IOException;
 
 import org.openqa.selenium.edge.EdgeDriver;
-
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.ExtentTest;
 import com.redbus.testing.utilities.AllUtilityFunction;
 import com.redbus.testing.utilities.Base;
+import com.redbus.testing.utilities.ExtentReportManager;
 import com.redbus.testing.utilities.Pages;
+import com.redbus.testing.utilities.ScreenshotUtility;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -14,34 +17,75 @@ import io.cucumber.java.Scenario;
 
 public class Hooks extends AllUtilityFunction {
 
-	@Before
-	public void openBrowser() throws IOException {
+    @Before
+    public void openBrowser(Scenario scenario) throws IOException {
 
-		// Launch Browser
-		Base.driver = new EdgeDriver();
+        // Launch browser
+        Base.setDriver(new EdgeDriver());
 
-		// Read properties file
-		initPropertiesUtility("src/test/resources/Readers/CommonData.properties");
+        // Report Node
+        ExtentTest test = ExtentReportManager.getInstance()
+                .createTest(scenario.getName());
 
-		String URL = getPropertyData("url");
+        ExtentReportManager.setTest(test);
 
-		// Browser Settings
-		setMaximizeBrowser(Base.driver);
-		implicitlyWait(Base.driver, 5);
+        // Read property file
+        initPropertiesUtility("src/test/resources/Readers/CommonData.properties");
 
-		// Open Application
-		Base.driver.get(URL);
+        String URL = getPropertyData("url");
 
-		// Load Page Objects
-		Pages.loadAllPages(Base.driver);
-	}
+        // Browser settings
+        setMaximizeBrowser(Base.getDriver());
+        implicitlyWait(Base.getDriver(), 5);
 
-	@After
-	public void closeBrowser(Scenario scenario) {
+        // Open App
+        Base.getDriver().get(URL);
 
-//		 Close Browser
-		if (Base.driver != null) {
-			Base.driver.quit();
-		}
-	}
+        // Load Pages
+        Pages.loadAllPages(Base.getDriver());
+    }
+    
+    @After
+    public void closeBrowser(Scenario scenario) {
+
+        try {
+        	
+        	if (scenario.isFailed()) {
+
+        	    String filePath =
+        	        ScreenshotUtility.saveScreenshot(
+        	            Base.getDriver(),
+        	            scenario.getName().replaceAll(" ", "_")
+        	        );
+
+        	    ExtentReportManager.getTest().fail(
+        	        "Scenario Failed",
+        	        MediaEntityBuilder
+        	            .createScreenCaptureFromPath(filePath)
+        	            .build()
+        	    );
+        	}
+        	
+            else {
+
+                ExtentReportManager.getTest().pass("Scenario Passed");
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();   
+            ExtentReportManager.getTest()
+                .fail("Screenshot capture failed: " + e.getMessage());
+        }
+
+        try {
+            if (Base.getDriver() != null) {
+                Base.getDriver().quit();
+            }
+        } catch (Exception e) {
+        }
+
+        Base.unload();
+        Pages.unload();
+    }
 }

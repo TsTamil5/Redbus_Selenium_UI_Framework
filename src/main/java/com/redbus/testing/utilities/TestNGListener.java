@@ -29,7 +29,7 @@ public class TestNGListener implements ITestListener {
 
         // Take screenshot
         try {
-            String base64 = ScreenshotUtility.takeScreenshotAsBase64(Base.driver);
+            String base64 = ScreenshotUtility.takeScreenshotAsBase64(Base.getDriver());
             test.fail(result.getThrowable(),
                     MediaEntityBuilder.createScreenCaptureFromBase64String(base64).build());
         } catch (Exception e) {
