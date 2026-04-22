@@ -2,6 +2,15 @@ package com.redbus.testing.utilities;
 
 import org.openqa.selenium.WebDriver;
 
+import com.RedBus.testing.Pages.BusBoardDropPointPage;
+import com.RedBus.testing.Pages.BusPassengerInfoPage;
+import com.RedBus.testing.Pages.BusPaymentPage;
+import com.RedBus.testing.Pages.BusSearchPage;
+import com.RedBus.testing.Pages.BusSeatSelectionPage;
+import com.RedBus.testing.Pages.BusSelectionPage;
+import com.RedBus.testing.Pages.TrainListPage;
+import com.RedBus.testing.Pages.TrainPassengerPage;
+import com.RedBus.testing.Pages.TrainTicketPage;
 import com.redbus.testing.pages.BookingsPage;
 import com.redbus.testing.pages.HelpPage;
 import com.redbus.testing.pages.LoginPage;
@@ -23,6 +32,14 @@ public class Pages {
     public static OffersPage offersPage;
     public static  HelpPage helpPage;
     
+	//BusTickets
+	public BusSearchPage busSearchPage;
+	public BusSelectionPage busSelectionPage;
+	public BusSeatSelectionPage busSeatSelectionPage;
+	public BusBoardDropPointPage busBoardDropPointPage;
+	public BusPassengerInfoPage busPassengerInfoPage;
+	public BusPaymentPage busPaymentPage;
+    
     // hotels
     public static DashboardPage dashboardPage;
 	public static HotelSearchResultsPage hotelSearchResultsPage ;
@@ -39,8 +56,10 @@ public class Pages {
 	     offersPage=PageFactory.initElements(driver, OffersPage.class);
 	     helpPage=PageFactory.initElements(driver, HelpPage.class);
 	     
-	     //Hotels
+	   
+			
 	     
+	     //Hotels
 	     dashboardPage=PageFactory.initElements(driver, DashboardPage.class);
 		 hotelSearchResultsPage=PageFactory.initElements(driver, HotelSearchResultsPage.class);
 		 hotelsPage=PageFactory.initElements(driver, HotelsPage.class);

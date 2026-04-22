@@ -1,5 +1,7 @@
 Feature: Bus Ticket Booking End-to-End Flow
 
+
+
   @BusSearch
   Scenario: Search buses
     Given User is on the RedBus home page
@@ -8,6 +10,24 @@ Feature: Bus Ticket Booking End-to-End Flow
     And User selects travel date
     And User clicks on search button
     Then User should see list of available buses
+
+  @NegativeSearch
+  Scenario: Search buses without entering source and destination
+    Given User is on the RedBus home page
+    When User clicks on search button without entering source and destination
+    Then User should see validation error message
+
+  @NegativeSearch_SameCity
+  Scenario Outline: Search buses with same source and destination
+    Given the user is on the RedBus homepage
+    When the user enters source "<city>"
+    And the user enters destination "<city>"
+    And the user clicks on search buses
+    Then the error message "Source and Destination city cannot be same" should be displayed
+
+    Examples: 
+      | city      |
+      | Koyambedu |
 
   @SeatSelection
   Scenario: Select bus and seat
