@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.edge.EdgeDriver;
 import com.redbus.testing.utilities.AllUtilityFunction;
 import com.redbus.testing.utilities.Base;
+import com.redbus.testing.utilities.LaunchingBrowser;
 import com.redbus.testing.utilities.Pages;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -12,16 +13,16 @@ import io.cucumber.java.Scenario;
 
 public class Hooks extends AllUtilityFunction {
 
-    @Before
+	@Before
     public void openBrowser(Scenario scenario) throws IOException {
-
-        // Launch browser
-        Base.setDriver(new EdgeDriver());
 
         // Read property file
         initPropertiesUtility("src/test/resources/Readers/CommonData.properties");
 
+        String browser = getPropertyData("browser");
         String URL = getPropertyData("url");
+        // Launch browser from property file
+        Base.setDriver(LaunchingBrowser.launchBrowser(browser));
 
         // Browser settings
         setMaximizeBrowser(Base.getDriver());

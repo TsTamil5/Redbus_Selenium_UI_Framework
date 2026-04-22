@@ -77,6 +77,6 @@ And Click on Search button
 And Apply hotel filters:
 | FilterType      | FilterValue     |
 | Customer Rating | Excellent       |
-| Price           | ₹0 - ₹1,000     |
+| Price           | ₹1000 - ₹2,000  |
 | Meal Preference | Free Breakfast  |
 Then Verify hotel results count and message behavior are correct

@@ -8,12 +8,15 @@ import com.redbus.testing.pages.HotelsPage;
 
 public class Pages {
 
+    // ThreadLocal object for parallel execution
     private static final ThreadLocal<Pages> pages = new ThreadLocal<>();
 
+    // Page object references
     public DashboardPage dashboardPage;
     public HotelSearchResultsPage hotelSearchResultsPage;
     public HotelsPage hotelsPage;
 
+    // Initialize all page classes
     public static void loadAllPages(WebDriver driver) {
 
         Pages p = new Pages();
@@ -25,6 +28,7 @@ public class Pages {
         pages.set(p);
     }
 
+    // Return current thread page instance
     public static Pages getInstance() {
         return pages.get();
     }
