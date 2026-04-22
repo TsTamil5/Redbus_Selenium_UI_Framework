@@ -4,10 +4,7 @@ package com.redbus.testing.stepdefinition;
 
 import org.testng.Assert;
 
-import com.RedBus.testing.Pages.BusSearchPage;
-import com.RedBus.testing.Pages.BusSeatSelectionPage;
-import com.RedBus.testing.utilities.Base;
-import com.RedBus.testing.utilities.Pages;
+import com.redbus.testing.utilities.Pages;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
