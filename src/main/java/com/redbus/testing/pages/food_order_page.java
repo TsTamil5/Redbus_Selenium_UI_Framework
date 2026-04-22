@@ -1,217 +1,232 @@
 package com.redbus.testing.pages;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-
-import java.util.ArrayList;
-import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 
-
+import com.redbus.testing.utilities.AllUtilityFunction;
 
 public class food_order_page {
-	 private WebDriver driver;
-	 private WebDriverWait wait;
-	 private Actions actions;
-	public food_order_page(WebDriver driver) {
-		 this.driver = driver;
-		 this.wait = new WebDriverWait(driver, Duration.ofSeconds(25));
-		 this.actions = new Actions(driver);
-		 PageFactory.initElements(driver, this);
-	}
-	
-	private By popularFoodLocator = By.xpath("//div[contains(@class,'pl-3')]");
-	
-	private By suggestionLocator = By.cssSelector(
-		    ".text-sm.lg\\:text-base.font-medium.text-admin-onBackground.subtitle-3.ext-ellipsis.line-clamp-2.w-48"
-		);
-	
-	@FindBy(css = "input[placeholder='Search food, brand, station, etc.']")
-	private WebElement  foodInputField;
-	
-	@FindBy(css = ".form-input.pl-12.text-sm")
-	private WebElement foodSearchField;
 
-	@FindBy(css = "input.custom-date-picker[type='date']")
-	private WebElement boardingDateField;
-	
-	@FindBy(css = "select[placeholder='Boarding Station'], .form-Input")
-	private WebElement boardingStationField;
-	
-	@FindBy(xpath = "//button[.='FIND FOOD']")
-	private WebElement findFoodButton;
-	
-	@FindBy(xpath = "//h4[contains(text(),'No results for')]")
-	private WebElement noResultsHeader;
+    // WebDriver instance used to interact with browser
+    private WebDriver driver;
 
-	@FindBy(xpath = "//p[contains(text(),'Please try again')]")
-	private WebElement noResultsSubText;
-	
-	public WebElement getFoodInputField() {
-		return foodInputField;
-	}
+    // Utility class instance for reusable wait methods
+    private AllUtilityFunction util;
 
-	public WebElement getFoodSearchField() {
-		return foodSearchField;
-	}
-	public void clickSearchField() {
-		foodInputField.click();
-	}
-	//Entering data in search field
-	public void enterSearchText(String text) {
-	    WebElement searchBox = driver.findElement(
-	        By.cssSelector(".form-input.pl-12.text-sm")
-	    );
-	    clickSearchField();
-	    searchBox.sendKeys(text);
-	}
-	
-	public List<String> getAllSuggestions() {
+    // Constructor to initialize driver and utility
+    public food_order_page(WebDriver driver) {
+        this.driver = driver;
+        this.util = new AllUtilityFunction();
+    }
 
-	    wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(suggestionLocator, 0));
+    // Locator for popular food items displayed on homepage
+    private By popularFoodLocator = By.xpath("//div[contains(@class,'pl-3')]");
 
-	    List<WebElement> elements = driver.findElements(suggestionLocator);
+    // Locator for search suggestions list
+    private By suggestionLocator = By.cssSelector(
+        ".text-sm.lg\\:text-base.font-medium.text-admin-onBackground.subtitle-3.ext-ellipsis.line-clamp-2.w-48"
+    );
 
-	    List<String> list = new ArrayList<>();
+    // Locator for initial search input field
+    private By searchInputLocator =
+        By.cssSelector("input[placeholder='Search food, brand, station, etc.']");
 
-	    for (WebElement e : elements) {
-	        list.add(e.getText().trim());
-	    }
+    // Locator for actual search box after clicking input
+    private By searchBoxLocator =
+        By.cssSelector(".form-input.pl-12.text-sm");
 
-	    return list;
-	}
-	
-	// Dynamic suggestion click 
-	public void clickOnSuggestion(String text) {
+    // Locator for "Find Food" button
+    private By findFoodBtnLocator =
+        By.xpath("//button[.='FIND FOOD']");
 
-	    wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(suggestionLocator, 0));
+    // Locator for "No Results Found" header
+    private By noResultsHeaderLocator =
+        By.xpath("//h4[contains(text(),'No results for')]");
 
-	    List<WebElement> suggestionList = driver.findElements(suggestionLocator);
+    // Locator for "No Results Found" sub text
+    private By noResultsSubTextLocator =
+        By.xpath("//p[contains(text(),'Please try again')]");
 
-	    for (WebElement element : suggestionList) {
+    // Locator for boarding date input field
+    private By boardingDateLocator =
+        By.cssSelector("input.custom-date-picker[type='date']");
 
-	        String suggestionText = element.getText().trim();
+    // Locator for boarding station dropdown
+    private By boardingStationDropdownLocator =
+        By.cssSelector("select[placeholder='Boarding Station']");
 
-	        if (suggestionText.equalsIgnoreCase(text)) {
 
-	            wait.until(ExpectedConditions.elementToBeClickable(element));
-	            element.click();
-	            return;
-	        }
-	    }
+    // Clicks on search field to activate search input
+    public void clickSearchField() {
+        WebElement element = util.waitForRefreshedClickable(driver, searchInputLocator, 25);
+        element.click();
+    }
 
-	    throw new RuntimeException("Suggestion not found: " + text);
-	}
-	
-	
-	public boolean isSuggestionListEmpty() {
+    // Enters text into search box after activating it
+    public void enterSearchText(String text) {
+        clickSearchField();
+        WebElement searchBox = util.waitForRefreshedVisibility(driver, searchBoxLocator, 25);
+        searchBox.clear();
+        searchBox.sendKeys(text);
+    }
 
-	    wait.until(ExpectedConditions.invisibilityOfElementLocated(suggestionLocator));
+    // Enters data into search box for datatable usage
+    public void enterDataForDatatable(String text) {
+        WebElement searchBox = util.waitForRefreshedVisibility(driver, searchBoxLocator, 25);
+        searchBox.sendKeys(text);
+    }
 
-	    return driver.findElements(suggestionLocator).isEmpty();
-	}
-	
-	public void clickOnPopularFood(String foodName) {
+    // Retrieves all suggestions displayed in search dropdown
+    public List<String> getAllSuggestions() {
+        List<WebElement> elements = util.waitForElementsMoreThan(driver, suggestionLocator, 0, 25);
 
-	    wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(popularFoodLocator, 0));
+        List<String> list = new ArrayList<>();
+        for (WebElement e : elements) {
+            list.add(e.getText().trim());
+        }
 
-	    List<WebElement> popularFoods = driver.findElements(popularFoodLocator);
+        return list;
+    }
 
-	    for (int i = 0; i < popularFoods.size(); i++) {
+    // Clicks on a specific suggestion based on visible text
+    public void clickOnSuggestion(String text) {
+        List<WebElement> suggestionList = util.waitForElementsMoreThan(driver, suggestionLocator, 0, 25);
 
-	        // re-fetch element every iteration (avoids stale)
-	        List<WebElement> freshList = driver.findElements(popularFoodLocator);
+        for (WebElement element : suggestionList) {
+            if (element.getText().trim().equalsIgnoreCase(text)) {
+                util.waitForClickable(driver, element, 25).click();
+                return;
+            }
+        }
 
-	        WebElement food = freshList.get(i);
+        throw new RuntimeException("Suggestion not found: " + text);
+    }
 
-	        String text = food.getText().trim();
+    // Checks whether suggestion list is empty
+    public boolean isSuggestionListEmpty() {
+        util.waitForInvisibility(driver, suggestionLocator, 25);
+        return driver.findElements(suggestionLocator).isEmpty();
+    }
 
-	        if (text.equalsIgnoreCase(foodName)) {
+    // Returns number of suggestions (used for defect validation)
+    public int getSuggestionCount() {
+        try {
+            return util.waitForElementsMoreThan(driver, suggestionLocator, 0, 25).size();
+        } catch (Exception e) {
+            return 0;
+        }
+    }
 
-	            wait.until(ExpectedConditions.elementToBeClickable(food));
-	            food.click();
-	            return;
-	        }
-	    }
+    // Clicks on a specific popular food item
+    public void clickOnPopularFood(String foodName) {
 
-	    throw new RuntimeException("Popular food not found: " + foodName);
-	}
-	
-	public void selectBoardingDate(String date) {
-	    JavascriptExecutor js = (JavascriptExecutor) driver;
+        List<WebElement> popularFoods = util.waitForElementsMoreThan(driver, popularFoodLocator, 0, 25);
 
-	    js.executeScript(
-	        "var nativeInputValueSetter = Object.getOwnPropertyDescriptor(" +
-	        "window.HTMLInputElement.prototype, 'value').set;" +
-	        "nativeInputValueSetter.call(arguments[0], arguments[1]);" +
-	        "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));" +
-	        "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));",
-	        boardingDateField, date
-	    );
-	}
-	
-	public void selectBoardingStation() {
+        for (int i = 0; i < popularFoods.size(); i++) {
 
-	    By dropdownLocator = By.cssSelector("select[placeholder='Boarding Station']");
+            // Re-fetch elements to avoid stale exception
+            List<WebElement> freshList = driver.findElements(popularFoodLocator);
+            WebElement food = freshList.get(i);
 
-	    // 1. wait for dropdown
-	    WebElement dropdown = wait.until(
-	        ExpectedConditions.presenceOfElementLocated(dropdownLocator)
-	    );
+            if (food.getText().trim().equalsIgnoreCase(foodName)) {
+                util.waitForClickable(driver, food, 25).click();
+                return;
+            }
+        }
 
-	    // 2. scroll + force click (avoids intercept issue)
-	    ((JavascriptExecutor) driver)
-	        .executeScript("arguments[0].scrollIntoView(true);", dropdown);
+        throw new RuntimeException("Popular food not found: " + foodName);
+    }
 
-	    ((JavascriptExecutor) driver)
-	        .executeScript("arguments[0].click();", dropdown);
+    // Selects boarding date using JavaScript (bypassing UI limitations)
+    public void selectBoardingDate(String date) {
 
-	    // 3. wait until options are loaded (VERY IMPORTANT)
-	    wait.until(driver -> {
-	        Select select = new Select(driver.findElement(dropdownLocator));
-	        return select.getOptions().size() > 1;
-	    });
+        WebElement dateField = util.waitForPresence(driver, boardingDateLocator, 25);
 
-	    // 4. select first valid option (skip placeholder)
-	    Select select = new Select(driver.findElement(dropdownLocator));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
 
-	    for (WebElement option : select.getOptions()) {
+        js.executeScript(
+            "var nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;" +
+            "nativeInputValueSetter.call(arguments[0], arguments[1]);" +
+            "arguments[0].dispatchEvent(new Event('input',{bubbles:true}));" +
+            "arguments[0].dispatchEvent(new Event('change',{bubbles:true}));",
+            dateField, date
+        );
+    }
 
-	        String text = option.getText().trim();
+    // Selects a valid boarding station from dropdown
+    public void selectBoardingStation() {
 
-	        if (!text.equalsIgnoreCase("Boarding Station") && !text.isEmpty()) {
-	            select.selectByVisibleText(text);
-	            System.out.println("Selected Boarding Station: " + text);
-	            return;
-	        }
-	    }
+        WebElement dropdown = util.waitForPresence(driver, boardingStationDropdownLocator, 25);
 
-	    throw new RuntimeException("No valid boarding station available to select");
-	}
-	
-	public String getNoResultsHeaderText() {
-	    wait.until(ExpectedConditions.visibilityOf(noResultsHeader));
-	    return noResultsHeader.getText().trim();
-	}
+        ((JavascriptExecutor) driver)
+            .executeScript("arguments[0].scrollIntoView(true);", dropdown);
 
-	public String getNoResultsSubText() {
-	    wait.until(ExpectedConditions.visibilityOf(noResultsSubText));
-	    return noResultsSubText.getText().trim();
-	}
-	
-	public void clickOnFindFoodBtn() {
-		findFoodButton.click();
-	}
+        ((JavascriptExecutor) driver)
+            .executeScript("arguments[0].click();", dropdown);
 
+        // Custom wait for dropdown options to load
+        new WebDriverWait(driver, Duration.ofSeconds(25)).until((WebDriver d) -> {
+            Select select = new Select(d.findElement(boardingStationDropdownLocator));
+            return select.getOptions().size() > 1;
+        });
+
+        Select select = new Select(
+            util.waitForPresence(driver, boardingStationDropdownLocator, 25)
+        );
+
+        for (WebElement option : select.getOptions()) {
+
+            String text = option.getText().trim();
+
+            if (!text.equalsIgnoreCase("Boarding Station") && !text.isEmpty()) {
+                select.selectByVisibleText(text);
+                System.out.println("Selected Boarding Station: " + text);
+                return;
+            }
+        }
+
+        throw new RuntimeException("No valid boarding station available");
+    }
+
+    // Returns "No Results" header text
+    public String getNoResultsHeaderText() {
+        return util.waitForVisibility(driver, noResultsHeaderLocator, 25).getText().trim();
+    }
+
+    // Returns "No Results" sub text
+    public String getNoResultsSubText() {
+        return util.waitForVisibility(driver, noResultsSubTextLocator, 25).getText().trim();
+    }
+
+    // Clicks on Find Food button
+    public void clickOnFindFoodBtn() {
+        util.waitForRefreshedClickable(driver, findFoodBtnLocator, 25).click();
+    }
+
+    // Verifies whether boarding station and date fields are enabled
+    public boolean areBoardingAndDateFieldsEnabled() {
+        try {
+            WebElement boarding = util.waitForPresence(driver, boardingStationDropdownLocator, 25);
+            WebElement date = util.waitForPresence(driver, boardingDateLocator, 25);
+
+            return boarding.isEnabled() && date.isEnabled();
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    // Returns search box WebElement
+    public WebElement getSearchBox() {
+        return driver.findElement(searchBoxLocator);
+    }
 }
-

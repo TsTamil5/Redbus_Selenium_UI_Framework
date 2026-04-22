@@ -1,40 +1,37 @@
 package com.redbus.testing.pages;
 
-import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.redbus.testing.utilities.AllUtilityFunction;
 
 public class popularfood_restaurant_serving_page {
-	private WebDriver driver;
-    private WebDriverWait wait;
- // Locator for dynamic restaurant list
+
+    // Driver & utility
+    private WebDriver driver;
+    private AllUtilityFunction util;
+
+    // Locator for restaurant list
     private By restaurantLocator =
         By.xpath("//div[@class='mt-4 h-auto']/h1");
 
+    // Constructor
     public popularfood_restaurant_serving_page(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(25));
-        PageFactory.initElements(driver, this);
+        this.util = new AllUtilityFunction();
     }
 
+    // Check if restaurant list is visible
     public boolean isRestaurantListVisible() {
 
-        // Wait until at least 1 restaurant is loaded
-        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(restaurantLocator, 0));
+        List<WebElement> restaurants =
+            util.waitForElementsMoreThan(driver, restaurantLocator, 0, 25);
 
-        // Fetch fresh elements
-        List<WebElement> restaurants = driver.findElements(restaurantLocator);
+        System.out.println("Number of restaurants: " + restaurants.size());
 
-        int count = restaurants.size();
-        System.out.println("Number of restaurants: " + count);
-
-        return count > 0;
+        return restaurants.size() > 0;
     }
 }

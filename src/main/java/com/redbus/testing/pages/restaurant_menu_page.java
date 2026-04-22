@@ -1,49 +1,56 @@
 package com.redbus.testing.pages;
 
-import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.redbus.testing.utilities.AllUtilityFunction;
 
 public class restaurant_menu_page {
-	
-	private WebDriver driver;
-	private WebDriverWait wait;
-	private By dishesLocator = By.xpath("//div[@class='w-full']/div/h6");
 
-    @FindBy(xpath = "//span[@class='flex']/div/h3")
-    private WebElement restaurantName;
+    // Driver and utility
+    private WebDriver driver;
+    private AllUtilityFunction util;
 
+    // Locator for Dish Name
+    private By dishesLocator = By.xpath("//div[@class='w-full']/div/h6");
+    
+ // Locator for Restaurant Name
+    private By restaurantNameLocator = By.xpath("//span[@class='flex']/div/h3");
+
+    // Constructor
     public restaurant_menu_page(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(25));
-        PageFactory.initElements(driver, this);
+        this.util = new AllUtilityFunction();
     }
 
+    // Get restaurant name
     public String getRestaurantName() {
-        wait.until(ExpectedConditions.visibilityOf(restaurantName));
-        return restaurantName.getText();
+        return util.waitForVisibility(driver, restaurantNameLocator, 25).getText();
     }
 
+    // Check if a dish exists in menu
     public boolean isDishPresent(String dishName) {
+        try {
+            // Wait for dishes to load
+            util.waitForAllElementsPresence(driver, dishesLocator, 25);
 
-        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(dishesLocator, 0));
+            List<WebElement> dishes = driver.findElements(dishesLocator);
 
-        List<WebElement> dishes = driver.findElements(dishesLocator);
+            for (int i = 0; i < dishes.size(); i++) {
 
-        for (WebElement dish : dishes) {
+                // Re-fetch to avoid stale element
+                List<WebElement> fresh = driver.findElements(dishesLocator);
 
-            String text = dish.getText().trim();
-
-            if (text.equalsIgnoreCase(dishName)) {
-                return true;
+                if (fresh.get(i).getText().trim().equalsIgnoreCase(dishName)) {
+                    return true;
+                }
             }
+
+        } catch (org.openqa.selenium.StaleElementReferenceException e) {
+            return isDishPresent(dishName);
         }
 
         return false;
