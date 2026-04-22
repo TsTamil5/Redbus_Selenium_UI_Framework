@@ -4,7 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import com.RedBus.testing.utilities.Pages;
+import com.redbus.testing.pages.*;
+import com.redbus.testing.utilities.Pages;
 
 import io.cucumber.java.en.*;
 
