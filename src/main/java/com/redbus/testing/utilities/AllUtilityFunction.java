@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
@@ -14,7 +15,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -61,22 +62,25 @@ public class AllUtilityFunction {
 
 	// ================= NAVIGATION =================
 
-	public void navigateToApplication(WebDriver driver,String url) {
+	public void navigateToApplication(WebDriver driver, String url) {
 		driver.navigate().to(url);
 	}
-	//forward
+
+	// forward
 	public void navigateForward(WebDriver driver) {
 		driver.navigate().forward();
 	}
+
 	public void navigateBackward(WebDriver driver) {
 		driver.navigate().back();
 	}
+
 	public void refreshPage(WebDriver driver) {
 		driver.navigate().refresh();
 	}
-	
-	//get
-	public void enterUrl(WebDriver driver,String url) {
+
+	// get
+	public void enterUrl(WebDriver driver, String url) {
 		driver.get(url);
 	}
 
@@ -112,6 +116,73 @@ public class AllUtilityFunction {
 
 	public void waitForTitleContains(WebDriver driver, String title, int seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.titleContains(title));
+	}
+
+	// ================= ADVANCED EXPLICIT WAITS =================
+
+	// visibilityOfElementLocated
+	public WebElement waitForVisibility(WebDriver driver, By locator, int seconds) {
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
+	// presenceOfElementLocated
+	public WebElement waitForPresence(WebDriver driver, By locator, int seconds) {
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.presenceOfElementLocated(locator));
+	}
+
+	// presenceOfAllElementsLocatedBy
+	public List<WebElement> waitForAllElementsPresence(WebDriver driver, By locator, int seconds) {
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+	}
+
+	// elementToBeClickable (By)
+	public WebElement waitForClickable(WebDriver driver, By locator, int seconds) {
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.elementToBeClickable(locator));
+	}
+
+	// elementToBeClickable (WebElement)
+	public WebElement waitForClickable(WebDriver driver, WebElement element, int seconds) {
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.elementToBeClickable(element));
+	}
+
+	// refreshed + clickable
+	public WebElement waitForRefreshedClickable(WebDriver driver, By locator, int seconds) {
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(locator)));
+	}
+
+	// refreshed + visibility
+	public WebElement waitForRefreshedVisibility(WebDriver driver, By locator, int seconds) {
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(locator)));
+	}
+
+	// numberOfElementsToBeMoreThan
+	public List<WebElement> waitForElementsMoreThan(WebDriver driver, By locator, int count, int seconds) {
+		new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
+		return driver.findElements(locator);
+	}
+
+	// invisibilityOfElementLocated
+	public boolean waitForInvisibility(WebDriver driver, By locator, int seconds) {
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+	}
+
+	public WebElement waitForRefreshedPresence(WebDriver driver, By locator, int seconds) {
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.refreshed(ExpectedConditions.presenceOfElementLocated(locator)));
+	}
+
+	public List<WebElement> waitForElementsMoreThan(WebDriver driver, By locator, int count) {
+		return new WebDriverWait(driver, Duration.ofSeconds(25))
+				.until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
 	}
 	// ================= ALERT / POPUPS =================
 

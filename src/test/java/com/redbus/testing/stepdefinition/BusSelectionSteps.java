@@ -11,56 +11,56 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class BusSelectionSteps {
-	
-	Hooks hook;
 
-    private Base base;
-    private AllUtilityFunction util;
+	private Base base;
+	private AllUtilityFunction util;
 
-    public BusSelectionSteps(Base base,Hooks hook) {
-        this.base = base;
-        this.hook=hook;
-        util = new AllUtilityFunction();
-        util.initExcel("src\\test\\resources\\Reader\\config.xlsx", "BusSearch");
-    }
+	public BusSelectionSteps(Base base) {
+		this.base = base;
 
-    @Given("User searches buses")
-    public void user_searches_buses() throws InterruptedException {
+		util = new AllUtilityFunction();
+		util.init("Sheet1");
+	}
 
-        String source = util.getCellData(1, 0);
-        String destination = util.getCellData(1, 1);
+	@Given("User searches buses")
+	public void user_searches_buses() throws InterruptedException {
 
-        Pages.busSearchPage.enterFrom(source);
-        Pages.busSearchPage.enterDestination(destination);
-        Pages.busSearchPage.clickDatePicker();
-        Pages.busSearchPage.clickDate();
-        Pages.busSearchPage.clickSearch();
-    }
+		String source = util.getData(1, 0);
+		String destination = util.getData(1, 1);
 
-    @When("User selects FlixBus and route")
-    public void user_selects_flix_bus_and_route() {
-        Pages.busSelectionPage.clickFlixBus();
-        Pages.busSelectionPage.clickBookNow();
-        Pages.busSelectionPage.clickViewSeats();
-    }
+		Pages.getInstance().busSearchPage.enterFrom(source);
+		Pages.getInstance().busSearchPage.enterDestination(destination);
+		Pages.getInstance().busSearchPage.clickDatePicker();
+		String date = util.getData(1, 4);
+		String month = util.getData(1, 5);
+		Pages.getInstance().busSearchPage.selectDate(month, date);
+		Pages.getInstance().busSearchPage.clickSearch();
+	}
 
-    @When("User selects an available seat")
-    public void user_selects_an_available_seat() {
-        Pages.busSeatSelectionPage.clickLowerDeckSeat();
-    }
+	@When("User selects FlixBus and route")
+	public void user_selects_flix_bus_and_route() {
+		Pages.getInstance().busSelectionPage.clickFlixBus();
+		Pages.getInstance().busSelectionPage.clickBookNow();
+		Pages.getInstance().busSelectionPage.clickViewSeats();
+	}
 
-    @When("User clicks on proceed button")
-    public void user_clicks_on_proceed_button() {		
-       Pages.busSeatSelectionPage.clickProceedButton();
-    }
+	@When("User selects an available seat")
+	public void user_selects_an_available_seat() {
+		Pages.getInstance().busSeatSelectionPage.clickLowerDeckSeat();
+	}
 
-    @Then("User should move to boarding and dropping page")
-    public void user_should_move_to_boarding_and_dropping_page() {
-    	
-        String actual = Pages.busSeatSelectionPage.verifyBoardingPoint();
-        String expected = "Boarding points";
+	@When("User clicks on proceed button")
+	public void user_clicks_on_proceed_button() {
+		Pages.getInstance().busSeatSelectionPage.clickProceedButton();
+	}
 
-        Assert.assertEquals(actual, expected);
-        System.out.println("Navigated to Boarding point");
-    }
+	@Then("User should move to boarding and dropping page")
+	public void user_should_move_to_boarding_and_dropping_page() {
+
+		String actual = Pages.getInstance().busSeatSelectionPage.verifyBoardingPoint();
+		String expected = "Boarding points";
+
+		Assert.assertEquals(actual, expected);
+		System.out.println("Navigated to Boarding point");
+	}
 }

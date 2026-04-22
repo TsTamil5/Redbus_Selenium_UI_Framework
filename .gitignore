@@ -3,3 +3,17 @@ test-output/
 *.class
 reports
 /bin/
+
+# Maven build folder
+target/
+
+# Java compiled files
+*.class
+
+# Logs
+*.log
+
+# Eclipse files
+.project
+.classpath
+.settings/

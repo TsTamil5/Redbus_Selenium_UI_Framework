@@ -2,12 +2,9 @@ package com.redbus.testing.stepdefinition;
 
 import java.io.IOException;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.edge.EdgeDriver;
-
 import com.redbus.testing.utilities.AllUtilityFunction;
 import com.redbus.testing.utilities.Base;
+import com.redbus.testing.utilities.LaunchingBrowser;
 import com.redbus.testing.utilities.Pages;
 
 import io.cucumber.java.After;
@@ -16,38 +13,31 @@ import io.cucumber.java.Scenario;
 
 public class Hooks extends AllUtilityFunction {
 
-    @Before
-    public void openBrowser() throws IOException {
+	@Before
+    public void openBrowser(Scenario scenario) throws IOException {
 
-        Base.driver = new EdgeDriver();
+        // Read property file
+        initPropertiesUtility("src/test/resources/Readers/CommonProp.properties");
 
-        initPropertiesUtility("src/test/resources/Readers/CommonData.properties");
-
+        String browser = getPropertyData("browser");
         String URL = getPropertyData("url");
+        // Launch browser from property file
+        Base.setDriver(LaunchingBrowser.launchBrowser(browser));
 
-        setMaximizeBrowser(Base.driver);
-        implicitlyWait(Base.driver, 5);
+        // Browser settings
+        setMaximizeBrowser(Base.getDriver());
+        implicitlyWait(Base.getDriver(), 5);
 
-        Base.driver.get(URL);
+        // Open application
+        Base.getDriver().get(URL);
 
-        Pages.loadAllPages(Base.driver);
+        // Load pages
+        Pages.loadAllPages(Base.getDriver());
     }
 
     @After
     public void closeBrowser(Scenario scenario) {
-
-        // Screenshot on failure
-        if (scenario.isFailed()) {
-            byte[] screenshot = ((TakesScreenshot) Base.driver)
-                    .getScreenshotAs(OutputType.BYTES);
-
-            scenario.attach(screenshot, "image/png", "Failed Screenshot");
-        }
-
-        // Safe browser close
-        if (Base.driver != null) {
-            Base.driver.quit();
-            Base.driver = null;
-        }
+    	Base.getDriver().quit();
+    	Base.removeDriver();
     }
 }
