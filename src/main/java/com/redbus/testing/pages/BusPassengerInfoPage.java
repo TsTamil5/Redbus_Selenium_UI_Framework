@@ -11,6 +11,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BusPassengerInfoPage {
+	WebDriver driver;
+	
+	public BusPassengerInfoPage(WebDriver driver) {
+		this.driver=driver;
+	}
 
 	@FindBy(css = "[placeholder=\"Phone\"]")
 	private WebElement phoneField;
@@ -23,9 +28,6 @@ public class BusPassengerInfoPage {
 
 	@FindBy(css = "[placeholder=\"Search for state\"]")
 	private WebElement searchForState;
-
-	@FindBy(css = "[class=\"listItem___0b3206 \"]")
-	private WebElement chooseState;
 
 	@FindBy(css = "[placeholder=\"Enter your Name\"]")
 	private WebElement nameField;
@@ -70,9 +72,7 @@ public class BusPassengerInfoPage {
 		return searchForState;
 	}
 
-	public WebElement getChooseState() {
-		return chooseState;
-	}
+
 
 	public WebElement getNameField() {
 		return nameField;
@@ -134,8 +134,10 @@ public class BusPassengerInfoPage {
 		searchForState.sendKeys(state);
 	}
 
-	public void clickChooseState() {
-		chooseState.click();
+	public void selectState(String state) {
+	     driver.findElement(
+	        By.xpath("//div[text()='" + state + "']")
+	    ).click();
 	}
 
 	public void selectMale() {

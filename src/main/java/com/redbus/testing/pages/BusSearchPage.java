@@ -1,14 +1,19 @@
 package com.redbus.testing.pages;
 
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
-import com.redbus.testing.utilities.AllUtilityFunction;
-
+import com.RedBus.testing.utilities.AllUtilityFunction;
+import com.RedBus.testing.utilities.Base;
 
 public class BusSearchPage {
 
@@ -16,9 +21,8 @@ public class BusSearchPage {
 	WebDriver driver;
 
 	public BusSearchPage(WebDriver driver) {
-		this.driver=driver;
+		this.driver = Base.getDriver();
 		this.util = new AllUtilityFunction();
-		PageFactory.initElements(driver, this);
 	}
 
 	@FindBy(id = "srcinput")
@@ -36,11 +40,8 @@ public class BusSearchPage {
 	@FindBy(xpath = "//span[text()='30']")
 	private WebElement date;
 
-	@FindBy(css = ".dateInputWrapper___d7048e.dateHighlight___1149de")
+	@FindBy(xpath = "//span[text()='Date of Journey']/../..")
 	private WebElement datePicker;
-
-//	@FindBy(className = "dateInputWrapper___d7048e dateHighlight___1149de")
-//	private WebElement datePicker;
 
 	@FindBy(css = "[type='checkbox']")
 	private WebElement bookForWomen;
@@ -66,11 +67,21 @@ public class BusSearchPage {
 	@FindBy(xpath = "//button[text()='Today']")
 	private WebElement today;
 
-	@FindBy(xpath = "//h2[text()='Filter buses']")
-	private WebElement verifyBusList;
+	@FindBy(xpath = "//ul[@data-autoid='exact']//li")
+	private List<WebElement> verifyBusList;
+
+	@FindBy(xpath = "//div[text()='Please enter source and destination']")
+	private WebElement validationMessage;
+
+	@FindBy(xpath = "//div[text()='Source and Destination city cannot be same']")
+	private WebElement errormessage;
 
 	public WebElement getFrom() {
 		return from;
+	}
+	
+	public void enterInvalid(String source) throws InterruptedException {
+		getFrom().sendKeys(source);
 	}
 
 	public void enterFrom(String source) throws InterruptedException {
@@ -142,6 +153,26 @@ public class BusSearchPage {
 		;
 	}
 
+	public void selectDate(String month, String day) {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		WebElement monthElement = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class,'monthYear')]")));
+
+		while (!monthElement.getText().contains(month)) {
+
+			driver.findElement(By.xpath("//i[contains(@aria-label,'Next month')]")).click();
+
+			monthElement = wait.until(
+					ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class,'monthYear')]")));
+		}
+
+		WebElement date = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[text()='" + day + "']")));
+
+		date.click();
+	}
+
 	public WebElement getHotels() {
 		return hotels;
 	}
@@ -179,17 +210,32 @@ public class BusSearchPage {
 	}
 
 	public void clickDate() {
-		util.waitForElementVisible(driver, date, 10);
+		util.waitForElementClickable(driver, date, 10);
 		getDate().click();
 	}
 
-	public WebElement getVerifyBusList() {
-		return verifyBusList;
+	public boolean verifyBusList() {
+
+		List<WebElement> buses = driver.findElements(By.xpath("//ul[@data-autoid='exact']//li"));
+
+		return buses.size() > 0;
 	}
 
-	public String verifyBusListShown() {
-		util.waitForElementVisible(driver, verifyBusList, 15);
-		return verifyBusList.getText();
+	public int getNumberOfBus() {
+
+		List<WebElement> buses = driver.findElements(By.xpath("//ul[@data-autoid='exact']//li"));
+
+		return buses.size();
+	}
+
+	public String getValidationMessage() {
+
+		return validationMessage.getText();
+	}
+
+	public String getErrorMessage() {
+
+		return errormessage.getText();
 	}
 
 }

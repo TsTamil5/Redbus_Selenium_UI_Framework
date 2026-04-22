@@ -16,7 +16,6 @@ public class BusBoardDropPointPage {
 
     public BusBoardDropPointPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 

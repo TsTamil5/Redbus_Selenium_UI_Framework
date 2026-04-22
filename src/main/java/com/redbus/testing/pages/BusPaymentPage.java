@@ -1,18 +1,24 @@
 package com.redbus.testing.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openxmlformats.schemas.drawingml.x2006.main.CTRegularTextRun;
 
+import com.RedBus.testing.utilities.AllUtilityFunction;
+
 public class BusPaymentPage {
+
 	
 	WebDriver driver;
 
     public BusPaymentPage(WebDriver driver) {
+    
         this.driver = driver;
-        PageFactory.initElements(driver, this);
     }
 	
 	@FindBy(xpath = "//div[text()='Pay through QR code']")
@@ -55,6 +61,7 @@ public class BusPaymentPage {
 	}
 	
 	public String verifyCreditCard() {
+	
 		return payByCreditCard.getText();
 	}
 
