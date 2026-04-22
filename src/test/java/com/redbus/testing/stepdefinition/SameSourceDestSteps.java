@@ -1,13 +1,11 @@
 package com.redbus.testing.stepdefinition;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import com.redbus.testing.pages.*;
 import com.redbus.testing.utilities.Pages;
 
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class SameSourceDestSteps {
 
@@ -33,7 +31,7 @@ public class SameSourceDestSteps {
 	@Then("the error message {string} should be displayed")
 	public void error_message_should_be_displayed(String expectedMessage) {
 		String message = Pages.getInstance().busSearchPage.getErrorMessage();
-		Assert.fail();
+//		Assert.fail();
 		Assert.assertEquals(message, "Source and Destination city cannot be same");
 		System.out.println("Validation message Displayed");
 	}
