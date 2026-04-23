@@ -8,124 +8,257 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.redbus.testing.utilities.Pages;
+
 public class LoginPage {
 	WebDriver driver;
+	WebDriverWait wait;
+	
 
-    public LoginPage(WebDriver driver) {
+	public LoginPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this); 
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-    @FindBy(xpath="//button[@aria-label='Account']")
-	private WebElement Accounts;
+
+   
+	  // Profile icon element (used to check login status)
+    @FindBy(css="[class='optionIcon___4a6702 icon icon-account']")
+    private WebElement profileImg;
+
+    public WebElement getProfileImg() {
+		return profileImg;
+	}
+
+	@FindBy(xpath="//button[@aria-label='Account']")
+    private WebElement accountBtn;
 	
-	@FindBy(xpath="//button[text()='Log in']")
-	private WebElement LogIn;
-	
-	@FindBy(xpath="//input[@type='tel']")
-	private WebElement Mobileno;
-	
-	@FindBy(css="[class='recaptcha-checkbox-border']")
-	private WebElement captcha;
-	
-	
-	@FindBy(xpath="//button[contains(text(),'Continue')]")
-	private WebElement Continue;
-	
-	@FindBy(xpath = "//button[text()='Login with OTP']")
-	private WebElement loginWithOtp;
-	
-	@FindBy(xpath="//button[text()='Verify OTP']")
-	private WebElement verifyOtp;
+//	@FindBy(xpath="//a[contains(@href,'myprofile')]")
+//    private WebElement bookingsBtn;
+
+    @FindBy(xpath="//li[@id='Profile']")
+    private WebElement profileBtn;
+
+    @FindBy(xpath="//span[@class='editMode']")
+    private WebElement editBtn;
+
+    @FindBy(xpath="//input[@placeholder='YOUR NAME']")
+    private WebElement nameField;
+    
+    @FindBy(xpath="//input[@id='profile-DOB']")
+    private WebElement DOB;
+    
+    @FindBy(xpath="//input[@type='radio' and @id='male']")
+    private WebElement male;
+    
+    @FindBy(xpath="//input[@type='radio' and @id='female']")
+    private WebElement female;
+    
+    
+
+    @FindBy(xpath="//input[@placeholder='EMAIL ID']")
+    private WebElement emailField;
+
+    @FindBy(xpath="//input[@id='Savebtn']")
+    private WebElement saveBtn;
 
 	
 	
-	
-	  public void clickAccounts() {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	        wait.until(ExpectedConditions.elementToBeClickable(Accounts)).click();
-	    }
-	
-	 public void clickLogin() {
-	        WebElement loginBtn = new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(LogIn));
-	        loginBtn.click();
-	 }
-	 
-	 public void enterMobile(String number) {
-	        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(Mobileno));
+    public void clickAccount() {
+      	 new WebDriverWait(driver, Duration.ofSeconds(5))
+           .until(ExpectedConditions.elementToBeClickable(accountBtn))
+           .click();
+      	
+       }
 
-	        Mobileno.sendKeys(number);
-	        
-	  }
-	 public void handleCaptcha() {
+       public void clickBookings() {
 
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+           WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+           
 
-		    try {
-		        
-		        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(
-		                By.xpath("//iframe[contains(@title,'reCAPTCHA')]")));
+           // Wait for bookings element to be present
+           WebElement element = wait.until(
+                   ExpectedConditions.presenceOfElementLocated(
+                           By.xpath("//a[contains(@href,'myprofile')]")
+                   )
+           );
 
-		        
-		        WebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(
-		                By.cssSelector(".recaptcha-checkbox-border")));
+           // Try to wait for overlay/header to disappear
+           try {
+               wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                       By.xpath("//h2[contains(@class,'header')]")
+               ));
+           } catch (Exception e) {
+               System.out.println("Overlay still present, continuing...");
+           }
 
-		        checkbox.click();
+        // Scroll element into view
+           ((JavascriptExecutor) driver)
+                   .executeScript("arguments[0].scrollIntoView(true);", element);
 
-		      
-		        driver.switchTo().defaultContent();
+         
+//           try { Thread.sleep(1000); } catch (Exception e) {}
 
-		        System.out.println("Captcha clicked");
+        // Try normal click, fallback to JS click
+           try {
+               element.click();
+           } catch (Exception e) {
+              
+               ((JavascriptExecutor) driver)
+                       .executeScript("arguments[0].click();", element);
+           }
+           // Store current tab
+           String parent = driver.getWindowHandle();
 
-		    } catch (Exception e) {
-		        System.out.println("Captcha not handled");
-		    }
-		    
-		}
-	 
-	 
-	 public void clickContinue() {
-	        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(Continue)).click();
-	 }
-	 
-	 public void clickVerifyOtp() throws InterruptedException {
-		 Thread.sleep(30000);
+           // Wait for new tab
+           wait.until(driver -> driver.getWindowHandles().size() > 1);
 
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+           // Switch to new tab
+           for (String window : driver.getWindowHandles()) {
+               if (!window.equals(parent)) {
+                   driver.switchTo().window(window);
+                   break;
+               }
+           }
 
-		    wait.until(ExpectedConditions.elementToBeClickable(verifyOtp)).click();
-		    
-		    
-		}
-	
-	 public void handleSecurityPopup() {
+           System.out.println("Switched to new tab");
 
-		    try {
-		        Thread.sleep(10000); 
+       }
 
-		        Robot robot = new Robot();
+       public void clickProfile() {
 
-		        typeNumber(robot, KeyEvent.VK_2);
-		        typeNumber(robot, KeyEvent.VK_0);
-		        typeNumber(robot, KeyEvent.VK_0);
-		        typeNumber(robot, KeyEvent.VK_3);
+           WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
-		        robot.keyPress(KeyEvent.VK_ENTER);
-		        robot.keyRelease(KeyEvent.VK_ENTER);
+           // Step 1: Ensure we are on bookings page
+           wait.until(ExpectedConditions.urlContains("myprofile"));
 
-		    } catch (Exception e) {
-		        e.printStackTrace();
-		    }
-		}
+//            Step 2: Wait for Profile tab to be visible
+           WebElement profile = wait.until(
+                   ExpectedConditions.visibilityOfElementLocated(By.id("Profile"))
+           );
 
-	 private void typeNumber(Robot robot, int keyEvent) throws InterruptedException {
-		    robot.keyPress(keyEvent);
-		    robot.keyRelease(keyEvent);
-		    Thread.sleep(500); 
-		}
+           // Step 3: Wait a bit for React to attach events
+           try { Thread.sleep(1000); } catch (Exception e) {}
 
-}
+           // Step 4: Click using Actions (better than normal click)
+           Actions actions = new Actions(driver);
+           actions.moveToElement(profile).click().perform();
+
+           // Step 5: Ensure tab switched
+           wait.until(ExpectedConditions.urlContains("profile"));
+
+           System.out.println("Switched to Profile tab");
+       }
+       
+       public void clickEdit() {
+
+           WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+           WebElement edit = wait.until(
+                   ExpectedConditions.elementToBeClickable(editBtn)
+           );
+
+           edit.click();
+       }
+       
+       // Get name from input field
+       public String getDisplayedName() {
+    	    try {
+    	        return nameField.getText().trim();
+    	    } catch (Exception e) {
+    	        return "";
+    	    }
+    	}
+       
+       // Enter name
+       public void enterName(String name) {
+           nameField.clear();
+           nameField.sendKeys(name);
+       }
+       
+       //select gender
+       public String getSelectedGender() {
+
+    	    try {
+    	        if (male.isSelected()) {
+    	            return "male";
+    	        } else if (female.isSelected()) {
+    	            return "female";
+    	        } else {
+    	            return "";
+    	        }
+    	    } catch (Exception e) {
+    	        return "";
+    	    }
+    	}
+       
+       //select gender based on the input
+       public void selectGender(String gender) {
+
+           if (gender.equalsIgnoreCase("male")) {
+               male.click();
+           } else if (gender.equalsIgnoreCase("female")) {
+               female.click();
+           }
+       }
+       
+    // Get email value
+       public String getDisplayedEmail() {
+   	    try {
+   	        return emailField.getText().trim();
+   	    } catch (Exception e) {
+   	        return "";
+   	    }
+   	}
+
+       public void enterEmail(String email) {
+           emailField.clear();
+           emailField.sendKeys(email);
+       }
+
+       public void clickSave() {
+           saveBtn.click();
+       }
+       
+    // Check if user is logged in via bookings link
+       public boolean isLoggedIn() {
+           return driver.findElements(
+                   By.xpath("//a[contains(@href,'myprofile')]")
+           ).size() > 0;
+       }
+       
+    // Verify success message after profile update
+       public boolean isProfileUpdatedSuccessfully() {
+           WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+           try {
+               WebElement successBanner = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                       By.xpath("//*[contains(text(),'Profile details updated successfully')]")
+               ));
+               System.out.println(" Banner: " + successBanner.getText());
+               return successBanner.isDisplayed();
+           } catch (Exception e) {
+               System.out.println("Success banner not found");
+               return false;
+           }
+       }
+     
+       // Check login using profile image visibility
+    public boolean isUserLoggedIn() {
+   	    try {
+   	        // Use a 5-10 second wait instead of immediate check
+   	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+   	        return wait.until(ExpectedConditions.visibilityOf(getProfileImg())).isDisplayed();
+   	    } catch (Exception e) {
+   	        System.out.println(" Profile image not found - user not logged in.");
+   	        return false;
+   	    }
+   	}
+
+    
+
+   }
