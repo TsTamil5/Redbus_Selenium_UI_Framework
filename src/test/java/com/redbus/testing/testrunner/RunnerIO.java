@@ -6,12 +6,16 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = "F:\\Redbus_Selenium_UI_Framework\\src\\test\\java\\com\\redbus\\testing\\featurefiles\\BusTicket.feature", glue ="com.redbus.testing.stepdefinition", 
-		tags = "@SwapFeature", 	
+
+@CucumberOptions(features = "src/test/java/com/redbus/testing/featurefiles/BusTicket.feature", 
+		glue ="com.redbus.testing.stepdefinition", 	
 		plugin = {
-		"pretty", "html:target/cucumber-report.html", "json:target/cucumber.json",
+		"pretty", "html:target/cucumber-report.html",
+		"json:target/cucumber.json",
 		"com.redbus.testing.utilities.ExtentCucumberAdapter" },
-		monochrome = true)
+		monochrome = true,
+		dryRun=false
+		)
 
 public class RunnerIO extends AbstractTestNGCucumberTests {
 	@Override
@@ -20,3 +24,4 @@ public class RunnerIO extends AbstractTestNGCucumberTests {
 		return super.scenarios();
 	}
 }
+
