@@ -4,6 +4,11 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.support.PageFactory;
 
+import com.redbus.testing.pages.TrainListPage;
+import com.redbus.testing.pages.TrainPassengerPage;
+import com.redbus.testing.pages.TrainTicketPage;
+import com.redbus.testing.pages.ViewResultPage;
+
 import com.redbus.testing.pages.BusBoardDropPointPage;
 import com.redbus.testing.pages.BusPassengerInfoPage;
 import com.redbus.testing.pages.BusPaymentPage;
@@ -19,6 +24,7 @@ import com.redbus.testing.pages.Reshedule_TicketPage;
 import com.redbus.testing.pages.SearchPage;
 
 public class Pages {
+
 	private static ThreadLocal<Pages> pages = new ThreadLocal<>();
 
 	//// Bus tickets
@@ -37,6 +43,15 @@ public class Pages {
 	public CancelPage cancelPage;
 	public SearchPage searchPage;
 	public LoginCookies loginCookies;
+
+	// Trains
+	public TrainTicketPage trainticketpage;
+	public TrainListPage trainlistpage;
+	public TrainPassengerPage trainpassengerpage;
+	public ViewResultPage viewresultpage;
+
+	public static String sourceCity;
+	public static String destinationCity;
 
 	public static void loadAllPages(WebDriver driver) {
 
@@ -57,6 +72,12 @@ public class Pages {
 		p.reschedulePage = PageFactory.initElements(driver, Reshedule_TicketPage.class);
 		p.searchPage = PageFactory.initElements(driver, SearchPage.class);
 		p.loginCookies = PageFactory.initElements(driver, LoginCookies.class);
+
+		// Trains
+		p.trainticketpage = PageFactory.initElements(driver, TrainTicketPage.class);
+		p.trainlistpage = PageFactory.initElements(driver, TrainListPage.class);
+		p.trainpassengerpage = PageFactory.initElements(driver, TrainPassengerPage.class);
+		p.viewresultpage = PageFactory.initElements(driver, ViewResultPage.class);
 
 		pages.set(p);
 	}

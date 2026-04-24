@@ -124,30 +124,35 @@ public class AllUtilityFunction {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.titleContains(title));
 	}
 
+
 	// ================= ADVANCED EXPLICIT WAITS =================
 
 	// visibilityOfElementLocated
 	public WebElement waitForVisibility(WebDriver driver, By locator, int seconds) {
-		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
-				.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	// presenceOfElementLocated
 	public WebElement waitForPresence(WebDriver driver, By locator, int seconds) {
-		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
-				.until(ExpectedConditions.presenceOfElementLocated(locator));
+
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
 	// presenceOfAllElementsLocatedBy
 	public List<WebElement> waitForAllElementsPresence(WebDriver driver, By locator, int seconds) {
-		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
-				.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 	}
 
 	// elementToBeClickable (By)
 	public WebElement waitForClickable(WebDriver driver, By locator, int seconds) {
-		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
-				.until(ExpectedConditions.elementToBeClickable(locator));
+
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.elementToBeClickable(locator));
 	}
 
 	// elementToBeClickable (WebElement)
@@ -158,38 +163,46 @@ public class AllUtilityFunction {
 
 	// refreshed + clickable
 	public WebElement waitForRefreshedClickable(WebDriver driver, By locator, int seconds) {
-		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
-				.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(locator)));
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.refreshed(
+	                    ExpectedConditions.elementToBeClickable(locator)
+	            ));
 	}
 
 	// refreshed + visibility
 	public WebElement waitForRefreshedVisibility(WebDriver driver, By locator, int seconds) {
-		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
-				.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(locator)));
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.refreshed(
+	                    ExpectedConditions.visibilityOfElementLocated(locator)
+	            ));
 	}
 
 	// numberOfElementsToBeMoreThan
 	public List<WebElement> waitForElementsMoreThan(WebDriver driver, By locator, int count, int seconds) {
-		new WebDriverWait(driver, Duration.ofSeconds(seconds))
-				.until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
-		return driver.findElements(locator);
+	    new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
+	    return driver.findElements(locator);
 	}
 
 	// invisibilityOfElementLocated
 	public boolean waitForInvisibility(WebDriver driver, By locator, int seconds) {
-		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
-				.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.invisibilityOfElementLocated(locator));
 	}
 
 	public WebElement waitForRefreshedPresence(WebDriver driver, By locator, int seconds) {
-		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
-				.until(ExpectedConditions.refreshed(ExpectedConditions.presenceOfElementLocated(locator)));
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.refreshed(
+	                    ExpectedConditions.presenceOfElementLocated(locator)
+	            ));
+	}
+	
+	public List<WebElement> waitForElementsMoreThan(WebDriver driver, By locator, int count) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(25))
+	            .until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
 	}
 
-	public List<WebElement> waitForElementsMoreThan(WebDriver driver, By locator, int count) {
-		return new WebDriverWait(driver, Duration.ofSeconds(25))
-				.until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
-	}
+
 	// ================= ALERT / POPUPS =================
 
 	public void acceptPopup(WebDriver driver) {
@@ -328,17 +341,19 @@ public class AllUtilityFunction {
 
 	public String getData(int row, int col) {
 
-		if (sheet == null) {
-			System.out.println("Invaid Sheet : Initilize");
-			return null;
-		}
-		CellType type = sheet.getRow(row).getCell(col).getCellType();
+	    if (sheet == null) {
+	        System.out.println("Invaid Sheet : Initilize");
+	        return null;
+	    }
 
-		if (type == CellType.NUMERIC) {
-			String value = sheet.getRow(row).getCell(col).toString();
-			return value.split("\\.")[0];
-		}
-		return sheet.getRow(row).getCell(col).toString();
+	    CellType type = sheet.getRow(row).getCell(col).getCellType();
+
+	    if (type == CellType.NUMERIC) {
+	        DataFormatter formatter = new DataFormatter();
+	        return formatter.formatCellValue(sheet.getRow(row).getCell(col));
+	    }
+
+	    return sheet.getRow(row).getCell(col).toString();
 	}
 
 	public Object[][] getExcelDataAsArray(String sheetName) throws Exception {
@@ -385,8 +400,7 @@ public class AllUtilityFunction {
 		}
 
 	}
-	
-	
+
 	public static class CookieUtil {
 
 	    private static String getFilePath() {
@@ -439,3 +453,5 @@ public class AllUtilityFunction {
 	    }
 	}
 }
+
+

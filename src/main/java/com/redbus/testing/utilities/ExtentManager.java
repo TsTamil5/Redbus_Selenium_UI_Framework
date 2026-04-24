@@ -4,24 +4,25 @@ import com.aventstack.extentreports.*;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ExtentManager {
-
-
 	private static ExtentReports extent;
 
-	public static ExtentReports getReportInstance() {
+    // Create and return Extent report
+    public static ExtentReports getReportInstance() {
 
-		if (extent == null) {
+        if (extent == null) {
 
-			ExtentSparkReporter reporter = new ExtentSparkReporter("./Reports/ExtentReport.html");
+        	ExtentSparkReporter reporter =
+        		    new ExtentSparkReporter("./Reports/ExtentReport.html");
 
-			reporter.config().setReportName("RedBus Testing");
-			reporter.config().setDocumentTitle("Test Results");
+            // Report configuration
+            reporter.config().setReportName("RedBus Testing");
+            reporter.config().setDocumentTitle("Test Results");
 
-			extent = new ExtentReports();
-			extent.attachReporter(reporter);
-		}
+            extent = new ExtentReports();
+            extent.attachReporter(reporter);
+        }
 
-		return extent;
-	}
-
+        return extent;
+    }
 }
+

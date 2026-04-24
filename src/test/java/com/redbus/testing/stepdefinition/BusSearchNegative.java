@@ -1,7 +1,5 @@
 package com.redbus.testing.stepdefinition;
 
-
-
 import org.testng.Assert;
 
 import com.redbus.testing.utilities.Pages;

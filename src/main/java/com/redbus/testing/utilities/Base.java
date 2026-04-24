@@ -19,6 +19,3 @@ public class Base {
 		driver.remove();
 	}
 }
-
-
-
