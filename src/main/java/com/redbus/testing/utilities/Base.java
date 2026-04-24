@@ -4,18 +4,22 @@ import org.openqa.selenium.WebDriver;
 
 public class Base {
 
-	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    // ThreadLocal driver for parallel execution
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-	public static void setDriver(WebDriver driverInstance) {
-		driver.set(driverInstance);
-	}
+    // Set driver instance for current thread
+    public static void setDriver(WebDriver driverInstance) {
+        driver.set(driverInstance);
+    }
 
-	public static WebDriver getDriver() {
-		return driver.get();
-	}
-
-	public static void removeDriver() {
-		driver.remove();
-	}
+    // Get driver instance of current thread
+    public static WebDriver getDriver() {
+        return driver.get();
+    }
+    
+    // Remove driver instance after execution
+    public static void removeDriver() {
+        driver.remove();
+    }
+   
 }
-

@@ -3,7 +3,6 @@ package com.redbus.testing.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import com.redbus.testing.utilities.AllUtilityFunction;
 
 public class DashboardPage {
@@ -22,25 +21,25 @@ public class DashboardPage {
 	
 	@FindBy(partialLinkText = "Train tickets")
 	private WebElement trainLink;
-
+	
 	// Return Hotels web element
-	public WebElement getHotels() {
-		return hotels;
-	}
+		public WebElement getHotels() {
+			return hotels;
+		}
 
-	// Click on Hotels menu
-	public void clickHotels() {
-		getHotels().click();
-	}
+		// Click on Hotels menu
+		public void clickHotels() {
+			getHotels().click();
+		}
+		
+		// Return Train link web element
+		public WebElement getTrainLink() {
+			return trainLink;
+		}
 
-	public WebElement getTrainLink() {
-		return trainLink;
-	}
-
-	public void clickTrainLink() {
-		util.waitForClickable(driver, trainLink, 45);
-		getTrainLink().click();
-	}
-	
-	
+		// Click on Train link
+		public void clickTrainLink() {
+			util.waitForClickable(driver, trainLink, 45);
+			getTrainLink().click();
+		}
 }

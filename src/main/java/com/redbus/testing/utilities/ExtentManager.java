@@ -4,11 +4,8 @@ import com.aventstack.extentreports.*;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ExtentManager {
-
-
     // Create and return Extent report
 	private static ExtentReports extent;
-
 
     public static ExtentReports getReportInstance() {
 
@@ -27,4 +24,5 @@ public class ExtentManager {
 
         return extent;
     }
+    
 }
