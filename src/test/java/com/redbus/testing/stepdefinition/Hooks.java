@@ -1,53 +1,50 @@
 package com.redbus.testing.stepdefinition;
 
-import java.io.IOException;
 
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.edge.EdgeDriver;
-
+import com.aventstack.extentreports.*;
 import com.redbus.testing.utilities.AllUtilityFunction;
 import com.redbus.testing.utilities.Base;
 import com.redbus.testing.utilities.Pages;
 
+import io.cucumber.java.Scenario;
+import java.io.IOException;
+import java.net.URL;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.bidi.module.Browser;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 
 public class Hooks extends AllUtilityFunction {
 
-    @Before
-    public void openBrowser() throws IOException {
+	AllUtilityFunction util = new AllUtilityFunction();
+	@Before
+	public void setup(Scenario scenario) throws IOException {
 
-        Base.driver = new EdgeDriver();
+		initPropertiesUtility("src/test/resources/Readers/CommonData.properties");
 
-        initPropertiesUtility("src/test/resources/Readers/CommonData.properties");
+	    WebDriver driver = new ChromeDriver();
+	    
+	    Base.setDriver(driver);
 
-        String URL = getPropertyData("url");
+	    String URL = getPropertyData("url");
+	    Base.getDriver().get(URL);
+	    setMaximizeBrowser(Base.getDriver());
+	    implicitlyWait(driver, 15);
 
-        setMaximizeBrowser(Base.driver);
-        implicitlyWait(Base.driver, 5);
+	    Pages.loadAllPages(driver);
 
-        Base.driver.get(URL);
+	}
 
-        Pages.loadAllPages(Base.driver);
-    }
+	@After
+	public void tearDown(Scenario scenario) {
 
-    @After
-    public void closeBrowser(Scenario scenario) {
-
-        // Screenshot on failure
-        if (scenario.isFailed()) {
-            byte[] screenshot = ((TakesScreenshot) Base.driver)
-                    .getScreenshotAs(OutputType.BYTES);
-
-            scenario.attach(screenshot, "image/png", "Failed Screenshot");
-        }
-
-        // Safe browser close
-        if (Base.driver != null) {
-            Base.driver.quit();
-            Base.driver = null;
-        }
-    }
+		Base.getDriver().quit();
+		Base.removeDriver();
+	}
 }

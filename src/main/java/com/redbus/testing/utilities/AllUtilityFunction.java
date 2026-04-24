@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
@@ -14,7 +15,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -113,6 +114,80 @@ public class AllUtilityFunction {
 	public void waitForTitleContains(WebDriver driver, String title, int seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.titleContains(title));
 	}
+	
+	
+	// ================= ADVANCED EXPLICIT WAITS =================
+
+	// visibilityOfElementLocated
+	public WebElement waitForVisibility(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
+	// presenceOfElementLocated
+	public WebElement waitForPresence(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.presenceOfElementLocated(locator));
+	}
+
+	// presenceOfAllElementsLocatedBy
+	public List<WebElement> waitForAllElementsPresence(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+	}
+
+	// elementToBeClickable (By)
+	public WebElement waitForClickable(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.elementToBeClickable(locator));
+	}
+
+	// elementToBeClickable (WebElement)
+	public WebElement waitForClickable(WebDriver driver, WebElement element, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.elementToBeClickable(element));
+	}
+
+	// refreshed + clickable
+	public WebElement waitForRefreshedClickable(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.refreshed(
+	                    ExpectedConditions.elementToBeClickable(locator)
+	            ));
+	}
+
+	// refreshed + visibility
+	public WebElement waitForRefreshedVisibility(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.refreshed(
+	                    ExpectedConditions.visibilityOfElementLocated(locator)
+	            ));
+	}
+
+	// numberOfElementsToBeMoreThan
+	public List<WebElement> waitForElementsMoreThan(WebDriver driver, By locator, int count, int seconds) {
+	    new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
+	    return driver.findElements(locator);
+	}
+
+	// invisibilityOfElementLocated
+	public boolean waitForInvisibility(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.invisibilityOfElementLocated(locator));
+	}
+
+	public WebElement waitForRefreshedPresence(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.refreshed(
+	                    ExpectedConditions.presenceOfElementLocated(locator)
+	            ));
+	}
+	
+	public List<WebElement> waitForElementsMoreThan(WebDriver driver, By locator, int count) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(25))
+	            .until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
+	}
 	// ================= ALERT / POPUPS =================
 
 	public void acceptPopup(WebDriver driver) {
@@ -207,7 +282,7 @@ public class AllUtilityFunction {
 
 	// ==================== EXCEL UTILITY =========================
 
-	private static final String FILE_PATH = "./src/test/resources/Readers/Config.xlsx";
+	private static final String FILE_PATH = "./src/test/resources/Readers/Config (1).xlsx";
 
 	Workbook workbook;
 	Sheet sheet;
@@ -251,17 +326,19 @@ public class AllUtilityFunction {
 
 	public String getData(int row, int col) {
 
-		if (sheet == null) {
-			System.out.println("Invaid Sheet : Initilize");
-			return null;
-		}
-		CellType type = sheet.getRow(row).getCell(col).getCellType();
+	    if (sheet == null) {
+	        System.out.println("Invaid Sheet : Initilize");
+	        return null;
+	    }
 
-		if (type == CellType.NUMERIC) {
-			String value = sheet.getRow(row).getCell(col).toString();
-			return value.split("\\.")[0];
-		}
-		return sheet.getRow(row).getCell(col).toString();
+	    CellType type = sheet.getRow(row).getCell(col).getCellType();
+
+	    if (type == CellType.NUMERIC) {
+	        DataFormatter formatter = new DataFormatter();
+	        return formatter.formatCellValue(sheet.getRow(row).getCell(col));
+	    }
+
+	    return sheet.getRow(row).getCell(col).toString();
 	}
 
 	public Object[][] getExcelDataAsArray(String sheetName) throws Exception {
