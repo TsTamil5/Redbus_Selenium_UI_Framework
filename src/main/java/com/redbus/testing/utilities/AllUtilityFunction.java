@@ -1,6 +1,10 @@
 package com.redbus.testing.utilities;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
@@ -16,12 +20,14 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class AllUtilityFunction {
 
@@ -378,5 +384,58 @@ public class AllUtilityFunction {
 			return data;
 		}
 
+	}
+	
+	
+	public static class CookieUtil {
+
+	    private static String getFilePath() {
+	        return "cookies_" + Thread.currentThread().getId() + ".data";
+	    }
+
+	    public static void saveCookies(WebDriver driver) {
+	        try (ObjectOutputStream os =
+	                     new ObjectOutputStream(new FileOutputStream(getFilePath()))) {
+
+	            Set<Cookie> cookies = driver.manage().getCookies();
+	            os.writeObject(cookies);
+
+	            System.out.println("Cookies saved for thread: " + Thread.currentThread().getId());
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    public static boolean loadCookies(WebDriver driver) {
+	        try {
+	            File file = new File(getFilePath());
+
+	            if (!file.exists()) return false;
+
+	            ObjectInputStream os =
+	                    new ObjectInputStream(new FileInputStream(file));
+
+	            Set<Cookie> cookies = (Set<Cookie>) os.readObject();
+
+	            driver.manage().deleteAllCookies();
+
+	            for (Cookie cookie : cookies) {
+	                try {
+	                    driver.manage().addCookie(cookie);
+	                } catch (Exception e) {
+	                    System.out.println("Skipping cookie: " + cookie.getName());
+	                }
+	            }
+
+	            System.out.println("Cookies loaded for thread: " + Thread.currentThread().getId());
+
+	            return true;
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+	    }
 	}
 }

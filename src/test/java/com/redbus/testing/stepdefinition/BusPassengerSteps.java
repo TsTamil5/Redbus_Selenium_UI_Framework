@@ -57,6 +57,7 @@ public class BusPassengerSteps {
 
 		List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
 
+		
 		String phone = data.get(0).get("phone");
 		String email = data.get(0).get("email");
 		String state = data.get(0).get("state");

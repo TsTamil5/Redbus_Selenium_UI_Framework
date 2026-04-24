@@ -11,72 +11,106 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class ExtentCucumberAdapter implements ConcurrentEventListener {
 
-	private static ExtentReports extent = ExtentManager.getReportInstance();
+    // Create single ExtentReports instance
+    private static ExtentReports extent = ExtentManager.getReportInstance();
 
-	private static ThreadLocal<ExtentTest> scenarioNode = new ThreadLocal<>();
-	private static ThreadLocal<ExtentTest> stepNode = new ThreadLocal<>();
+    // Store scenario node for each thread
+    private static ThreadLocal<ExtentTest> scenarioNode = new ThreadLocal<>();
 
-	@Override
-	public void setEventPublisher(EventPublisher publisher) {
+    // Store step node for each thread
+    private static ThreadLocal<ExtentTest> stepNode = new ThreadLocal<>();
 
-		publisher.registerHandlerFor(TestCaseStarted.class, this::onScenarioStart);
-		publisher.registerHandlerFor(TestStepStarted.class, this::onStepStart);
-		publisher.registerHandlerFor(TestStepFinished.class, this::onStepFinish);
-		publisher.registerHandlerFor(TestCaseFinished.class, this::onScenarioFinish);
-	}
+    @Override
+    public void setEventPublisher(EventPublisher publisher) {
 
-	private void onScenarioStart(TestCaseStarted event) {
-		String scenarioName = event.getTestCase().getName();
-		scenarioNode.set(extent.createTest(scenarioName));
-	}
+        // Register scenario start event
+        publisher.registerHandlerFor(TestCaseStarted.class, this::onScenarioStart);
 
-	private void onStepStart(TestStepStarted event) {
+        // Register step start event
+        publisher.registerHandlerFor(TestStepStarted.class, this::onStepStart);
 
-		if (event.getTestStep() instanceof PickleStepTestStep) {
+        // Register step finish event
+        publisher.registerHandlerFor(TestStepFinished.class, this::onStepFinish);
 
-			PickleStepTestStep step = (PickleStepTestStep) event.getTestStep();
+        // Register scenario finish event
+        publisher.registerHandlerFor(TestCaseFinished.class, this::onScenarioFinish);
+    }
 
-			String stepText = step.getStep().getKeyword() + step.getStep().getText();
+    // Create test node when scenario starts
+    private void onScenarioStart(TestCaseStarted event) {
+        String scenarioName = event.getTestCase().getName();
+        scenarioNode.set(extent.createTest(scenarioName));
+    }
 
-			stepNode.set(scenarioNode.get().createNode(stepText));
-		}
-	}
+    // Create step node when each step starts
+    private void onStepStart(TestStepStarted event) {
 
-	private void onStepFinish(TestStepFinished event) {
+        if (event.getTestStep() instanceof PickleStepTestStep) {
 
-		if (event.getTestStep() instanceof PickleStepTestStep) {
+            PickleStepTestStep step = (PickleStepTestStep) event.getTestStep();
 
-			io.cucumber.plugin.event.Status status = event.getResult().getStatus();
+            String stepText =
+                    step.getStep().getKeyword() + step.getStep().getText();
 
-			if (status == io.cucumber.plugin.event.Status.PASSED) {
+            stepNode.set(scenarioNode.get().createNode(stepText));
+        }
+    }
 
-				stepNode.get().pass("Step Passed");
-			} else if (status == io.cucumber.plugin.event.Status.FAILED) {
+    // Update report based on step result
+    private void onStepFinish(TestStepFinished event) {
 
-				Throwable error = event.getResult().getError();
+        if (event.getTestStep() instanceof PickleStepTestStep) {
 
-				ScreenshotUtility.captureScreenshot(Base.getDriver(), "StepFailure");
+            io.cucumber.plugin.event.Status status = event.getResult().getStatus();
 
-				String base64 = captureScreenshotBase64();
+            // Mark step as passed
+            if (status == io.cucumber.plugin.event.Status.PASSED) {
 
-				stepNode.get().fail(error, MediaEntityBuilder.createScreenCaptureFromBase64String(base64).build());
-			} else {
-				stepNode.get().skip("Step Skipped");
-			}
-		}
-	}
+                stepNode.get().pass("Step Passed");
+            }
 
-	private void onScenarioFinish(TestCaseFinished event) {
-		extent.flush();
-	}
+            // Mark step as failed with screenshot
+            else if (status == io.cucumber.plugin.event.Status.FAILED) {
 
-	private String captureScreenshotBase64() {
+                Throwable error = event.getResult().getError();
 
-		try {
-			return ((TakesScreenshot) Base.getDriver()).getScreenshotAs(OutputType.BASE64);
+                // Save screenshot in folder
+                ScreenshotUtility.captureScreenshot(
+                        Base.getDriver(),
+                        "StepFailure"
+                );
 
-		} catch (Exception e) {
-			return null;
-		}
-	}
+                // Capture Base64 screenshot for report
+                String base64 = captureScreenshotBase64();
+
+                // Attach screenshot to extent report
+                stepNode.get().fail(
+                        error,
+                        MediaEntityBuilder.createScreenCaptureFromBase64String(base64).build()
+                );
+            }
+
+            // Mark step as skipped
+            else {
+                stepNode.get().skip("Step Skipped");
+            }
+        }
+    }
+
+    // Flush report after scenario completion
+    private void onScenarioFinish(TestCaseFinished event) {
+        extent.flush();
+    }
+
+    // Capture screenshot as Base64 string
+    private String captureScreenshotBase64() {
+
+        try {
+            return ((TakesScreenshot) Base.getDriver())
+                    .getScreenshotAs(OutputType.BASE64);
+
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

@@ -132,6 +132,7 @@ public class BusPassengerInfoPage {
 
 	// Enter phone
 	public void enterPhone(String phone) {
+		phoneField.clear();
 		phoneField.sendKeys(phone);
 	}
 
