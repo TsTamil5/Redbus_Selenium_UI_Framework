@@ -2,50 +2,87 @@ package com.redbus.testing.utilities;
 
 import org.openqa.selenium.WebDriver;
 
-import com.redbus.testing.pages.BookingsPage;
-import com.redbus.testing.pages.HelpPage;
-import com.redbus.testing.pages.LoginPage;
-import com.redbus.testing.pages.OffersPage;
-
-import com.redbus.testing.pages.TrainTicket;
-
 import org.openqa.selenium.support.PageFactory;
 
-import com.redbus.testing.pages.DashboardPage;
-import com.redbus.testing.pages.HotelSearchResultsPage;
-import com.redbus.testing.pages.HotelsPage;
+import com.redbus.testing.pages.TrainListPage;
+import com.redbus.testing.pages.TrainPassengerPage;
+import com.redbus.testing.pages.TrainTicketPage;
+import com.redbus.testing.pages.ViewResultPage;
+
+import com.redbus.testing.pages.BusBoardDropPointPage;
+import com.redbus.testing.pages.BusPassengerInfoPage;
+import com.redbus.testing.pages.BusPaymentPage;
+import com.redbus.testing.pages.BusSearchPage;
+import com.redbus.testing.pages.BusSeatSelectionPage;
+import com.redbus.testing.pages.BusSelectionPage;
+import com.redbus.testing.pages.CancelPage;
+import com.redbus.testing.pages.HelpPage;
+import com.redbus.testing.pages.LoginCookies;
+import com.redbus.testing.pages.LoginPage;
+import com.redbus.testing.pages.OffersPage;
+import com.redbus.testing.pages.Reshedule_TicketPage;
+import com.redbus.testing.pages.SearchPage;
 
 public class Pages {
-	
-	//Accounts
-	public static LoginPage loginPage;
-    public static BookingsPage bookingsPage;
-    public static OffersPage offersPage;
-    public static  HelpPage helpPage;
-    
-    // hotels
-    public static DashboardPage dashboardPage;
-	public static HotelSearchResultsPage hotelSearchResultsPage ;
-	public static HotelsPage hotelsPage;
-	
-	// Train
-	public static TrainTicket trainTicket;
-	
-	
+
+	private static ThreadLocal<Pages> pages = new ThreadLocal<>();
+
+	//// Bus tickets
+	public BusSearchPage busSearchPage;
+	public BusSelectionPage busSelectionPage;
+	public BusSeatSelectionPage busSeatSelectionPage;
+	public BusBoardDropPointPage busBoardDropPointPage;
+	public BusPassengerInfoPage busPassengerInfoPage;
+	public BusPaymentPage busPaymentPage;
+
+	////// Accounts
+	public LoginPage login;
+	public OffersPage offersPage;
+	public HelpPage helpPage;
+	public Reshedule_TicketPage reschedulePage;
+	public CancelPage cancelPage;
+	public SearchPage searchPage;
+	public LoginCookies loginCookies;
+
+	// Trains
+	public TrainTicketPage trainticketpage;
+	public TrainListPage trainlistpage;
+	public TrainPassengerPage trainpassengerpage;
+	public ViewResultPage viewresultpage;
+
+	public static String sourceCity;
+	public static String destinationCity;
+
 	public static void loadAllPages(WebDriver driver) {
-		 //Accounts
-		 loginPage =PageFactory.initElements(driver, LoginPage.class);
-	     bookingsPage = PageFactory.initElements(driver, BookingsPage.class);
-	     offersPage=PageFactory.initElements(driver, OffersPage.class);
-	     helpPage=PageFactory.initElements(driver, HelpPage.class);
-	     
-	     //Hotels
-	     
-	     dashboardPage=PageFactory.initElements(driver, DashboardPage.class);
-		 hotelSearchResultsPage=PageFactory.initElements(driver, HotelSearchResultsPage.class);
-		 hotelsPage=PageFactory.initElements(driver, HotelsPage.class);
-		 
-		 //Trains
-		 trainTicket=PageFactory.initElements(driver, TrainTicket.class);
-	 }
+
+		Pages p = new Pages();
+
+		p.busSearchPage = PageFactory.initElements(driver, BusSearchPage.class);
+		p.busSelectionPage = PageFactory.initElements(driver, BusSelectionPage.class);
+		p.busSeatSelectionPage = PageFactory.initElements(driver, BusSeatSelectionPage.class);
+		p.busBoardDropPointPage = PageFactory.initElements(driver, BusBoardDropPointPage.class);
+		p.busPassengerInfoPage = PageFactory.initElements(driver, BusPassengerInfoPage.class);
+		p.busPaymentPage = PageFactory.initElements(driver, BusPaymentPage.class);
+
+//		Accounts
+		p.login = PageFactory.initElements(driver, LoginPage.class);
+		p.cancelPage = PageFactory.initElements(driver, CancelPage.class);
+		p.offersPage = PageFactory.initElements(driver, OffersPage.class);
+		p.helpPage = PageFactory.initElements(driver, HelpPage.class);
+		p.reschedulePage = PageFactory.initElements(driver, Reshedule_TicketPage.class);
+		p.searchPage = PageFactory.initElements(driver, SearchPage.class);
+		p.loginCookies = PageFactory.initElements(driver, LoginCookies.class);
+
+		// Trains
+		p.trainticketpage = PageFactory.initElements(driver, TrainTicketPage.class);
+		p.trainlistpage = PageFactory.initElements(driver, TrainListPage.class);
+		p.trainpassengerpage = PageFactory.initElements(driver, TrainPassengerPage.class);
+		p.viewresultpage = PageFactory.initElements(driver, ViewResultPage.class);
+
+		pages.set(p);
+	}
+
+	public static Pages getInstance() {
+		return pages.get();
+	}
 }

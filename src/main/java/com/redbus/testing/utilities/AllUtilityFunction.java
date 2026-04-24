@@ -1,9 +1,14 @@
 package com.redbus.testing.utilities;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
@@ -14,13 +19,15 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-
+import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class AllUtilityFunction {
 
@@ -61,22 +68,25 @@ public class AllUtilityFunction {
 
 	// ================= NAVIGATION =================
 
-	public void navigateToApplication(WebDriver driver,String url) {
+	public void navigateToApplication(WebDriver driver, String url) {
 		driver.navigate().to(url);
 	}
-	//forward
+
+	// forward
 	public void navigateForward(WebDriver driver) {
 		driver.navigate().forward();
 	}
+
 	public void navigateBackward(WebDriver driver) {
 		driver.navigate().back();
 	}
+
 	public void refreshPage(WebDriver driver) {
 		driver.navigate().refresh();
 	}
-	
-	//get
-	public void enterUrl(WebDriver driver,String url) {
+
+	// get
+	public void enterUrl(WebDriver driver, String url) {
 		driver.get(url);
 	}
 
@@ -113,6 +123,86 @@ public class AllUtilityFunction {
 	public void waitForTitleContains(WebDriver driver, String title, int seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.titleContains(title));
 	}
+
+
+	// ================= ADVANCED EXPLICIT WAITS =================
+
+	// visibilityOfElementLocated
+	public WebElement waitForVisibility(WebDriver driver, By locator, int seconds) {
+
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
+	// presenceOfElementLocated
+	public WebElement waitForPresence(WebDriver driver, By locator, int seconds) {
+
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.presenceOfElementLocated(locator));
+	}
+
+	// presenceOfAllElementsLocatedBy
+	public List<WebElement> waitForAllElementsPresence(WebDriver driver, By locator, int seconds) {
+
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+	}
+
+	// elementToBeClickable (By)
+	public WebElement waitForClickable(WebDriver driver, By locator, int seconds) {
+
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.elementToBeClickable(locator));
+	}
+
+	// elementToBeClickable (WebElement)
+	public WebElement waitForClickable(WebDriver driver, WebElement element, int seconds) {
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.elementToBeClickable(element));
+	}
+
+	// refreshed + clickable
+	public WebElement waitForRefreshedClickable(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.refreshed(
+	                    ExpectedConditions.elementToBeClickable(locator)
+	            ));
+	}
+
+	// refreshed + visibility
+	public WebElement waitForRefreshedVisibility(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.refreshed(
+	                    ExpectedConditions.visibilityOfElementLocated(locator)
+	            ));
+	}
+
+	// numberOfElementsToBeMoreThan
+	public List<WebElement> waitForElementsMoreThan(WebDriver driver, By locator, int count, int seconds) {
+	    new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
+	    return driver.findElements(locator);
+	}
+
+	// invisibilityOfElementLocated
+	public boolean waitForInvisibility(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.invisibilityOfElementLocated(locator));
+	}
+
+	public WebElement waitForRefreshedPresence(WebDriver driver, By locator, int seconds) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+	            .until(ExpectedConditions.refreshed(
+	                    ExpectedConditions.presenceOfElementLocated(locator)
+	            ));
+	}
+	
+	public List<WebElement> waitForElementsMoreThan(WebDriver driver, By locator, int count) {
+	    return new WebDriverWait(driver, Duration.ofSeconds(25))
+	            .until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
+	}
+
+
 	// ================= ALERT / POPUPS =================
 
 	public void acceptPopup(WebDriver driver) {
@@ -251,17 +341,19 @@ public class AllUtilityFunction {
 
 	public String getData(int row, int col) {
 
-		if (sheet == null) {
-			System.out.println("Invaid Sheet : Initilize");
-			return null;
-		}
-		CellType type = sheet.getRow(row).getCell(col).getCellType();
+	    if (sheet == null) {
+	        System.out.println("Invaid Sheet : Initilize");
+	        return null;
+	    }
 
-		if (type == CellType.NUMERIC) {
-			String value = sheet.getRow(row).getCell(col).toString();
-			return value.split("\\.")[0];
-		}
-		return sheet.getRow(row).getCell(col).toString();
+	    CellType type = sheet.getRow(row).getCell(col).getCellType();
+
+	    if (type == CellType.NUMERIC) {
+	        DataFormatter formatter = new DataFormatter();
+	        return formatter.formatCellValue(sheet.getRow(row).getCell(col));
+	    }
+
+	    return sheet.getRow(row).getCell(col).toString();
 	}
 
 	public Object[][] getExcelDataAsArray(String sheetName) throws Exception {
@@ -308,4 +400,58 @@ public class AllUtilityFunction {
 		}
 
 	}
+
+	public static class CookieUtil {
+
+	    private static String getFilePath() {
+	        return "cookies_" + Thread.currentThread().getId() + ".data";
+	    }
+
+	    public static void saveCookies(WebDriver driver) {
+	        try (ObjectOutputStream os =
+	                     new ObjectOutputStream(new FileOutputStream(getFilePath()))) {
+
+	            Set<Cookie> cookies = driver.manage().getCookies();
+	            os.writeObject(cookies);
+
+	            System.out.println("Cookies saved for thread: " + Thread.currentThread().getId());
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    public static boolean loadCookies(WebDriver driver) {
+	        try {
+	            File file = new File(getFilePath());
+
+	            if (!file.exists()) return false;
+
+	            ObjectInputStream os =
+	                    new ObjectInputStream(new FileInputStream(file));
+
+	            Set<Cookie> cookies = (Set<Cookie>) os.readObject();
+
+	            driver.manage().deleteAllCookies();
+
+	            for (Cookie cookie : cookies) {
+	                try {
+	                    driver.manage().addCookie(cookie);
+	                } catch (Exception e) {
+	                    System.out.println("Skipping cookie: " + cookie.getName());
+	                }
+	            }
+
+	            System.out.println("Cookies loaded for thread: " + Thread.currentThread().getId());
+
+	            return true;
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+	    }
+	}
 }
+
+

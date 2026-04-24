@@ -1,30 +1,29 @@
 package com.redbus.testing.testrunner;
+
+import org.testng.annotations.DataProvider;
+
 import io.cucumber.testng.AbstractTestNGCucumberTests;
+
 import io.cucumber.testng.CucumberOptions;
 
-	@CucumberOptions(
-	        features = "./src/test/java/com/redbus/testing/featurefiles/TrainTickets.feature",
+@CucumberOptions(features =	{"./src/test/java/com/redbus/testing/featurefiles/BusTicket.feature",
+"./src/test/java/com/redbus/testing/featurefiles/TrainTickets.feature",
+"./src/test/java/com/redbus/testing/featurefiles/Accounts.feature"},
 
-	        glue = {
-	                "com.redbus.testing.stepdefinition"
-	        },
-	//
-//	        plugin = {
-//	                "pretty",
-//	                "html:target/cucumber-report.html",
-//	                "json:target/cucumber.json"
-//	        },
-	//
-//	        tags = "@TrainSearch",
+		glue ="com.redbus.testing.stepdefinition", 	
+		plugin = {
+		"pretty", "html:target/cucumber-report.html",
+		"json:target/cucumber.json",
+		"com.redbus.testing.utilities.ExtentCucumberAdapter" },
+		monochrome = true,
+		dryRun=false
+		)
 
-	        dryRun = false
-//	        monochrome = true
-	)
-	public class RunnerIO extends AbstractTestNGCucumberTests {
-
-//	    @Override
-//	    @DataProvider(parallel = true)
-//	    public Object[][] scenarios() {
-//	        return super.scenarios();
-//	    }
+public class RunnerIO extends AbstractTestNGCucumberTests {
+	@Override
+	@DataProvider(parallel = false)
+	public Object[][] scenarios() {
+		return super.scenarios();
+	}
 }
+

@@ -6,76 +6,78 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.redbus.testing.utilities.*;
-
 public class BusSeatSelectionPage {
-	
-	
-    WebDriver driver;
-    WebDriverWait wait;
 
-    public BusSeatSelectionPage() {
-        this.driver = Base.driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        PageFactory.initElements(driver, this);
-    }
+	WebDriver driver;
+	WebDriverWait wait;
 
-    
-    
-    @FindBy(xpath = "//span[contains(@aria-label,'Seat number') and contains(@aria-label,'available')]")
-    private List<WebElement> seats;
-    
-    public void selectGeneralSeat() {
-        for (WebElement seat : seats) {
+	// Constructor
+	public BusSeatSelectionPage(WebDriver driver) {
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	}
 
-            String label = seat.getAttribute("aria-label").toLowerCase();
+	// All available seats
+	@FindBy(xpath = "//span[contains(@aria-label,'Seat number') and contains(@aria-label,'available')]")
+	private List<WebElement> seats;
 
-            if (label.contains("available") && !label.contains("female") && !label.contains("male")) {
-                seat.click();
-                break;
-            }
-        }
-    }
-    
- 
-    @FindBy(xpath = "//h3[@id='lower-deck-heading']/following::span[contains(@aria-label,'available')][2]")
-    private WebElement lowerDeckSeat;
+	// Lower deck seat
+	@FindBy(xpath = "//h3[@id='lower-deck-heading']/following::span[contains(@aria-label,'available')][2]")
+	private WebElement lowerDeckSeat;
 
-    @FindBy(xpath = "//h3[@id='upper-deck-heading']/following::span[contains(@aria-label,'available')][3]")
-    private WebElement upperDeckSeat;
+	// Upper deck seat
+	@FindBy(xpath = "//h3[@id='upper-deck-heading']/following::span[contains(@aria-label,'available')][3]")
+	private WebElement upperDeckSeat;
 
-    @FindBy(xpath = "//button[contains(text(),'Select boarding & dropping points')]")
-    private WebElement proceedButton;
+	// Proceed button
+	@FindBy(xpath = "//button[contains(text(),'Select boarding & dropping points')]")
+	private WebElement proceedButton;
 
-    @FindBy(xpath = "//div[text()='Boarding points']")
-    private WebElement boardingText;
+	// Boarding text
+	@FindBy(xpath = "//div[text()='Boarding points']")
+	private WebElement boardingText;
 
-    public void clickLowerDeckSeat() {
-        wait.until(ExpectedConditions.elementToBeClickable(lowerDeckSeat)).click();
-    }
+	// Click lower deck seat
+	public void clickLowerDeckSeat() {
+		wait.until(ExpectedConditions.elementToBeClickable(lowerDeckSeat)).click();
+	}
 
-    public void clickUpperDeckSeat() {
-        wait.until(ExpectedConditions.elementToBeClickable(upperDeckSeat)).click();
-    }
+	// Select general seat
+	public void selectGeneralSeat() {
+		for (WebElement seat : seats) {
+			String label = seat.getAttribute("aria-label").toLowerCase();
+			if (label.contains("available") && !label.contains("female") && !label.contains("male")) {
+				seat.click();
+				break;
+			}
+		}
+	}
 
-    public void selectAnyAvailableSeat() {
-        try {
-            clickLowerDeckSeat();
-        } catch (Exception e) {
-            clickUpperDeckSeat();
-        }
-    }
+	// Click upper deck seat
+	public void clickUpperDeckSeat() {
+		wait.until(ExpectedConditions.elementToBeClickable(upperDeckSeat)).click();
+	}
 
-    public void clickProceedButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(proceedButton)).click();
-    }
+	// Select any available seat
+	public void selectAnyAvailableSeat() {
+		try {
+			clickLowerDeckSeat();
+		} catch (Exception e) {
+			clickUpperDeckSeat();
+		}
+	}
 
-    public String verifyBoardingPoint() {
-        wait.until(ExpectedConditions.visibilityOf(boardingText));
-        return boardingText.getText();
-    }
+	// Click proceed
+	public void clickProceedButton() {
+		wait.until(ExpectedConditions.elementToBeClickable(proceedButton)).click();
+	}
+
+	// Verify boarding page
+	public String verifyBoardingPoint() {
+		wait.until(ExpectedConditions.visibilityOf(boardingText));
+		return boardingText.getText();
+	}
 }
