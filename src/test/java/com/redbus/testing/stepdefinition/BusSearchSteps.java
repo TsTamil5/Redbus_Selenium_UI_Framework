@@ -20,7 +20,7 @@ public class BusSearchSteps {
 
 		this.base = base;
 		util = new AllUtilityFunction();
-		util.init("Sheet1");
+		util.init("BusTickets");
 	}
 
 	@Given("User is on the RedBus home page")

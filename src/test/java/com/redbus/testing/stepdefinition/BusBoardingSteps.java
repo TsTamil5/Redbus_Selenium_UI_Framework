@@ -17,7 +17,7 @@ public class BusBoardingSteps {
 		this.base = base;
 
 		util = new AllUtilityFunction();
-		util.init("Sheet1");
+		util.init("BusTickets");
 	}
 
 	@Given("User has selected seat")
