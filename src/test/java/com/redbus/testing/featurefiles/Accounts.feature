@@ -12,9 +12,9 @@ Feature: RedBus Accounts Feature
     And user clicks on Save
     Then profile should reflect updated details "<name>" "<email>" "<gender>"
 
-    Examples:
-      | name | email         | gender |
-      | ABC  | abc@gmail.com | female |
+	Examples:
+  	| name | email | gender |
+  	| ABC  | abc@gmail.com | female |
 
   Scenario: Verify Offers page navigation from Accounts
     And user clicks on Offers
@@ -50,11 +50,21 @@ Feature: RedBus Accounts Feature
       | TV4H90793910  | 80159         |
     And click on select passengers
     Then verify the cancel ticket page with invalid number
-
-  Scenario: Search the Ticket and verify using excel
+    
+    Scenario: Search the Ticket and verify using excel
     When user click on Search Ticket
     And Enter TicketNo and MobileNo from excel sheet "RescheduleData" row 1
     And click on searchButton
     And verify the Ticket
     And click on chat with RedBuddy
     Then Verify the help page
+
+    
+   
+
+
+
+   
+
+  
+

@@ -10,7 +10,7 @@ import com.redbus.testing.utilities.AllUtilityFunction.CookieUtil;
 import com.redbus.testing.utilities.Base;
 
 import com.redbus.testing.utilities.HandleCookies;
->>>>>>> Accounts
+
 import com.redbus.testing.utilities.LaunchingBrowser;
 import com.redbus.testing.utilities.Pages;
 

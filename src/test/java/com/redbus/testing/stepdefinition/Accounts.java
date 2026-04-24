@@ -1,36 +1,26 @@
 package com.redbus.testing.stepdefinition;
 
-import java.awt.Robot;
-
-import java.awt.event.KeyEvent;
-import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.Assert;
 import org.testng.Reporter;
 
-import com.redbus.testing.pages.LoginPage;
-import com.redbus.testing.pages.OffersPage;
-
 import com.redbus.testing.utilities.AllUtilityFunction;
-import com.redbus.testing.utilities.AllUtilityFunction.CookieUtil;
+
 import com.redbus.testing.utilities.Base;
 import com.redbus.testing.utilities.Pages;
-import io.cucumber.datatable.DataTable;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+
 public class Accounts {
-	AllUtilityFunction util;
+AllUtilityFunction util;
 	
 	
 	@Given("user is on RedBus homepage")
@@ -313,3 +303,6 @@ public class Accounts {
 	}
 
 }
+
+
+

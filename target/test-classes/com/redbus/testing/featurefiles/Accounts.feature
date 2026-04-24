@@ -12,9 +12,9 @@ Feature: RedBus Accounts Feature
     And user clicks on Save
     Then profile should reflect updated details "<name>" "<email>" "<gender>"
 
-Examples:
-  | name | email         | gender |
-  | ABC  | abc@gmail.com | female |
+	Examples:
+  	| name | email | gender |
+  	| ABC  | abc@gmail.com | female |
 
   Scenario: Verify Offers page navigation from Accounts
     And user clicks on Offers
@@ -61,4 +61,10 @@ Examples:
 
     
    
+
+
+
+   
+
+  
 
