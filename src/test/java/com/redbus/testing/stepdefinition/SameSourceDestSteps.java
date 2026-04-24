@@ -31,7 +31,7 @@ public class SameSourceDestSteps {
 	@Then("the error message {string} should be displayed")
 	public void error_message_should_be_displayed(String expectedMessage) {
 		String message = Pages.getInstance().busSearchPage.getErrorMessage();
-//		Assert.fail();
+		Assert.fail();
 		Assert.assertEquals(message, "Source and Destination city cannot be same");
 		System.out.println("Validation message Displayed");
 	}

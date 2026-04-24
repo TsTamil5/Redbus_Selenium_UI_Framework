@@ -39,14 +39,13 @@ public class SwapSourceDest {
 		String sourceAfter = Pages.getInstance().busSearchPage.getFrom().getText();
 		String destAfter = Pages.getInstance().busSearchPage.getDestination().getText();
 
-		Assert.assertEquals(sourceAfter, destBefore, "❌ Source not swapped correctly");
-		Assert.assertEquals(destAfter, sourceBefore, "❌ Destination not swapped correctly");
+		Assert.assertEquals(sourceAfter, destBefore, "Source not swapped correctly");
+		Assert.assertEquals(destAfter, sourceBefore, "Destination not swapped correctly");
 
-		System.out.println("✅ Swap functionality working correctly");
+		System.out.println("Swap functionality working correctly");
 	}
 
 
-	// ✅ VERIFY BUS LIST
 	@Then("the bus list should be displayed")
 	public void bus_list_should_be_displayed() {
 		int busList = Pages.getInstance().busSearchPage.getNumberOfBus();
