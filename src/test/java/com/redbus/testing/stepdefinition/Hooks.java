@@ -1,6 +1,5 @@
 package com.redbus.testing.stepdefinition;
 
-
 import java.io.IOException;
 import com.redbus.testing.utilities.AllUtilityFunction;
 import com.redbus.testing.utilities.Base;
@@ -8,6 +7,11 @@ import com.redbus.testing.utilities.HandleCookies;
 import com.redbus.testing.utilities.LaunchingBrowser;
 import com.redbus.testing.utilities.Pages;
 import io.cucumber.java.Scenario;
+import org.openqa.selenium.edge.EdgeDriver;
+import com.redbus.testing.utilities.AllUtilityFunction;
+import com.redbus.testing.utilities.Base;
+import com.redbus.testing.utilities.LaunchingBrowser;
+import com.redbus.testing.utilities.Pages;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
@@ -16,8 +20,6 @@ public class Hooks extends AllUtilityFunction {
 	
 	@Before
     public void openBrowser(Scenario scenario) throws IOException {
-
-	
 
         // Read property file
         initPropertiesUtility("src/test/resources/Readers/CommonData.properties");
@@ -66,7 +68,3 @@ public class Hooks extends AllUtilityFunction {
        Base.removeDriver();
         }
 }
-
-    
-
-

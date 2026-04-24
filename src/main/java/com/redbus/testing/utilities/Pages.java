@@ -17,6 +17,8 @@ import com.redbus.testing.pages.CancelPage;
 import com.redbus.testing.pages.DashboardPage;
 import com.redbus.testing.pages.FoodOrderPage;
 import com.redbus.testing.pages.HelpPage;
+import com.redbus.testing.pages.HotelSearchResultsPage;
+import com.redbus.testing.pages.HotelsPage;
 import com.redbus.testing.pages.LoginCookies;
 import com.redbus.testing.pages.LoginPage;
 import com.redbus.testing.pages.OffersPage;
@@ -29,7 +31,7 @@ public class Pages {
 
 	private static ThreadLocal<Pages> pages = new ThreadLocal<>();
 
-	//// Bus tickets
+	// Bus tickets
 	public BusSearchPage busSearchPage;
 	public BusSelectionPage busSelectionPage;
 	public BusSeatSelectionPage busSeatSelectionPage;
@@ -37,7 +39,7 @@ public class Pages {
 	public BusPassengerInfoPage busPassengerInfoPage;
 	public BusPaymentPage busPaymentPage;
 
-	////// Accounts
+	// Accounts
 	public LoginPage login;
 	public OffersPage offersPage;
 	public HelpPage helpPage;
@@ -59,6 +61,11 @@ public class Pages {
     public TrainRestaurantsPage tp;
     public DashboardPage dp;
     public TrainTicketPage ttp;
+    
+    // Hotels
+    public DashboardPage dashboardPage;
+    public HotelSearchResultsPage hotelSearchResultsPage;
+    public HotelsPage hotelsPage;
 
 	public static String sourceCity;
 	public static String destinationCity;
@@ -96,7 +103,12 @@ public class Pages {
         p.tp=PageFactory.initElements(driver, TrainRestaurantsPage.class);
         p.ttp=PageFactory.initElements(driver, TrainTicketPage.class);
         p.dp=PageFactory.initElements(driver, DashboardPage.class);
-
+        
+        // Hotels
+        p.dashboardPage = PageFactory.initElements(driver, DashboardPage.class);
+        p.hotelSearchResultsPage = PageFactory.initElements(driver, HotelSearchResultsPage.class);
+        p.hotelsPage = PageFactory.initElements(driver, HotelsPage.class);
+        
 		pages.set(p);
 	}
 
@@ -104,5 +116,3 @@ public class Pages {
 		return pages.get();
 	}
 }
-
-   
