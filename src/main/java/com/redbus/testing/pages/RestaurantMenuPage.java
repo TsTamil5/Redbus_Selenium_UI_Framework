@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 
 import com.redbus.testing.utilities.AllUtilityFunction;
 
-public class restaurant_menu_page {
+public class RestaurantMenuPage {
 
     // Driver and utility
     private WebDriver driver;
@@ -21,7 +21,7 @@ public class restaurant_menu_page {
     private By restaurantNameLocator = By.xpath("//span[@class='flex']/div/h3");
 
     // Constructor
-    public restaurant_menu_page(WebDriver driver) {
+    public RestaurantMenuPage(WebDriver driver) {
         this.driver = driver;
         this.util = new AllUtilityFunction();
     }

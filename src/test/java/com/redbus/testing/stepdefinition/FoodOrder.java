@@ -19,10 +19,8 @@ import io.cucumber.java.en.When;
 public class FoodOrder {
 	@Given("user is on the food ordering page")
 	public void user_is_on_the_food_ordering_page() {
-		Assert.assertTrue(
-			    Base.getDriver().getCurrentUrl().contains("ecatering"),
-			    "User is not on food ordering page"
-			);
+		Pages.getInstance().dp.clickTrainLink();
+		Pages.getInstance().ttp.clickOrderFoodLink();
 	}
 	@When("user enters data {string} in the search field")
 	public void user_enters_in_the_search_field(String string) {

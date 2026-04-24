@@ -8,31 +8,30 @@ import org.openqa.selenium.WebElement;
 
 import com.redbus.testing.utilities.AllUtilityFunction;
 
-public class train_restaurants_page {
+public class PopularFoodRestaurantServingPage {
 
-    // Driver and utility
+    // Driver & utility
     private WebDriver driver;
     private AllUtilityFunction util;
 
     // Locator for restaurant list
     private By restaurantLocator =
-        By.xpath("//div[contains(@class,'flex flex-1 flex-col py-3')]/div/h5");
+        By.xpath("//div[@class='mt-4 h-auto']/h1");
 
     // Constructor
-    public train_restaurants_page(WebDriver driver) {
+    public PopularFoodRestaurantServingPage(WebDriver driver) {
         this.driver = driver;
         this.util = new AllUtilityFunction();
     }
 
-    // Verify restaurant list is displayed
-    public boolean isRestaurantListDisplayed() {
+    // Check if restaurant list is visible
+    public boolean isRestaurantListVisible() {
 
-        // Wait until restaurants are loaded
-        List<WebElement> list =
+        List<WebElement> restaurants =
             util.waitForElementsMoreThan(driver, restaurantLocator, 0, 25);
 
-        System.out.println("Number of restaurants: " + list.size());
+        System.out.println("Number of restaurants: " + restaurants.size());
 
-        return list.size() > 0;
+        return restaurants.size() > 0;
     }
 }

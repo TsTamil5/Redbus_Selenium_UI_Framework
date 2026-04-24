@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.redbus.testing.utilities.AllUtilityFunction;
 
-public class food_order_page {
+public class FoodOrderPage {
 
     // WebDriver instance used to interact with browser
     private WebDriver driver;
@@ -23,7 +23,7 @@ public class food_order_page {
     private AllUtilityFunction util;
 
     // Constructor to initialize driver and utility
-    public food_order_page(WebDriver driver) {
+    public FoodOrderPage(WebDriver driver) {
         this.driver = driver;
         this.util = new AllUtilityFunction();
     }

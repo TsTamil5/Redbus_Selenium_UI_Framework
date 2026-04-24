@@ -90,5 +90,10 @@
 			<version>5.8.0</version>
 		</dependency>
 
-	</dependencies>
+		<dependency>
+			<groupId>capgemini</groupId>
+			<artifactId>SeleniumFramework.Redbus</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+  </dependencies>
 </project>
