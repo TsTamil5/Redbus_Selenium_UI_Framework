@@ -1,5 +1,4 @@
 package com.redbus.testing.utilities;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,3 +24,4 @@ public class ScreenshotUtility {
 		}
 	}
 }
+
