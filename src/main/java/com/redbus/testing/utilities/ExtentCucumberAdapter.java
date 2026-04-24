@@ -10,7 +10,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 public class ExtentCucumberAdapter implements ConcurrentEventListener {
-
+	
     // Create single ExtentReports instance
     private static ExtentReports extent = ExtentManager.getReportInstance();
 
@@ -113,4 +113,5 @@ public class ExtentCucumberAdapter implements ConcurrentEventListener {
             return null;
         }
     }
+
 }

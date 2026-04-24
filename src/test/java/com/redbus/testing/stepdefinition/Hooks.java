@@ -2,8 +2,10 @@ package com.redbus.testing.stepdefinition;
 
 
 import com.aventstack.extentreports.*;
+import java.io.IOException;
 import com.redbus.testing.utilities.AllUtilityFunction;
 import com.redbus.testing.utilities.Base;
+import com.redbus.testing.utilities.LaunchingBrowser;
 import com.redbus.testing.utilities.Pages;
 
 import io.cucumber.java.Scenario;
@@ -23,28 +25,34 @@ import io.cucumber.java.Before;
 public class Hooks extends AllUtilityFunction {
 
 	AllUtilityFunction util = new AllUtilityFunction();
+	
+
 	@Before
-	public void setup(Scenario scenario) throws IOException {
+    public void openBrowser(Scenario scenario) throws IOException {
 
-		initPropertiesUtility("src/test/resources/Readers/CommonData.properties");
+        // Read property file
+        initPropertiesUtility("src/test/resources/Readers/CommonData.properties");
 
-	    WebDriver driver = new ChromeDriver();
-	    
-	    Base.setDriver(driver);
+        String browser = getPropertyData("browser");
+        String URL = getPropertyData("url");
+        // Launch browser from property file
+        Base.setDriver(LaunchingBrowser.launchBrowser(browser));
 
-	    String URL = getPropertyData("url");
-	    Base.getDriver().get(URL);
-	    setMaximizeBrowser(Base.getDriver());
-	    implicitlyWait(driver, 15);
+        // Browser settings
+        setMaximizeBrowser(Base.getDriver());
+        implicitlyWait(Base.getDriver(), 5);
 
-	    Pages.loadAllPages(driver);
+        // Open application
+        Base.getDriver().get(URL);
 
-	}
+        // Load pages
+        Pages.loadAllPages(Base.getDriver());
+    }
 
-	@After
-	public void tearDown(Scenario scenario) {
-
-		Base.getDriver().quit();
-		Base.removeDriver();
-	}
+    @After
+    public void closeBrowser(Scenario scenario) {
+    	Base.getDriver().quit();
+    	Base.removeDriver();
+    }
 }
+

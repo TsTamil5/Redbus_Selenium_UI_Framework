@@ -62,22 +62,25 @@ public class AllUtilityFunction {
 
 	// ================= NAVIGATION =================
 
-	public void navigateToApplication(WebDriver driver,String url) {
+	public void navigateToApplication(WebDriver driver, String url) {
 		driver.navigate().to(url);
 	}
-	//forward
+
+	// forward
 	public void navigateForward(WebDriver driver) {
 		driver.navigate().forward();
 	}
+
 	public void navigateBackward(WebDriver driver) {
 		driver.navigate().back();
 	}
+
 	public void refreshPage(WebDriver driver) {
 		driver.navigate().refresh();
 	}
-	
-	//get
-	public void enterUrl(WebDriver driver,String url) {
+
+	// get
+	public void enterUrl(WebDriver driver, String url) {
 		driver.get(url);
 	}
 
@@ -114,38 +117,42 @@ public class AllUtilityFunction {
 	public void waitForTitleContains(WebDriver driver, String title, int seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.titleContains(title));
 	}
-	
-	
+
+
 	// ================= ADVANCED EXPLICIT WAITS =================
 
 	// visibilityOfElementLocated
 	public WebElement waitForVisibility(WebDriver driver, By locator, int seconds) {
+
 	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
 	            .until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	// presenceOfElementLocated
 	public WebElement waitForPresence(WebDriver driver, By locator, int seconds) {
+
 	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
 	            .until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
 	// presenceOfAllElementsLocatedBy
 	public List<WebElement> waitForAllElementsPresence(WebDriver driver, By locator, int seconds) {
+
 	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
 	            .until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 	}
 
 	// elementToBeClickable (By)
 	public WebElement waitForClickable(WebDriver driver, By locator, int seconds) {
+
 	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
 	            .until(ExpectedConditions.elementToBeClickable(locator));
 	}
 
 	// elementToBeClickable (WebElement)
 	public WebElement waitForClickable(WebDriver driver, WebElement element, int seconds) {
-	    return new WebDriverWait(driver, Duration.ofSeconds(seconds))
-	            .until(ExpectedConditions.elementToBeClickable(element));
+		return new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
 	// refreshed + clickable
@@ -188,6 +195,8 @@ public class AllUtilityFunction {
 	    return new WebDriverWait(driver, Duration.ofSeconds(25))
 	            .until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, count));
 	}
+
+
 	// ================= ALERT / POPUPS =================
 
 	public void acceptPopup(WebDriver driver) {
@@ -282,7 +291,7 @@ public class AllUtilityFunction {
 
 	// ==================== EXCEL UTILITY =========================
 
-	private static final String FILE_PATH = "./src/test/resources/Readers/Config (1).xlsx";
+	private static final String FILE_PATH = "./src/test/resources/Readers/Config.xlsx";
 
 	Workbook workbook;
 	Sheet sheet;
