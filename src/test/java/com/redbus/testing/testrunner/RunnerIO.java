@@ -12,19 +12,19 @@ import io.cucumber.testng.CucumberOptions;
     },
     plugin = {
         "pretty",
-//        "html:target/cucumber-report.html",
-//        "json:target/cucumber.json",
-//        "com.redbus.testing.utilities.ExtentCucumberAdapter"
+        "html:target/cucumber-report.html",
+        "json:target/cucumber.json",
+        "com.redbus.testing.utilities.ExtentCucumberAdapter"
     },
     		tags="@PassengerDetails",
     dryRun = false
 //  monochrome = true
 )
 public class RunnerIO extends AbstractTestNGCucumberTests {
-//
-//    @Override
-//    @DataProvider(parallel = false)
-//    public Object[][] scenarios() {
-//        return super.scenarios();
-//    }
+
+    @Override
+    @DataProvider(parallel = false)
+    public Object[][] scenarios() {
+        return super.scenarios();
+    }
 }
