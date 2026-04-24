@@ -1,14 +1,12 @@
 package com.redbus.testing.testrunner;
 
 import org.testng.annotations.DataProvider;
-
 import io.cucumber.testng.AbstractTestNGCucumberTests;
-
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features =	{"./src/test/java/com/redbus/testing/featurefiles/BusTicket.feature",
 "./src/test/java/com/redbus/testing/featurefiles/TrainTickets.feature",
-"./src/test/java/com/redbus/testing/featurefiles/Accounts.feature"},
+"./src/test/java/com/redbus/testing/featurefiles/Accounts.feature","./src/test/java/com/redbus/testing/featurefiles/FoodOrder.feature"},
 
 		glue ="com.redbus.testing.stepdefinition", 	
 		plugin = {
@@ -21,9 +19,10 @@ import io.cucumber.testng.CucumberOptions;
 
 public class RunnerIO extends AbstractTestNGCucumberTests {
 	@Override
-	@DataProvider(parallel = false)
+	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}
 }
+
 

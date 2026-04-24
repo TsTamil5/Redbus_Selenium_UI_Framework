@@ -7,7 +7,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class LaunchingBrowser {
 
-
 	// Launch browser based on given name
 	public static WebDriver launchBrowser(String browser) {
 
@@ -29,6 +28,6 @@ public class LaunchingBrowser {
 
         return driver;
     }
-}
 
+}
 

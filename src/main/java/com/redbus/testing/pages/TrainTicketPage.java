@@ -1,5 +1,4 @@
 package com.redbus.testing.pages;
-
 // Importing required Selenium and Java libraries
 import java.time.Duration;
 import org.openqa.selenium.*;
@@ -8,6 +7,8 @@ import org.openqa.selenium.support.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.redbus.testing.utilities.AllUtilityFunction;
+
 public class TrainTicketPage {
 
     // WebDriver instance to control browser
@@ -15,11 +16,14 @@ public class TrainTicketPage {
 
     // Explicit wait for synchronization
     WebDriverWait wait;
+    
+    private AllUtilityFunction util;
 
     // Constructor to initialize driver, wait, and PageFactory elements
     public TrainTicketPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.util = new AllUtilityFunction();
         PageFactory.initElements(driver, this); // Initialize @FindBy elements
     }
 
@@ -36,6 +40,10 @@ public class TrainTicketPage {
     // Input box inside From field
     @FindBy(xpath = "//label[text()='From']/..//input")
     WebElement fromInput;
+    
+    //FoodOrder Link
+    @FindBy(partialLinkText = "Order Food")
+	private WebElement orderFoodLink;
     
     // To field container
     @FindBy(css="[aria-label='To']")
@@ -154,6 +162,18 @@ public class TrainTicketPage {
             e.printStackTrace();
         }
     }
+    //Returns FoodOrder Link Element
+    public WebElement getOrderFoodLink() {
+		return orderFoodLink;
+	}
+    
+    //Clicks On FoodOrder Link element
+	public void clickOrderFoodLink() {
+		util.waitForClickable(driver, fromField, 45);
+		fromField.click();
+		util.waitForClickable(driver, orderFoodLink, 45);
+		getOrderFoodLink().click();
+	}
 
     // Click Search button using JavaScript
     public void clickSearch() {
@@ -216,3 +236,5 @@ public class TrainTicketPage {
         }
     }
 }
+
+
