@@ -15,11 +15,9 @@ public class BusPassengerSteps {
 	private Base base;
 	private AllUtilityFunction util;
 
-	public BusPassengerSteps(Base base) {
-		this.base = base;
-
+	public BusPassengerSteps() {
 		util = new AllUtilityFunction();
-		util.init("Sheet1");
+		util.init("BusTickets");
 	}
 
 	@Given("User is on passenger details page")
@@ -40,8 +38,6 @@ public class BusPassengerSteps {
 		Pages.getInstance().busSelectionPage.clickBookNow();
 		Pages.getInstance().busSelectionPage.clickViewSeats();
 
-//		Pages.busSeatSelectionPage.clickLowerDeckSeat();
-//		Pages.busSeatSelectionPage.clickUpperDeckSeat();
 		Pages.getInstance().busSeatSelectionPage.selectGeneralSeat();
 		Pages.getInstance().busSeatSelectionPage.clickProceedButton();
 
@@ -79,10 +75,12 @@ public class BusPassengerSteps {
 			Pages.getInstance().busPassengerInfoPage.selectMale();
 		} else if (gender.equalsIgnoreCase("female")) {
 			Pages.getInstance().busPassengerInfoPage.selectFemale();
-
 		}
+		
 		Pages.getInstance().busPassengerInfoPage.selectWithoutInsurance();
 		Pages.getInstance().busPassengerInfoPage.clickContinueBooking();
+		Pages.getInstance().busPassengerInfoPage.clickRemindMeLater();
+
 
 	}
 
@@ -94,10 +92,6 @@ public class BusPassengerSteps {
 		Assert.assertEquals(actualUPI, "Pay using QR code, scan it with any UPI App");
 		System.out.println("UPI page displayed successfully ");
 		Pages.getInstance().busPaymentPage.clickBackToAllPayment();
-
-//		String actualCredit = Pages.getInstance().busPaymentPage.verifyCreditCard();
-//		Assert.assertEquals(actualCredit, "Add credit/debit card");
-//		System.out.println("Credit Card Details Page Displayed ");
 
 		String Price = Pages.getInstance().busPaymentPage.verifyPrice();
 		System.out.println(Price);

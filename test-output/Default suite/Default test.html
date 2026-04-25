@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>7/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Apr 24 20:58:11 IST 2026</td>
+<td>Started on:</td><td>Sat Apr 25 13:17:10 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>22 seconds (22983 ms)</td>
+<tr><td>Total time:</td><td>145 seconds (145839 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,31 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search buses with same source and destination", "Bus Ticket Booking End-to-End Flow"</td>
+<td><div><pre>java.lang.AssertionError: null
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.fail(Assert.java:116)
+	at com.redbus.testing.stepdefinition.SameSourceDestSteps.error_message_should_be_displayed(SameSourceDestSteps.java:34)
+	at ✽.the error message &quot;Source and Destination city cannot be same&quot; should be displayed(file:///F:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/BusTicket.feature:34)
+</pre></div><a href='#' onClick='toggleBox("stack-trace95788093", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace95788093'><pre>java.lang.AssertionError: null
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.fail(Assert.java:116)
+	at com.redbus.testing.stepdefinition.SameSourceDestSteps.error_message_should_be_displayed(SameSourceDestSteps.java:34)
+	at ✽.the error message &quot;Source and Destination city cannot be same&quot; should be displayed(file:///F:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/BusTicket.feature:34)
+</pre></div></td>
+<td>11</td>
+<td>com.redbus.testing.testrunner.RunnerIO@34bde49d</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,10 +101,40 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify dish is available in restaurant menu", "Food Search"</td>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Select boarding and dropping points", "Bus Ticket Booking End-to-End Flow"</td>
 <td></td>
-<td>21</td>
-<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
+<td>23</td>
+<td>com.redbus.testing.testrunner.RunnerIO@34bde49d</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search buses without entering source and destination", "Bus Ticket Booking End-to-End Flow"</td>
+<td></td>
+<td>4</td>
+<td>com.redbus.testing.testrunner.RunnerIO@34bde49d</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify buses are displayed after swapping source and destination", "Bus Ticket Booking End-to-End Flow"</td>
+<td></td>
+<td>14</td>
+<td>com.redbus.testing.testrunner.RunnerIO@34bde49d</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Enter passenger details and proceed to payment", "Bus Ticket Booking End-to-End Flow"</td>
+<td></td>
+<td>27</td>
+<td>com.redbus.testing.testrunner.RunnerIO@34bde49d</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Select bus and seat", "Bus Ticket Booking End-to-End Flow"</td>
+<td></td>
+<td>17</td>
+<td>com.redbus.testing.testrunner.RunnerIO@34bde49d</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Enter passenger details and proceed to payment", "Bus Ticket Booking End-to-End Flow"</td>
+<td></td>
+<td>29</td>
+<td>com.redbus.testing.testrunner.RunnerIO@34bde49d</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search buses", "Bus Ticket Booking End-to-End Flow"</td>
+<td></td>
+<td>16</td>
+<td>com.redbus.testing.testrunner.RunnerIO@34bde49d</td></tr>
 </table><p>
 </body>
 </html>
