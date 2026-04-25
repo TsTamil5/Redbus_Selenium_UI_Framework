@@ -12,7 +12,11 @@ public class BusPassengerInfoPage {
 	public BusPassengerInfoPage(WebDriver driver) {
 		this.driver = driver;
 	}
-
+	
+	//tripReward popup 
+	@FindBy(xpath = "//button[text()='Remind me later']")
+	private WebElement tripReward;
+	
 	// Phone input
 	@FindBy(css = "[placeholder=\"Phone\"]")
 	private WebElement phoneField;
@@ -100,6 +104,7 @@ public class BusPassengerInfoPage {
 		return male;
 	}
 
+	
 	// Get female option
 	public WebElement getFemale() {
 		return female;
@@ -184,5 +189,10 @@ public class BusPassengerInfoPage {
 	// Click continue booking
 	public void clickContinueBooking() {
 		continueBooking.click();
+	}
+	
+	// Trip Reward popup handling
+	public void clickRemindMeLater() {
+		tripReward.click();
 	}
 }

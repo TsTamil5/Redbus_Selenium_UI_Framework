@@ -50,6 +50,7 @@ public class BusSeatSelectionPage {
 		for (WebElement seat : seats) {
 			String label = seat.getAttribute("aria-label").toLowerCase();
 			if (label.contains("available") && !label.contains("female") && !label.contains("male")) {
+				wait.until(ExpectedConditions.elementToBeClickable(seat));
 				seat.click();
 				break;
 			}

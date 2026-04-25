@@ -4,8 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class BusPaymentPage {
+import com.redbus.testing.utilities.AllUtilityFunction;
 
+public class BusPaymentPage {
+	
+	AllUtilityFunction util= new AllUtilityFunction();
 	WebDriver driver;
 
 	// Constructor
@@ -71,6 +74,7 @@ public class BusPaymentPage {
 
 	// Click UPI option
 	public void clickPayByAnyUPIApp() {
+		util.waitForElementVisible(driver, payByAnyUPIApp, 20);
 		getPayByAnyUPIApp().click();
 	}
 

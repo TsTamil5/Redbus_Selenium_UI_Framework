@@ -39,7 +39,7 @@ public class BusBoardingSteps {
 		Pages.getInstance().busSelectionPage.clickBookNow();
 		Pages.getInstance().busSelectionPage.clickViewSeats();
 
-		Pages.getInstance().busSeatSelectionPage.selectAnyAvailableSeat();
+		Pages.getInstance().busSeatSelectionPage.clickLowerDeckSeat();
 		Pages.getInstance().busSeatSelectionPage.clickProceedButton();
 
 	}
