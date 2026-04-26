@@ -11,6 +11,8 @@ import io.cucumber.testng.CucumberOptions;
 //"./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature",
 //"./src/test/java/com/redbus/testing/featurefiles/FoodOrder.feature"
 },
+		tags = "@Payment",
+	
 
 		//Step definition package
 		glue ="com.redbus.testing.stepdefinition", 
