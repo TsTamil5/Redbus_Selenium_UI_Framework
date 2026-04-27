@@ -1,5 +1,6 @@
 package com.redbus.testing.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,12 +29,23 @@ public class TrainTicketPage {
 		return orderFoodLink;
 	}
 
-	public void clickOrderFoodLink() {
-		util.waitForClickable(driver, fromField, 45);
-		fromField.click();
-		util.waitForClickable(driver, orderFoodLink, 45);
-		getOrderFoodLink().click();
+	//ScrollIntoView Method
+    public void scrollIntoView(WebDriver driver, WebElement element) {
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+	    js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
 	}
+	
+    //Clicking on FoodOrder Element
+	public void clickOrderFoodLink() {
+	    scrollIntoView(driver, fromField);
+	    util.waitForClickable(driver, fromField, 45);
+	    fromField.click();
+
+	    scrollIntoView(driver, orderFoodLink);
+	    util.waitForClickable(driver, orderFoodLink, 45);
+	    orderFoodLink.click();
+	}
+
 	
 	
 }
