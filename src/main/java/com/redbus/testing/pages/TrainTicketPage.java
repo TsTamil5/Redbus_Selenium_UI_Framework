@@ -167,14 +167,22 @@ public class TrainTicketPage {
 		return orderFoodLink;
 	}
     
-    //Clicks On FoodOrder Link element
-	public void clickOrderFoodLink() {
-		util.waitForClickable(driver, fromField, 45);
-		fromField.click();
-		util.waitForClickable(driver, orderFoodLink, 45);
-		getOrderFoodLink().click();
+    //Scroll Into View method
+	public void scrollIntoView(WebDriver driver, WebElement element) {
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+	    js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
 	}
 
+	//Clicks On FoodOrder Link element
+	public void clickOrderFoodLink() {
+	    scrollIntoView(driver, fromField);
+	    util.waitForClickable(driver, fromField, 45);
+	    fromField.click();
+
+	    scrollIntoView(driver, orderFoodLink);
+	    util.waitForClickable(driver, orderFoodLink, 45);
+	    orderFoodLink.click();
+	}
     // Click Search button using JavaScript
     public void clickSearch() {
 
