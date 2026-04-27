@@ -47,8 +47,26 @@ public class TrainPassengerPage {
     }
 
     // Method to get Credit card text
+//    public String verifyCredit() {
+//    		
+//        return creditCard.getText();
+//    }
     public String verifyCredit() {
-        return creditCard.getText();
+
+        try {
+            // Try normally
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            return wait.until(ExpectedConditions.visibilityOf(creditCard)).getText();
+
+        } catch (Exception e) {
+
+            // If not visible → refresh page
+            driver.navigate().refresh();
+
+            // Wait again after refresh
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+            return wait.until(ExpectedConditions.visibilityOf(creditCard)).getText();
+        }
     }
 
     // ================= BUTTONS =================
@@ -64,7 +82,7 @@ public class TrainPassengerPage {
     // ================= TRAIN SELECTION =================
 
     // Locator for selecting a train from list
-    @FindBy(xpath = "(//div[@data-autoid='srp_card'])[2]//div[@role='button']")
+    @FindBy(xpath = "(//div[@data-autoid='srp_card'])[4]//div[@role='button']")
     private WebElement selectTrain;
 
     // ================= USERNAME SECTION =================
@@ -207,6 +225,7 @@ public class TrainPassengerPage {
     // Continue without adding passenger
     public void clickContinueWithoutAdding() {
         continueWithoutAdding.click();
+//        driver.navigate().refresh();
     }
 
     // Select train
@@ -255,6 +274,8 @@ public class TrainPassengerPage {
     public void clickContinue() throws InterruptedException {
         Thread.sleep(2000);
         continueBtn.click();
+        
+        
     }
 
     // Click state dropdown

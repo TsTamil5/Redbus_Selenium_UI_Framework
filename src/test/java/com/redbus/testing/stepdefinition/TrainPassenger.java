@@ -61,7 +61,7 @@ public class TrainPassenger {
 	}
 	@Then("User should see free cancellation popup")
 	public void user_should_see_free_cancellation_popup() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 	   String creditCard =Pages.getInstance().trainpassengerpage.verifyCredit(); 
 
 	   Assert.assertEquals(creditCard, "Add credit/debit card");
