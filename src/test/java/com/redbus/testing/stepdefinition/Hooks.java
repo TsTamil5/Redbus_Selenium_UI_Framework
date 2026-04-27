@@ -32,7 +32,7 @@ public class Hooks extends AllUtilityFunction {
         Base.setDriver(LaunchingBrowser.launchBrowser(browser));
         
        setMaximizeBrowser(Base.getDriver());
-       implicitlyWait(Base.getDriver(),5);
+       implicitlyWait(Base.getDriver(),15);
 
        Base.getDriver().get(URL);
        Pages.loadAllPages(Base.getDriver());  
