@@ -88,22 +88,6 @@ public class LoginPage {
                    )
            );
            
-//           // Try to wait for overlay/header to disappear
-//           try {
-//               wait.until(ExpectedConditions.invisibilityOfElementLocated(
-//                       By.xpath("//h2[contains(@class,'header')]")
-//               ));
-//           } catch (Exception e) {
-//               System.out.println("Overlay still present, continuing...");
-//           }
-//
-//        // Scroll element into view
-//           ((JavascriptExecutor) driver)
-//                   .executeScript("arguments[0].scrollIntoView(true);", element);
-//
-//         
-//           try { Thread.sleep(1000); } catch (Exception e) {}
-
 
         // Try normal click, fallback to JS click
            try {
