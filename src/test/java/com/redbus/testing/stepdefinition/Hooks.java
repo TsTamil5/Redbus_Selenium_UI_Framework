@@ -59,9 +59,13 @@ public class Hooks extends AllUtilityFunction {
    }
     
 
-    @After
-    public void closeBrowser(Scenario scenario) {
-       Base.getDriver().quit();
-       Base.removeDriver();
-        }
-}
+	@After
+	public void closeBrowser() {
+	    try {
+	        if (Base.getDriver() != null) {
+	            Base.getDriver().quit();
+	        }
+	    } catch (Exception e) {
+	        System.out.println("Browser already closed");
+	    }
+	}}
