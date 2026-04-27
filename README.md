@@ -234,7 +234,7 @@ mvn clean install
 
 ## Contributors
 
-* Tamizhselvi
+* Tamilselvi
 * Mohammed Afreeth
 * Pravallika
 * Naveen Kumar
