@@ -1,19 +1,16 @@
 package com.redbus.testing.stepdefinition;
 
 import java.io.IOException;
+
 import com.redbus.testing.utilities.AllUtilityFunction;
 import com.redbus.testing.utilities.Base;
 import com.redbus.testing.utilities.HandleCookies;
 import com.redbus.testing.utilities.LaunchingBrowser;
 import com.redbus.testing.utilities.Pages;
-import io.cucumber.java.Scenario;
-import org.openqa.selenium.edge.EdgeDriver;
-import com.redbus.testing.utilities.AllUtilityFunction;
-import com.redbus.testing.utilities.Base;
-import com.redbus.testing.utilities.LaunchingBrowser;
-import com.redbus.testing.utilities.Pages;
+
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 
 
 public class Hooks extends AllUtilityFunction {

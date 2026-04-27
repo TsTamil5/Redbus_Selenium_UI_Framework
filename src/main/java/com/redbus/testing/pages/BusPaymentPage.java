@@ -116,6 +116,7 @@ public class BusPaymentPage {
 
 	// Click back button
 	public void clickBackToAllPayment() throws InterruptedException {
+		util.waitForClickable(driver, backToAllPayment, 30);
 		getBackToAllPayment().click();
 	}
 
