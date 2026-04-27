@@ -6,8 +6,12 @@
       <class name="com.redbus.testing.testrunner.RunnerIO">
         <methods>
           <include name="setUpClass"/>
+<<<<<<< HEAD
           <include name="runScenario" invocation-numbers="6"/>
+=======
+>>>>>>> branch 'main' of git@github.com:TsTamil5/Redbus_Selenium_UI_Framework.git
           <include name="tearDownClass"/>
+          <include name="runScenario" invocation-numbers="3"/>
         </methods>
       </class> <!-- com.redbus.testing.testrunner.RunnerIO -->
     </classes>

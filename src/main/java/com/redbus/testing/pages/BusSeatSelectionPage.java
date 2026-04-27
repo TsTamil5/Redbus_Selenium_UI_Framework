@@ -46,15 +46,16 @@ public class BusSeatSelectionPage {
 	}
 
 	// Select general seat
-	public void selectGeneralSeat() {
-		for (WebElement seat : seats) {
-			String label = seat.getAttribute("aria-label").toLowerCase();
-			if (label.contains("available") && !label.contains("female") && !label.contains("male")) {
-				seat.click();
-				break;
+		public void selectGeneralSeat() {
+			for (WebElement seat : seats) {
+				String label = seat.getAttribute("aria-label").toLowerCase();
+				if (label.contains("available") && !label.contains("female") && !label.contains("male")) {
+					wait.until(ExpectedConditions.elementToBeClickable(seat));
+					seat.click();
+					break;
+				}
 			}
 		}
-	}
 
 	// Click upper deck seat
 	public void clickUpperDeckSeat() {

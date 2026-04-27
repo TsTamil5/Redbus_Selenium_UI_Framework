@@ -13,6 +13,11 @@ public class BusPassengerInfoPage {
 		this.driver = driver;
 	}
 
+	// Trip Reward popup 
+	@FindBy(xpath = "//button[text()='Remind me later']")
+	private WebElement tripReward;
+
+	
 	// Phone input
 	@FindBy(css = "[placeholder=\"Phone\"]")
 	private WebElement phoneField;
@@ -132,6 +137,7 @@ public class BusPassengerInfoPage {
 
 	// Enter phone
 	public void enterPhone(String phone) {
+		phoneField.clear();
 		phoneField.sendKeys(phone);
 	}
 
@@ -184,4 +190,9 @@ public class BusPassengerInfoPage {
 	public void clickContinueBooking() {
 		continueBooking.click();
 	}
+	
+	// Trip Reward popup handling
+		public void clickRemindMeLater() {
+			tripReward.click();
+		}
 }

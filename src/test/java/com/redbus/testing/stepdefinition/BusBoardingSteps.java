@@ -17,7 +17,7 @@ public class BusBoardingSteps {
 		this.base = base;
 
 		util = new AllUtilityFunction();
-		util.init("Sheet1");
+		util.init("BusTickets");
 	}
 
 	@Given("User has selected seat")
@@ -39,7 +39,7 @@ public class BusBoardingSteps {
 		Pages.getInstance().busSelectionPage.clickBookNow();
 		Pages.getInstance().busSelectionPage.clickViewSeats();
 
-		Pages.getInstance().busSeatSelectionPage.selectAnyAvailableSeat();
+		Pages.getInstance().busSeatSelectionPage.clickLowerDeckSeat();
 		Pages.getInstance().busSeatSelectionPage.clickProceedButton();
 
 	}

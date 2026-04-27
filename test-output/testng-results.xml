@@ -1,42 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results ignored="0" total="7" passed="6" failed="1" skipped="0">
+=======
+<testng-results ignored="0" total="8" passed="7" failed="1" skipped="0">
+>>>>>>> branch 'main' of git@github.com:TsTamil5/Redbus_Selenium_UI_Framework.git
   <reporter-output>
   </reporter-output>
+<<<<<<< HEAD
   <suite started-at="2026-04-27T08:34:43 IST" name="Default suite" finished-at="2026-04-27T08:36:59 IST" duration-ms="135933">
+=======
+  <suite started-at="2026-04-26T14:23:55 IST" name="Default suite" finished-at="2026-04-26T14:26:32 IST" duration-ms="156719">
+>>>>>>> branch 'main' of git@github.com:TsTamil5/Redbus_Selenium_UI_Framework.git
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
+<<<<<<< HEAD
     <test started-at="2026-04-27T08:34:43 IST" name="Default test" finished-at="2026-04-27T08:36:59 IST" duration-ms="135933">
+=======
+    <test started-at="2026-04-26T14:23:55 IST" name="Default test" finished-at="2026-04-26T14:26:32 IST" duration-ms="156719">
+>>>>>>> branch 'main' of git@github.com:TsTamil5/Redbus_Selenium_UI_Framework.git
       <class name="com.redbus.testing.testrunner.RunnerIO">
+<<<<<<< HEAD
         <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:43 IST" name="setUpClass" finished-at="2026-04-27T08:34:44 IST" duration-ms="496" status="PASS">
+=======
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-26T14:23:55 IST" name="setUpClass" finished-at="2026-04-26T14:23:56 IST" duration-ms="986" status="PASS">
+>>>>>>> branch 'main' of git@github.com:TsTamil5/Redbus_Selenium_UI_Framework.git
           <params>
             <param index="0">
               <value>
+<<<<<<< HEAD
                 <![CDATA[org.testng.TestRunner@1ec7d8b3]]>
+=======
+                <![CDATA[org.testng.TestRunner@d15f031]]>
+>>>>>>> branch 'main' of git@github.com:TsTamil5/Redbus_Selenium_UI_Framework.git
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:36:56 IST" duration-ms="131743" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-26T14:23:56 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-26T14:24:11 IST" duration-ms="15144" status="PASS">
+>>>>>>> branch 'main' of git@github.com:TsTamil5/Redbus_Selenium_UI_Framework.git
           <params>
             <param index="0">
               <value>
+<<<<<<< HEAD
                 <![CDATA["Verify user can navigate to Hotels page"]]>
+=======
+                <![CDATA["Verify buses are displayed after swapping source and destination"]]>
+>>>>>>> branch 'main' of git@github.com:TsTamil5/Redbus_Selenium_UI_Framework.git
               </value>
             </param>
             <param index="1">
               <value>
+<<<<<<< HEAD
                 <![CDATA["RedBus Hotels Booking Functionality"]]>
+=======
+                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+>>>>>>> branch 'main' of git@github.com:TsTamil5/Redbus_Selenium_UI_Framework.git
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:36:56 IST" duration-ms="131794" status="PASS">
           <params>
             <param index="0">
@@ -149,6 +182,134 @@ at ✽.Verify hotel results count and message behavior are correct(file:///E:/Re
           </reporter-output>
         </test-method> <!-- runScenario -->
         <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:36:59 IST" name="tearDownClass" finished-at="2026-04-27T08:36:59 IST" duration-ms="134" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-26T14:24:11 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-26T14:24:26 IST" duration-ms="15139" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search buses"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-26T14:24:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-26T14:24:33 IST" duration-ms="7168" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search buses without entering source and destination"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-26T14:24:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-26T14:24:45 IST" duration-ms="11722" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search buses with same source and destination"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: null
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.fail(Assert.java:116)
+at com.redbus.testing.stepdefinition.SameSourceDestSteps.error_message_should_be_displayed(SameSourceDestSteps.java:34)
+at ✽.the error message "Source and Destination city cannot be same" should be displayed(file:///F:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/BusTicket.feature:34)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-26T14:24:45 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-26T14:25:05 IST" duration-ms="19574" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Select bus and seat"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-26T14:25:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-26T14:25:29 IST" duration-ms="24457" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Select boarding and dropping points"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-26T14:25:29 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-26T14:26:00 IST" duration-ms="31204" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Enter passenger details and proceed to payment"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-26T14:26:00 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-26T14:26:31 IST" duration-ms="31160" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Enter passenger details and proceed to payment"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-26T14:26:31 IST" name="tearDownClass" finished-at="2026-04-26T14:26:32 IST" duration-ms="90" status="PASS">
+>>>>>>> branch 'main' of git@github.com:TsTamil5/Redbus_Selenium_UI_Framework.git
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
