@@ -110,7 +110,7 @@ public class BusPaymentPage {
 
 	// Get back button
 	public WebElement getBackToAllPayment() throws InterruptedException {
-		Thread.sleep(2000);
+		util.waitForElementClickable(driver, backToAllPayment, 30);
 		return backToAllPayment;
 	}
 

@@ -187,7 +187,7 @@ public class BusSearchPage {
 	// Select date dynamically
 	public void selectDate(String month, String day) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 		WebElement monthElement = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class,'monthYear')]")));

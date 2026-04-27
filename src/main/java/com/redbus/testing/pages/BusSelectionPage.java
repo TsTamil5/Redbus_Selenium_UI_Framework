@@ -50,7 +50,7 @@ public class BusSelectionPage {
 
 	// Click FlixBus
 	public void clickFlixBus() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 		WebElement element = wait.until(ExpectedConditions.visibilityOf(flixBus));
 
@@ -70,7 +70,7 @@ public class BusSelectionPage {
 
 	// Click view seats
 	public void clickViewSeats() {
-		util.waitForElementClickable(driver, viewSeats, 20);
+		util.waitForElementClickable(driver, viewSeats, 30);
 		viewSeats.click();
 	}
 }
