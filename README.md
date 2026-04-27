@@ -1,8 +1,8 @@
-RedBus Selenium UI Automation Framework
+# RedBus Selenium UI Automation Framework
 
-Project Overview
+## Project Overview
 
-This project is a **robust end-to-end UI automation framework** for the RedBus platform built using **Selenium WebDriver, Java, TestNG, and Cucumber (BDD)**.
+This project is a robust end-to-end UI automation framework for the RedBus platform built using Selenium WebDriver, Java, TestNG, and Cucumber (BDD).
 
 The framework automates multiple real-world functionalities of the RedBus application including:
 
@@ -12,39 +12,56 @@ The framework automates multiple real-world functionalities of the RedBus applic
 * Hotel Booking
 * User Account Management
 
-It is designed using **Page Object Model (POM)** for scalability and maintainability, along with **data-driven testing using Excel**.
+It is designed using Page Object Model (POM) for scalability and maintainability, along with data-driven testing using Excel.
 
+---
 
-Tech Stack
+## Tech Stack
 
-* **Programming Language:** Java
-* **Automation Tool:** Selenium WebDriver
-* **Test Framework:** TestNG
-* **BDD Framework:** Cucumber
-* **Build Tool:** Maven
-* **Design Pattern:** Page Object Model (POM)
-* **Data Handling:** Apache POI (Excel integration)
+* Programming Language: Java
+* Automation Tool: Selenium WebDriver
+* Test Framework: TestNG
+* BDD Framework: Cucumber
+* Build Tool: Maven
+* Design Pattern: Page Object Model (POM)
+* Data Handling: Apache POI (Excel integration)
 
+---
 
-Project Structure
+## Project Structure
 
+```
 Redbus_Selenium_UI_Framework
 │
 ├── src/main/java
-│   ├── pages              # Page Object Model classes (UI interactions)
-│   └── utilities          # Reusable utilities (Excel reader, waits, helpers)
+│   ├── pages
+│   │   └── Page Object Model classes (UI interactions)
+│   │
+│   └── utilities
+│       └── Reusable utilities (Excel reader, waits, helpers)
 │
 ├── src/test/java
-│   ├── stepdefinition     # Cucumber step definitions
-│   ├── featurefile        # Feature files (BDD scenarios)
-│   └── runner             # Test runner classes
+│   ├── stepdefinition
+│   │   └── Cucumber step definitions
+│   │
+│   ├── featurefile
+│   │   └── Feature files (BDD scenarios)
+│   │
+│   └── runner
+│       └── Test runner classes
 │
-├── testng.xml             # TestNG suite configuration
-└── pom.xml                # Maven dependencies
+├── testng.xml
+│   └── TestNG suite configuration
+│
+└── pom.xml
+    └── Maven dependencies
+```
 
-Modules & Test Coverage
+---
 
-Bus Booking Module
+## Modules and Test Coverage
+
+### Bus Booking Module
 
 This module automates the complete bus booking workflow:
 
@@ -63,18 +80,22 @@ This module automates the complete bus booking workflow:
 * Enter passenger details
 * Navigate to payment page
 
-Train Ticket Booking Module
+---
+
+### Train Ticket Booking Module
 
 Covers train booking and validations:
 
 * Search trains using valid journey details
-* Validate invalid scenarios (same source & destination)
+* Validate invalid scenarios (same source and destination)
 * View train route details
 * Re-search with updated journey details
 * Select train and enter passenger information
 * Validate free cancellation popup
 
-Food Ordering Module
+---
+
+### Food Ordering Module
 
 Automates food ordering features:
 
@@ -82,7 +103,7 @@ Automates food ordering features:
 * Validate auto-suggestions while typing
 * Navigate to restaurant page
 * Verify restaurant name and menu
-* Search via popular food categories (e.g., Pizza)
+* Search via popular food categories
 * Train-based food ordering:
 
   * Enter train number
@@ -90,23 +111,28 @@ Automates food ordering features:
 * Validate dish availability in menu
 * Handle invalid inputs and no-results scenarios
 
-Hotel Booking Module
+---
+
+### Hotel Booking Module
 
 Validates hotel booking functionality:
 
 * Navigate to Hotels section
 * Search hotels using Excel-driven data
-* Select check-in/check-out dates
+* Select check-in and check-out dates
 * Configure rooms, adults, and children
 * Validate mandatory child age selection
 * Apply filters:
+
   * Price range
   * Customer rating
   * Meal preference
 * Verify filtered results and hotel count
 * Validate Flash Deals interaction and popup behavior
 
-Accounts Module
+---
+
+### Accounts Module
 
 Focuses on user account-related features:
 
@@ -130,16 +156,21 @@ Focuses on user account-related features:
   * Invalid mobile number validation
 * Ticket search and RedBuddy chat interaction
 
-Data-Driven Testing
-The framework supports "data-driven testing using Excel files":
+---
+
+## Data-Driven Testing
+
+The framework supports data-driven testing using Excel files:
 
 * Hotel booking inputs
 * Ticket rescheduling details
 * Ticket search data
 
-Handled using "Apache POI" for reading Excel sheets dynamically.
+Handled using Apache POI for reading Excel sheets dynamically.
 
-Key Features
+---
+
+## Key Features
 
 * End-to-End automation across multiple modules
 * BDD implementation using Cucumber feature files
@@ -147,55 +178,70 @@ Key Features
 * Reusable utilities for common operations
 * Explicit waits for dynamic web elements
 * Handling complex UI interactions:
-* Seat layouts
-* Popups
-* Auto-suggestions
+
+  * Seat layouts
+  * Popups
+  * Auto-suggestions
 * Negative scenario validation
 * Data-driven testing support
 
-How to Run the Project
+---
 
-1.Clone the Repository
+## How to Run the Project
 
+### 1. Clone the Repository
+
+```
 git clone https://github.com/TsTamil5/Redbus_Selenium_UI_Framework.git
+```
 
-2.Import the Project
+### 2. Import the Project
 
-* Open in "Eclipse / IntelliJ IDEA"
-* Import as a "Maven Project"
+* Open in Eclipse or IntelliJ IDEA
+* Import as a Maven Project
 
-3.Install Dependencies
+### 3. Install Dependencies
 
+```
 mvn clean install
+```
 
-4.Execute Tests
+### 4. Execute Tests
 
-* Run using **TestNG (testng.xml)**
-* Or run **Cucumber Runner classes**
+* Run using TestNG (testng.xml)
+* Or run Cucumber Runner classes
 
-Highlights (Interview Perspective)
+---
 
-* Covers **multiple domains in one automation framework**
-* Combines **BDD + POM + Data-Driven Testing**
-* Handles **real-world UI complexities**
-* Demonstrates strong understanding of **automation architecture**
-* Includes both **positive and negative test scenarios**
+## Highlights
 
-Future Enhancements
+* Covers multiple domains in one automation framework
+* Combines BDD, POM, and Data-Driven Testing
+* Handles real-world UI complexities
+* Demonstrates strong automation architecture
+* Includes both positive and negative scenarios
 
-* Integration with Extent Reports / Allure Reports
-* Cross-browser execution (Chrome, Firefox, Edge)
-* CI/CD integration (GitHub Actions / Jenkins)
-* Parallel test execution using TestNG
+---
 
-Contributors
+## Future Enhancements
 
-* Tamilselvi
+* Integration with Extent Reports or Allure Reports
+* Cross-browser execution
+* CI/CD integration (GitHub Actions or Jenkins)
+* Parallel test execution
+
+---
+
+## Contributors
+
+* Tamizhselvi
 * Mohammed Afreeth
 * Pravallika
 * Naveen Kumar
 * Keerthi
 
-Support
+---
 
-If you found this project useful, consider giving it a star on GitHub!
+## Support
+
+If you found this project useful, consider giving it a star on GitHub.
