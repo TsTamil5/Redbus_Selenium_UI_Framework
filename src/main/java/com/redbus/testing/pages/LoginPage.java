@@ -88,21 +88,6 @@ public class LoginPage {
                    )
            );
 
-           // Try to wait for overlay/header to disappear
-           try {
-               wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                       By.xpath("//h2[contains(@class,'header')]")
-               ));
-           } catch (Exception e) {
-               System.out.println("Overlay still present, continuing...");
-           }
-
-        // Scroll element into view
-           ((JavascriptExecutor) driver)
-                   .executeScript("arguments[0].scrollIntoView(true);", element);
-
-         
-//           try { Thread.sleep(1000); } catch (Exception e) {}
 
         // Try normal click, fallback to JS click
            try {
@@ -143,7 +128,8 @@ public class LoginPage {
            );
 
            // Step 3: Wait a bit for React to attach events
-           try { Thread.sleep(1000); } catch (Exception e) {}
+           try { Thread.sleep(1000); 
+           } catch (Exception e) {}
 
            // Step 4: Click using Actions (better than normal click)
            Actions actions = new Actions(driver);

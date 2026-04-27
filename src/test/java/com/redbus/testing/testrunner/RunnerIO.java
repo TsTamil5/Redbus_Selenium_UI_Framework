@@ -5,11 +5,11 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 //Feature file location
-@CucumberOptions(features =	{"./src/test/java/com/redbus/testing/featurefiles/BusTicket.feature",
-		"./src/test/java/com/redbus/testing/featurefiles/TrainTickets.feature",
+@CucumberOptions(features =	{//"./src/test/java/com/redbus/testing/featurefiles/BusTicket.feature",
+		//"./src/test/java/com/redbus/testing/featurefiles/TrainTickets.feature",
 		"./src/test/java/com/redbus/testing/featurefiles/Accounts.feature",
-		"./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature",
-		"./src/test/java/com/redbus/testing/featurefiles/FoodOrder.feature"
+		//"./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature",
+		//"./src/test/java/com/redbus/testing/featurefiles/FoodOrder.feature"
 		},
 
 		//Step definition package

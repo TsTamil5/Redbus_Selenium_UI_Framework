@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Default_suite" class="navigator-link">
-              <span class="suite-name border-passed">Default suite</span>
+              <span class="suite-name border-failed">Default suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\kickb\AppData\Local\Temp\testng-eclipse--397681132\testng-customsuite.xml</span>
+                    <span>C:\Users\chiko\AppData\Local\Temp\testng-eclipse--1713369726\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods,   2 passed</span>
+                    <span class="method-stats">7 methods, 1 failed,   6 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods failed suite-Default_suite"> (hide)</a> <!-- hide-methods failed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods failed suite-Default_suite"> (show)</a> <!-- show-methods failed suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Default_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="com.redbus.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;login using saved cookies and click on bookings&quot;, &quot;RedBus Accounts Feature&quot;)">runScenario("login using saved cookies and click on bookings", "RedBus Accounts Feature")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Default_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,12 +117,32 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.redbus.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Enter passenger details and proceed to payment&quot;, &quot;Bus Ticket Booking End-to-End Flow&quot;)">runScenario("Enter passenger details and proceed to payment", "Bus Ticket Booking End-to-End Flow")</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="com.redbus.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Verify Offers page navigation from Accounts&quot;, &quot;RedBus Accounts Feature&quot;)">runScenario("Verify Offers page navigation from Accounts", "RedBus Accounts Feature")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.redbus.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Enter passenger details and proceed to payment&quot;, &quot;Bus Ticket Booking End-to-End Flow&quot;)">runScenario("Enter passenger details and proceed to payment", "Bus Ticket Booking End-to-End Flow")</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="com.redbus.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Search the Ticket and verify using excel&quot;, &quot;RedBus Accounts Feature&quot;)">runScenario("Search the Ticket and verify using excel", "RedBus Accounts Feature")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="com.redbus.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Cancel the Ticket in Accounts&quot;, &quot;RedBus Accounts Feature&quot;)">runScenario("Cancel the Ticket in Accounts", "RedBus Accounts Feature")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="com.redbus.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Cancel the Ticket in Accounts using Invalid Mobile number&quot;, &quot;RedBus Accounts Feature&quot;)">runScenario("Cancel the Ticket in Accounts using Invalid Mobile number", "RedBus Accounts Feature")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="com.redbus.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Verify the help section&quot;, &quot;RedBus Accounts Feature&quot;)">runScenario("Verify the help section", "RedBus Accounts Feature")</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="com.redbus.testing.testrunner.RunnerIO" class="method navigator-link" hash-for-method="runScenario(&quot;Reshedule Ticket using excel&quot;, &quot;RedBus Accounts Feature&quot;)">runScenario("Reshedule Ticket using excel", "RedBus Accounts Feature")</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -123,6 +157,34 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Default_suite" class="panel Default_suite">
+          <div class="suite-Default_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.redbus.testing.testrunner.RunnerIO</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;login using saved cookies and click on bookings&quot;, &quot;RedBus Accounts Feature&quot;)">
+                  </a> <!-- runScenario("login using saved cookies and click on bookings", "RedBus Accounts Feature") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("login using saved cookies and click on bookings","RedBus Accounts Feature")</span>
+                  <div class="stack-trace">java.lang.AssertionError: ❌ Name not updated expected [ABC] but found []
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:656)
+	at com.redbus.testing.stepdefinition.Accounts.verify_profile_details(Accounts.java:81)
+	at ✽.profile should reflect updated details &quot;ABC&quot; &quot;abc@gmail.com&quot; &quot;female&quot;(file:///C:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/Accounts.feature:13)
+
+</div> <!-- stack-trace -->
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-failed -->
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -131,20 +193,60 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="runScenario(&quot;Enter passenger details and proceed to payment&quot;, &quot;Bus Ticket Booking End-to-End Flow&quot;)">
-                  </a> <!-- runScenario("Enter passenger details and proceed to payment", "Bus Ticket Booking End-to-End Flow") -->
+                  <a name="runScenario(&quot;Verify Offers page navigation from Accounts&quot;, &quot;RedBus Accounts Feature&quot;)">
+                  </a> <!-- runScenario("Verify Offers page navigation from Accounts", "RedBus Accounts Feature") -->
                   <span class="method-name">runScenario</span>
-                  <span class="parameters">("Enter passenger details and proceed to payment","Bus Ticket Booking End-to-End Flow")</span>
+                  <span class="parameters">("Verify Offers page navigation from Accounts","RedBus Accounts Feature")</span>
                   <em>
 (Runs Cucumber Scenarios)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="runScenario(&quot;Enter passenger details and proceed to payment&quot;, &quot;Bus Ticket Booking End-to-End Flow&quot;)">
-                  </a> <!-- runScenario("Enter passenger details and proceed to payment", "Bus Ticket Booking End-to-End Flow") -->
+                  <a name="runScenario(&quot;Search the Ticket and verify using excel&quot;, &quot;RedBus Accounts Feature&quot;)">
+                  </a> <!-- runScenario("Search the Ticket and verify using excel", "RedBus Accounts Feature") -->
                   <span class="method-name">runScenario</span>
-                  <span class="parameters">("Enter passenger details and proceed to payment","Bus Ticket Booking End-to-End Flow")</span>
+                  <span class="parameters">("Search the Ticket and verify using excel","RedBus Accounts Feature")</span>
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Cancel the Ticket in Accounts&quot;, &quot;RedBus Accounts Feature&quot;)">
+                  </a> <!-- runScenario("Cancel the Ticket in Accounts", "RedBus Accounts Feature") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Cancel the Ticket in Accounts","RedBus Accounts Feature")</span>
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Cancel the Ticket in Accounts using Invalid Mobile number&quot;, &quot;RedBus Accounts Feature&quot;)">
+                  </a> <!-- runScenario("Cancel the Ticket in Accounts using Invalid Mobile number", "RedBus Accounts Feature") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Cancel the Ticket in Accounts using Invalid Mobile number","RedBus Accounts Feature")</span>
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Verify the help section&quot;, &quot;RedBus Accounts Feature&quot;)">
+                  </a> <!-- runScenario("Verify the help section", "RedBus Accounts Feature") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Verify the help section","RedBus Accounts Feature")</span>
+                  <em>
+(Runs Cucumber Scenarios)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="runScenario(&quot;Reshedule Ticket using excel&quot;, &quot;RedBus Accounts Feature&quot;)">
+                  </a> <!-- runScenario("Reshedule Ticket using excel", "RedBus Accounts Feature") -->
+                  <span class="method-name">runScenario</span>
+                  <span class="parameters">("Reshedule Ticket using excel","RedBus Accounts Feature")</span>
                   <em>
 (Runs Cucumber Scenarios)                  </em>
                 </div> <!-- method-content -->
@@ -154,7 +256,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\kickb\AppData\Local\Temp\testng-eclipse--397681132\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\chiko\AppData\Local\Temp\testng-eclipse--1713369726\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -211,20 +313,40 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(2);
+data.addRows(7);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'com.redbus.testing.testrunner.RunnerIO')
-data.setCell(0, 3, 30185);
+data.setCell(0, 3, 16531);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'runScenario')
 data.setCell(1, 2, 'com.redbus.testing.testrunner.RunnerIO')
-data.setCell(1, 3, 27859);
+data.setCell(1, 3, 15261);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'runScenario')
+data.setCell(2, 2, 'com.redbus.testing.testrunner.RunnerIO')
+data.setCell(2, 3, 10378);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'runScenario')
+data.setCell(3, 2, 'com.redbus.testing.testrunner.RunnerIO')
+data.setCell(3, 3, 8844);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'runScenario')
+data.setCell(4, 2, 'com.redbus.testing.testrunner.RunnerIO')
+data.setCell(4, 3, 8382);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'runScenario')
+data.setCell(5, 2, 'com.redbus.testing.testrunner.RunnerIO')
+data.setCell(5, 3, 8341);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'runScenario')
+data.setCell(6, 2, 'com.redbus.testing.testrunner.RunnerIO')
+data.setCell(6, 3, 7896);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 58 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -235,6 +357,12 @@ return data;
             <span class="header-content">Reporter output for Default suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">runScenario("Verify Offers page navigation from Accounts", "RedBus Accounts Feature")</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Offer Content:BUS OFFERUse code FIRSTSave up to Rs 250 on bus tickets </span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
@@ -252,20 +380,42 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.redbus.testing.testrunner.RunnerIO</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@1280bae3)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@3e149513)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">runScenario("Enter passenger details and proceed to payment", "Bus Ticket Booking End-to-End Flow")</span>
-                <span class="method-start">723 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">runScenario("login using saved cookies and click on bookings", "RedBus Accounts Feature")</span>
+                <span class="method-start">960 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">runScenario("Enter passenger details and proceed to payment", "Bus Ticket Booking End-to-End Flow")</span>
-                <span class="method-start">30912 ms</span>
+                <span class="method-name">runScenario("Verify Offers page navigation from Accounts", "RedBus Accounts Feature")</span>
+                <span class="method-start">16243 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">runScenario("Verify the help section", "RedBus Accounts Feature")</span>
+                <span class="method-start">24142 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">runScenario("Reshedule Ticket using excel", "RedBus Accounts Feature")</span>
+                <span class="method-start">34523 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">runScenario("Cancel the Ticket in Accounts", "RedBus Accounts Feature")</span>
+                <span class="method-start">42906 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">runScenario("Cancel the Ticket in Accounts using Invalid Mobile number", "RedBus Accounts Feature")</span>
+                <span class="method-start">51249 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">runScenario("Search the Ticket and verify using excel", "RedBus Accounts Feature")</span>
+                <span class="method-start">60094 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">58774 ms</span>
+                <span class="method-start">76639 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

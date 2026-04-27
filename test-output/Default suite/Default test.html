@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>2/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>6/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Apr 27 11:32:34 IST 2026</td>
+<td>Started on:</td><td>Mon Apr 27 13:40:25 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>58 seconds (58833 ms)</td>
+<tr><td>Total time:</td><td>76 seconds (76858 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,37 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "login using saved cookies and click on bookings", "RedBus Accounts Feature"</td>
+<td><div><pre>java.lang.AssertionError: ❌ Name not updated expected [ABC] but found []
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:656)
+	at com.redbus.testing.stepdefinition.Accounts.verify_profile_details(Accounts.java:81)
+	at ✽.profile should reflect updated details &quot;ABC&quot; &quot;abc@gmail.com&quot; &quot;female&quot;(file:///C:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/Accounts.feature:13)
+</pre></div><a href='#' onClick='toggleBox("stack-trace22690626", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace22690626'><pre>java.lang.AssertionError: ❌ Name not updated expected [ABC] but found []
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:656)
+	at com.redbus.testing.stepdefinition.Accounts.verify_profile_details(Accounts.java:81)
+	at ✽.profile should reflect updated details &quot;ABC&quot; &quot;abc@gmail.com&quot; &quot;female&quot;(file:///C:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/Accounts.feature:13)
+</pre></div></td>
+<td>15</td>
+<td>com.redbus.testing.testrunner.RunnerIO@2df3b89c</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,15 +107,42 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Enter passenger details and proceed to payment", "Bus Ticket Booking End-to-End Flow"</td>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify Offers page navigation from Accounts", "RedBus Accounts Feature"<br/>
+<a href="#Output-1760175419" onClick='toggleBox("Output-1760175419", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1760175419" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1760175419">
+Offer Content:BUS OFFERUse code FIRSTSave up to Rs 250 on bus tickets <br/>
+</div>
+</td>
 <td></td>
-<td>30</td>
-<td>com.redbus.testing.testrunner.RunnerIO@34bde49d</td></tr>
+<td>7</td>
+<td>com.redbus.testing.testrunner.RunnerIO@2df3b89c</td></tr>
 <tr>
-<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Enter passenger details and proceed to payment", "Bus Ticket Booking End-to-End Flow"</td>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search the Ticket and verify using excel", "RedBus Accounts Feature"</td>
 <td></td>
-<td>27</td>
-<td>com.redbus.testing.testrunner.RunnerIO@34bde49d</td></tr>
+<td>16</td>
+<td>com.redbus.testing.testrunner.RunnerIO@2df3b89c</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Cancel the Ticket in Accounts", "RedBus Accounts Feature"</td>
+<td></td>
+<td>8</td>
+<td>com.redbus.testing.testrunner.RunnerIO@2df3b89c</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Cancel the Ticket in Accounts using Invalid Mobile number", "RedBus Accounts Feature"</td>
+<td></td>
+<td>8</td>
+<td>com.redbus.testing.testrunner.RunnerIO@2df3b89c</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify the help section", "RedBus Accounts Feature"</td>
+<td></td>
+<td>10</td>
+<td>com.redbus.testing.testrunner.RunnerIO@2df3b89c</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Reshedule Ticket using excel", "RedBus Accounts Feature"</td>
+<td></td>
+<td>8</td>
+<td>com.redbus.testing.testrunner.RunnerIO@2df3b89c</td></tr>
 </table><p>
 </body>
 </html>

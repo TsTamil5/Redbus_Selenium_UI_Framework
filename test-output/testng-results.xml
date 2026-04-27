@@ -1,59 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="7" passed="6" failed="1" skipped="0">
   <reporter-output>
+    <line>
+      <![CDATA[Offer Content:BUS OFFERUse code FIRSTSave up to Rs 250 on bus tickets ]]>
+    </line>
   </reporter-output>
-  <suite started-at="2026-04-27T11:32:34 IST" name="Default suite" finished-at="2026-04-27T11:33:33 IST" duration-ms="58833">
+  <suite started-at="2026-04-27T13:40:25 IST" name="Default suite" finished-at="2026-04-27T13:41:42 IST" duration-ms="76858">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@2df3b89c]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-04-27T11:32:34 IST" name="Default test" finished-at="2026-04-27T11:33:33 IST" duration-ms="58833">
+    <test started-at="2026-04-27T13:40:25 IST" name="Default test" finished-at="2026-04-27T13:41:42 IST" duration-ms="76858">
       <class name="com.redbus.testing.testrunner.RunnerIO">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-27T11:32:34 IST" name="setUpClass" finished-at="2026-04-27T11:32:35 IST" duration-ms="712" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@2df3b89c]" started-at="2026-04-27T13:40:25 IST" name="setUpClass" finished-at="2026-04-27T13:40:26 IST" duration-ms="937" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@1280bae3]]>
+                <![CDATA[org.testng.TestRunner@3e149513]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-27T11:32:35 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T11:33:05 IST" duration-ms="30185" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@2df3b89c]" started-at="2026-04-27T13:40:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T13:40:41 IST" duration-ms="15261" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Enter passenger details and proceed to payment"]]>
+                <![CDATA["login using saved cookies and click on bookings"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+                <![CDATA["RedBus Accounts Feature"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[❌ Name not updated expected [ABC] but found []]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: ❌ Name not updated expected [ABC] but found []
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:656)
+at com.redbus.testing.stepdefinition.Accounts.verify_profile_details(Accounts.java:81)
+at ✽.profile should reflect updated details "ABC" "abc@gmail.com" "female"(file:///C:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/Accounts.feature:13)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@2df3b89c]" started-at="2026-04-27T13:40:41 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T13:40:49 IST" duration-ms="7896" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify Offers page navigation from Accounts"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Accounts Feature"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Offer Content:BUS OFFERUse code FIRSTSave up to Rs 250 on bus tickets ]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@2df3b89c]" started-at="2026-04-27T13:40:49 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T13:40:59 IST" duration-ms="10378" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify the help section"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Accounts Feature"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-27T11:33:05 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T11:33:33 IST" duration-ms="27859" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@2df3b89c]" started-at="2026-04-27T13:40:59 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T13:41:08 IST" duration-ms="8382" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Enter passenger details and proceed to payment"]]>
+                <![CDATA["Reshedule Ticket using excel"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Bus Ticket Booking End-to-End Flow"]]>
+                <![CDATA["RedBus Accounts Feature"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@34bde49d]" started-at="2026-04-27T11:33:33 IST" name="tearDownClass" finished-at="2026-04-27T11:33:33 IST" duration-ms="41" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@2df3b89c]" started-at="2026-04-27T13:41:08 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T13:41:16 IST" duration-ms="8341" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Cancel the Ticket in Accounts"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Accounts Feature"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@2df3b89c]" started-at="2026-04-27T13:41:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T13:41:25 IST" duration-ms="8844" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Cancel the Ticket in Accounts using Invalid Mobile number"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Accounts Feature"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@2df3b89c]" started-at="2026-04-27T13:41:25 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T13:41:41 IST" duration-ms="16531" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search the Ticket and verify using excel"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Accounts Feature"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@2df3b89c]" started-at="2026-04-27T13:41:41 IST" name="tearDownClass" finished-at="2026-04-27T13:41:42 IST" duration-ms="190" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
