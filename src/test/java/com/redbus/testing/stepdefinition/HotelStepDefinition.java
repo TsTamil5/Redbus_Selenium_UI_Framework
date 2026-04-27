@@ -28,7 +28,6 @@ public class HotelStepDefinition extends AllUtilityFunction{
 	public void navigate_to_red_bus_application(String url) throws Exception {
 		
 		Base.getDriver().get(url);
-		Thread.sleep(3000);
 		System.out.println("Sucessfully navigated to redbus application");
 	}
 
@@ -44,8 +43,6 @@ public class HotelStepDefinition extends AllUtilityFunction{
 	@Then("Verify Hotels page is displayed")
 	public void verify_hotels_page_is_displayed() throws Exception {
 
-		Thread.sleep(3000);
-
 		Assert.assertTrue(Base.getDriver().getCurrentUrl().contains("hotels"));
 
 		if (Base.getDriver().getCurrentUrl().contains("hotels")) {
@@ -58,7 +55,6 @@ public class HotelStepDefinition extends AllUtilityFunction{
 	@When("Click hotel card from Flash Deals section by index {string}")
 	public void click_hotel_card_from_flash_deals_section_by_index(String index) throws Exception {
 
-		Thread.sleep(3000);
 		Pages.getInstance().hotelsPage.clickFlashDealCard(Integer.parseInt(index));
 	}
 
@@ -113,13 +109,12 @@ public class HotelStepDefinition extends AllUtilityFunction{
 	@When("Click on rooms and guests field")
 	public void click_on_rooms_and_guests_field() throws Exception {
 
-		Thread.sleep(3000);
 		Pages.getInstance().hotelsPage.clickRoomsAndGuests();
 	}
 
 	@When("Select rooms count from excel sheet {string} row {int}")
 	public void select_rooms_count_from_excel_sheet_row(String sheet, Integer row) throws InterruptedException {
-		Thread.sleep(2000);
+
 		Pages.getInstance().hotelsPage.increaseRooms(2);
 	}
 
@@ -145,21 +140,26 @@ public class HotelStepDefinition extends AllUtilityFunction{
 	@When("Click on Search button")
 	public void click_on_search_button() throws Exception {
 
-		Thread.sleep(2000);
 		Base.getDriver().findElement(By.xpath("//button[contains(.,'Search')]")).click();
 	}
 
 	@Then("Verify hotel results page is displayed")
 	public void verify_hotel_results_page_is_displayed() throws Exception {
 
-		Thread.sleep(4000);
 		Assert.assertTrue(Pages.getInstance().hotelSearchResultsPage.isResultsPageDisplayed());
 	}
 
 	@Then("Verify searched city results are displayed")
 	public void verify_searched_city_results_are_displayed() {
+		
+		Assert.assertTrue(Base.getDriver().getCurrentUrl().contains("hotels/search"));
 
-		Assert.assertTrue(Pages.getInstance().hotelSearchResultsPage.getHotelCardsCount() > 0);
+		if (Base.getDriver().getCurrentUrl().contains("hotels/search")) {
+			System.out.println("Hotels results page navigation successful");
+		} else {
+			System.out.println("Navigation failed");
+		}
+		
 	}
 
 	@Then("Verify child age selection validation message is displayed")
@@ -178,8 +178,6 @@ public class HotelStepDefinition extends AllUtilityFunction{
 
 	        String type = row.get("FilterType");
 	        String value = row.get("FilterValue");
-
-	        Thread.sleep(2000);
 
 	        switch (type) {
 

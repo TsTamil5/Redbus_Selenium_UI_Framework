@@ -6,10 +6,10 @@ import io.cucumber.testng.CucumberOptions;
 
 //Feature file location
 @CucumberOptions(features =	{"./src/test/java/com/redbus/testing/featurefiles/BusTicket.feature",
-"./src/test/java/com/redbus/testing/featurefiles/TrainTickets.feature",
-"./src/test/java/com/redbus/testing/featurefiles/Accounts.feature",
-"./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature",
-"./src/test/java/com/redbus/testing/featurefiles/FoodOrder.feature"},
+		"./src/test/java/com/redbus/testing/featurefiles/TrainTickets.feature",
+		"./src/test/java/com/redbus/testing/featurefiles/Accounts.feature",
+		"./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature",
+		"./src/test/java/com/redbus/testing/featurefiles/FoodOrder.feature"},
 
 		//Step definition package
 		glue ="com.redbus.testing.stepdefinition", 
@@ -30,7 +30,7 @@ public class RunnerIO extends AbstractTestNGCucumberTests {
 	
 	// Enable parallel execution
 	@Override
-	@DataProvider(parallel = false)
+	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}

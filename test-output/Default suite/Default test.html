@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>6/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Apr 24 20:58:11 IST 2026</td>
+<td>Started on:</td><td>Mon Apr 27 08:34:43 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>22 seconds (22983 ms)</td>
+<tr><td>Total time:</td><td>135 seconds (135933 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,35 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify property count matches actual hotel results after applying filters", "RedBus Hotels Booking Functionality"</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at org.testng.Assert.assertTrue(Assert.java:67)
+	at com.redbus.testing.stepdefinition.HotelStepDefinition.verify_hotel_results_count_and_message_behavior_are_correct(HotelStepDefinition.java:220)
+	at ✽.Verify hotel results count and message behavior are correct(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:83)
+</pre></div><a href='#' onClick='toggleBox("stack-trace531504659", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace531504659'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at org.testng.Assert.assertTrue(Assert.java:67)
+	at com.redbus.testing.stepdefinition.HotelStepDefinition.verify_hotel_results_count_and_message_behavior_are_correct(HotelStepDefinition.java:220)
+	at ✽.Verify hotel results count and message behavior are correct(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:83)
+</pre></div></td>
+<td>135</td>
+<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,9 +105,34 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify dish is available in restaurant menu", "Food Search"</td>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Verify user can navigate to Hotels page", "RedBus Hotels Booking Functionality"</td>
 <td></td>
-<td>21</td>
+<td>131</td>
+<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search hotels with city, dates, rooms and adults using excel data", "RedBus Hotels Booking Functionality"</td>
+<td></td>
+<td>131</td>
+<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Click any hotel card in Flash Deals and validate Download App popup is displayed", "RedBus Hotels Booking Functionality"</td>
+<td></td>
+<td>101</td>
+<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search hotels with children and child age using excel data", "RedBus Hotels Booking Functionality"</td>
+<td></td>
+<td>133</td>
+<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search hotels with children added but child age not selected", "RedBus Hotels Booking Functionality"</td>
+<td></td>
+<td>132</td>
+<td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
+<tr>
+<td title='com.redbus.testing.testrunner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.redbus.testing.testrunner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Apply hotel filters and validate clear all button with filtered results", "RedBus Hotels Booking Functionality"</td>
+<td></td>
+<td>133</td>
 <td>com.redbus.testing.testrunner.RunnerIO@77f1baf5</td></tr>
 </table><p>
 </body>

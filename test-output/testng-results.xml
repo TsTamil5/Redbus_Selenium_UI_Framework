@@ -1,43 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="7" passed="6" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-24T20:58:11 IST" name="Default suite" finished-at="2026-04-24T20:58:34 IST" duration-ms="22983">
+  <suite started-at="2026-04-27T08:34:43 IST" name="Default suite" finished-at="2026-04-27T08:36:59 IST" duration-ms="135933">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-04-24T20:58:11 IST" name="Default test" finished-at="2026-04-24T20:58:34 IST" duration-ms="22983">
+    <test started-at="2026-04-27T08:34:43 IST" name="Default test" finished-at="2026-04-27T08:36:59 IST" duration-ms="135933">
       <class name="com.redbus.testing.testrunner.RunnerIO">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-24T20:58:11 IST" name="setUpClass" finished-at="2026-04-24T20:58:11 IST" duration-ms="889" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:43 IST" name="setUpClass" finished-at="2026-04-27T08:34:44 IST" duration-ms="496" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@586843bc]]>
+                <![CDATA[org.testng.TestRunner@1ec7d8b3]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-24T20:58:11 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-24T20:58:33 IST" duration-ms="21935" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:36:56 IST" duration-ms="131743" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Verify dish is available in restaurant menu"]]>
+                <![CDATA["Verify user can navigate to Hotels page"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Food Search"]]>
+                <![CDATA["RedBus Hotels Booking Functionality"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-24T20:58:33 IST" name="tearDownClass" finished-at="2026-04-24T20:58:34 IST" duration-ms="99" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:36:56 IST" duration-ms="131794" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search hotels with city, dates, rooms and adults using excel data"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Hotels Booking Functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:36:25 IST" duration-ms="101632" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Click any hotel card in Flash Deals and validate Download App popup is displayed"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Hotels Booking Functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:36:57 IST" duration-ms="133210" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search hotels with children and child age using excel data"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Hotels Booking Functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:36:56 IST" duration-ms="132618" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search hotels with children added but child age not selected"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Hotels Booking Functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:36:57 IST" duration-ms="133061" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Apply hotel filters and validate clear all button with filtered results"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Hotels Booking Functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:34:44 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-27T08:36:59 IST" duration-ms="135260" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify property count matches actual hotel results after applying filters"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["RedBus Hotels Booking Functionality"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertTrue(Assert.java:57)
+at org.testng.Assert.assertTrue(Assert.java:67)
+at com.redbus.testing.stepdefinition.HotelStepDefinition.verify_hotel_results_count_and_message_behavior_are_correct(HotelStepDefinition.java:220)
+at ✽.Verify hotel results count and message behavior are correct(file:///E:/Redbus_Selenium_UI_Framework/./src/test/java/com/redbus/testing/featurefiles/SearchHotels.feature:83)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.redbus.testing.testrunner.RunnerIO@77f1baf5]" started-at="2026-04-27T08:36:59 IST" name="tearDownClass" finished-at="2026-04-27T08:36:59 IST" duration-ms="134" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

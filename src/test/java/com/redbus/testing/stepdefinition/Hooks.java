@@ -39,26 +39,26 @@ public class Hooks extends AllUtilityFunction {
      
 
        // 🔹 Normal flow
-       HandleCookies cookieUtil = new HandleCookies();
-       String cookieFile = "Cookies.data";
-
-       boolean loaded = cookieUtil.loadCookies(Base.getDriver(), cookieFile);
-
-       if (!loaded || !Pages.getInstance().loginCookies.isUserLoggedIn()) {
-           System.out.println("👉 Please login manually...");
-           try {
-               Thread.sleep(50000); // give time for manual login
-           } catch (Exception e) {}
-
-           if (Pages.getInstance().loginCookies.isUserLoggedIn()) {
-               cookieUtil.saveCookies(Base.getDriver(), cookieFile);
-           } else {
-               throw new RuntimeException("Login required!");
-           }
-       } else {
-           // Navigate to a protected page after loading cookies
-           Base.getDriver().get(URL);
-       }
+//       HandleCookies cookieUtil = new HandleCookies();
+//       String cookieFile = "Cookies.data";
+//
+//       boolean loaded = cookieUtil.loadCookies(Base.getDriver(), cookieFile);
+//
+//       if (!loaded || !Pages.getInstance().loginCookies.isUserLoggedIn()) {
+//           System.out.println("👉 Please login manually...");
+//           try {
+//               Thread.sleep(50000); // give time for manual login
+//           } catch (Exception e) {}
+//
+//           if (Pages.getInstance().loginCookies.isUserLoggedIn()) {
+//               cookieUtil.saveCookies(Base.getDriver(), cookieFile);
+//           } else {
+//               throw new RuntimeException("Login required!");
+//           }
+//       } else {
+//           // Navigate to a protected page after loading cookies
+//           Base.getDriver().get(URL);
+//       }
    }
     
 
