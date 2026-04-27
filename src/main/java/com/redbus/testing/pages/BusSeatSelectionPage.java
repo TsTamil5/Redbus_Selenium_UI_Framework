@@ -56,7 +56,7 @@ public class BusSeatSelectionPage {
 			}
 		}
 	}
-
+	
 	// Click upper deck seat
 	public void clickUpperDeckSeat() {
 		wait.until(ExpectedConditions.elementToBeClickable(upperDeckSeat)).click();

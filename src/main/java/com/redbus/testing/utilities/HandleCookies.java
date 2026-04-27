@@ -16,7 +16,7 @@ public class HandleCookies {
 		try {
 			File file = new File(filePath);
 			if (file.exists() && file.length() > 0) {
-				System.out.println("👉 Loading cookies...");
+				System.out.println("Loading cookies...");
 				ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
 				Set<Cookie> cookies = (Set<Cookie>) in.readObject();
 				in.close();
@@ -28,8 +28,7 @@ public class HandleCookies {
 						System.out.println("Skipping cookie: " + cookie.getName());
 					}
 				}
-				driver.navigate().refresh();
-				System.out.println("✅ Logged in using cookies");
+				System.out.println("Logged in using cookies");
 				return true; 
 			}
 		} catch (Exception e) {
@@ -45,7 +44,7 @@ public class HandleCookies {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
 			out.writeObject(cookies);
 			out.close();
-			System.out.println("✅ Cookies saved!");
+			System.out.println("Cookies saved!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

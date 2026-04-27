@@ -9,9 +9,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.redbus.testing.utilities.AllUtilityFunction;
+
 public class BusSelectionPage {
 
 	private WebDriver driver;
+	AllUtilityFunction util = new AllUtilityFunction();
 
 	// Constructor
 	public BusSelectionPage(WebDriver driver) {
@@ -47,7 +50,7 @@ public class BusSelectionPage {
 
 	// Click FlixBus
 	public void clickFlixBus() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 		WebElement element = wait.until(ExpectedConditions.visibilityOf(flixBus));
 
@@ -67,6 +70,7 @@ public class BusSelectionPage {
 
 	// Click view seats
 	public void clickViewSeats() {
+		util.waitForElementClickable(driver, viewSeats, 30);
 		viewSeats.click();
 	}
 }

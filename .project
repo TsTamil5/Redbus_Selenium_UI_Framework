@@ -20,4 +20,18 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 	</natures>
+<<<<<<< HEAD
+=======
+	<filteredResources>
+		<filter>
+			<id>1776662360555</id>
+			<name></name>
+			<type>30</type>
+			<matcher>
+				<id>org.eclipse.core.resources.regexFilterMatcher</id>
+				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
+			</matcher>
+		</filter>
+	</filteredResources>
+>>>>>>> 7283077c7b8cd5e87a6ecebda48b37589fd608c7
 </projectDescription>

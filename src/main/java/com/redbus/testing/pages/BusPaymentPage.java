@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 import com.redbus.testing.utilities.AllUtilityFunction;
 
+
+
 public class BusPaymentPage {
 	
 	AllUtilityFunction util= new AllUtilityFunction();
@@ -64,6 +66,7 @@ public class BusPaymentPage {
 
 	// Get UPI option
 	public WebElement getPayByAnyUPIApp() {
+		util.waitForElementVisible(driver, payByAnyUPIApp, 20);
 		return payByAnyUPIApp;
 	}
 
@@ -110,7 +113,7 @@ public class BusPaymentPage {
 
 	// Get back button
 	public WebElement getBackToAllPayment() throws InterruptedException {
-		Thread.sleep(2000);
+		util.waitForElementClickable(driver, backToAllPayment, 30);
 		return backToAllPayment;
 	}
 

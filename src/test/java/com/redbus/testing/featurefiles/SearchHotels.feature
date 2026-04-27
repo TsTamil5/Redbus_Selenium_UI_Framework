@@ -9,6 +9,7 @@ Scenario: Verify user can navigate to Hotels page
 When Click on Hotels tab
 Then Verify Hotels page is displayed
 
+@FlashDeals
 Scenario Outline: Click any hotel card in Flash Deals and validate Download App popup is displayed
 When Click on Hotels tab
 And Click hotel card from Flash Deals section by index "<Index>"
@@ -76,7 +77,7 @@ And Select adults count from excel sheet "HotelsData" row 5
 And Click on Search button
 And Apply hotel filters:
 | FilterType | FilterValue |
-| Customer Rating | Excellent |
 | Price | ₹1000 - ₹2,000 |
+| Customer Rating | Excellent |
 | Meal Preference | Free Breakfast |
 Then Verify hotel results count and message behavior are correct

@@ -268,7 +268,7 @@ public class HotelsPage extends AllUtilityFunction{
 	// Select city from suggestions
 	public void selectCity(String cityNameValue) {
 
-		WebDriverWait wait = new WebDriverWait(Base.getDriver(), Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(Base.getDriver(), Duration.ofSeconds(35));
 
 		clickCityField();
 
@@ -322,7 +322,7 @@ public class HotelsPage extends AllUtilityFunction{
 	// Check child age validation message displayed
 	public boolean isChildAgeValidationDisplayed() {
 
-		WebDriverWait wait = new WebDriverWait(Base.getDriver(), Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(Base.getDriver(), Duration.ofSeconds(30));
 
 		WebElement message = wait.until(
 			ExpectedConditions.visibilityOfElementLocated(

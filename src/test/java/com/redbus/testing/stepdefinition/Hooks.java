@@ -32,7 +32,7 @@ public class Hooks extends AllUtilityFunction {
         Base.setDriver(LaunchingBrowser.launchBrowser(browser));
         
        setMaximizeBrowser(Base.getDriver());
-       implicitlyWait(Base.getDriver(),5);
+       implicitlyWait(Base.getDriver(),15);
 
        Base.getDriver().get(URL);
        Pages.loadAllPages(Base.getDriver());  
@@ -45,7 +45,7 @@ public class Hooks extends AllUtilityFunction {
        boolean loaded = cookieUtil.loadCookies(Base.getDriver(), cookieFile);
 
        if (!loaded || !Pages.getInstance().loginCookies.isUserLoggedIn()) {
-           System.out.println("👉 Please login manually...");
+           System.out.println("Please login manually...");
            try {
                Thread.sleep(50000); // give time for manual login
            } catch (Exception e) {}
@@ -56,7 +56,7 @@ public class Hooks extends AllUtilityFunction {
                throw new RuntimeException("Login required!");
            }
        } else {
-           // Navigate to a protected page after loading cookies
+       // Navigate to a protected page after loading cookies
            Base.getDriver().get(URL);
        }
    }

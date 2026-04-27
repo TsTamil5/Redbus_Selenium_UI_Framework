@@ -15,9 +15,7 @@ public class BusPassengerSteps {
 	private Base base;
 	private AllUtilityFunction util;
 
-	public BusPassengerSteps(Base base) {
-		this.base = base;
-
+	public BusPassengerSteps() {
 		util = new AllUtilityFunction();
 		util.init("BusTickets");
 	}
@@ -78,12 +76,11 @@ public class BusPassengerSteps {
 			Pages.getInstance().busPassengerInfoPage.selectMale();
 		} else if (gender.equalsIgnoreCase("female")) {
 			Pages.getInstance().busPassengerInfoPage.selectFemale();
-
 		}
+		
 		Pages.getInstance().busPassengerInfoPage.selectWithoutInsurance();
 		Pages.getInstance().busPassengerInfoPage.clickContinueBooking();
 		Pages.getInstance().busPassengerInfoPage.clickRemindMeLater();
-		
 
 	}
 
