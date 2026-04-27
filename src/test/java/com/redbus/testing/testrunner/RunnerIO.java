@@ -30,7 +30,7 @@ public class RunnerIO extends AbstractTestNGCucumberTests {
 	
 	// Enable parallel execution
 	@Override
-	@DataProvider(parallel = true)
+	@DataProvider(parallel = false)
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}

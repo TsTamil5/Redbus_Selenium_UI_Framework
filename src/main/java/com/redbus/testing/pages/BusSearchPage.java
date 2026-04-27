@@ -106,7 +106,7 @@ public class BusSearchPage {
 	// Enter source with suggestion select
 	public void enterFrom(String source) throws InterruptedException {
 		getFrom().sendKeys(source);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		getFrom().sendKeys(Keys.DOWN);
 		getFrom().sendKeys(Keys.ENTER);
 	}
@@ -119,7 +119,7 @@ public class BusSearchPage {
 	// Enter destination with suggestion select
 	public void enterDestination(String dest) throws InterruptedException {
 		getDestination().sendKeys(dest);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		getDestination().sendKeys(Keys.DOWN);
 		getDestination().sendKeys(Keys.ENTER);
 	}
@@ -258,17 +258,13 @@ public class BusSearchPage {
 
 	// Verify bus list present
 	public boolean verifyBusList() {
-
 		List<WebElement> buses = driver.findElements(By.xpath("//ul[@data-autoid='exact']//li"));
-
 		return buses.size() > 0;
 	}
 
 	// Get number of buses
 	public int getNumberOfBus() {
-
 		List<WebElement> buses = driver.findElements(By.xpath("//ul[@data-autoid='exact']//li"));
-
 		return buses.size();
 	}
 
