@@ -64,7 +64,7 @@ public class TrainPassengerPage {
     // ================= TRAIN SELECTION =================
 
     // Locator for selecting a train from list
-    @FindBy(xpath = "(//div[@data-autoid='srp_card'])[2]//div[@role='button']")
+    @FindBy(xpath = "(//div[@data-autoid='srp_card'])[4]//div[@role='button']")
     private WebElement selectTrain;
 
     // ================= USERNAME SECTION =================

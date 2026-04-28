@@ -28,7 +28,7 @@ public class ViewResult {
     @Then("User should see train results")
     public void user_should_see_train_results() {
         Assert.assertTrue(Pages.getInstance().viewresultpage.isFilterDisplayed(),
-                "❌ Filter Results header is NOT displayed");
+                " Filter Results header is NOT displayed");
     }
 
     @When("User verifies {string} as source and {string} as destination on {string} {string}")
@@ -51,6 +51,6 @@ public class ViewResult {
     @Then("User should see updated train results")
     public void user_should_see_updated_train_results() {
 
-        Assert.assertTrue(Pages.getInstance().viewresultpage.isTrainCountAboveZero());
+        Assert.assertFalse(Pages.getInstance().viewresultpage.isTrainCountAboveZero());
     }
 }

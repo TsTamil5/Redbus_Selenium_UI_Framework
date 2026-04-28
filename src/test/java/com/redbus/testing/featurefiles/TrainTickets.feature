@@ -10,33 +10,30 @@ Feature: RedBus Railway Ticket Booking
 
     Examples:
       | month | day | source  | destination |
-      | April | 27  | Chennai | Bangalore   |
-      @InvalidtrainSearch
-  Scenario Outline: Search trains with valid details
-    Given the user is on the RedBus homepage
-    When the user navigates to train ticket booking page
-    And user selects journey month "<month>" and day "<day>"
-    And user enters source "<source>" and destination "<destination>"
-    And user clicks on search trains
-    Then the system should show an error message for each combination
-      Examples:
-      | month | day | source  | destination |
-      | April | 27  | Chennai | Chennai     |
-      
+      | April | 30  | Chennai | Bangalore   |
+@InvalidtrainSearch
+Scenario: Search trains with invalid details using DataTable
+  Given the user is on the RedBus homepage
+  When the user navigates to train ticket booking page
+  And user enters journey details
+    | month | day | source  | destination |
+    | April | 30  | Chennai | Chennai     |
+  And user clicks on search trains
+  Then the system should show an error message for each combination
       
       @ViewRoute
   Scenario: View train route details
-  Given User searches trains from "Chennai" to "Bangalore" on "April" "27"
+  Given User searches trains from "Chennai" to "Bangalore" on "April" "30"
   When User clicks on view route for a train
   Then User should see train route details
     
     @ResultPage
   Scenario: Search and re-search trains
      When the user navigates to train ticket booking page
-     Given User enters "Chennai" as source and "Bangalore" as destination on "April" "27"
+     Given User enters "Chennai" as source and "Bangalore" as destination on "April" "30"
   When User clicks on search trains
   Then User should see train results
-  When User verifies "Chennai" as source and "chennai" as destination on "April" "28"
+  When User verifies "Chennai" as source and "chennai" as destination on "April" "30"
   And User clicks on search trains again
   Then User should see updated train results
   
@@ -44,7 +41,7 @@ Feature: RedBus Railway Ticket Booking
     @PassengerDetails
   Scenario: Enter passenger details and verify popup
 
-    Given User searches trains from "Chennai" to "Bangalore" on "April" "27"
+    Given User searches trains from "Chennai" to "Bangalore" on "April" "30"
     When User selects a train
     And User fills passenger details
     Then User should see free cancellation popup

@@ -16,7 +16,7 @@ import io.cucumber.testng.CucumberOptions;
         "json:target/cucumber.json",
         "com.redbus.testing.utilities.ExtentCucumberAdapter"
     },
-    		tags="@PassengerDetails",
+    		//tags="@PassengerDetails",
     dryRun = false
 //  monochrome = true
 )

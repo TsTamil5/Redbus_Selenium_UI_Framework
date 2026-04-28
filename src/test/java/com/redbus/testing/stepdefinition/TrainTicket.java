@@ -33,19 +33,6 @@ public class TrainTicket {
         Pages.getInstance().trainticketpage.openDatePicker();
         Pages.getInstance().trainticketpage.selectDate(month, day);
     }
-//    @When("the user enters journey month {string} and day {string}")
-//    public void the_user_enters_journey_month_and_day(String month, String day) {
-//    	     Pages.Tt.openDatePicker();
-//         Pages.Tt.selectDate(month, day);
-//    }
-
-
-//    @When("user enters source {string} and destination {string}")
-//    public void user_enters_source_and_destination1(String source, String destination) throws InterruptedException {
-//
-//        Train.Tt.enterFrom(source);
-//        Train.Tt.enterTo(destination);
-//    }`
     @When("user enters source {string} and destination {string}")
     public void user_enters_source_and_destination(String source, String destination) throws InterruptedException {
     	Pages.getInstance().sourceCity = source;
@@ -53,12 +40,26 @@ public class TrainTicket {
 
     	Pages.getInstance().trainticketpage.enterFrom(source);
     	Pages.getInstance().trainticketpage.enterTo(destination);
-//      Pages.Tt.enterFrom(source);
-//
-//        //Thread.sleep(10000);
-//    
-//       Pages.Tt.enterTo(destination);
-       
+    }
+    
+    @When("user enters journey details")
+    public void user_enters_journey_details(DataTable dataTable) throws InterruptedException {
+
+        List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
+
+        String month = data.get(0).get("month");
+        String day = data.get(0).get("day");
+        String source = data.get(0).get("source");
+        String destination = data.get(0).get("destination");
+
+        Pages.getInstance().sourceCity = source;
+        Pages.getInstance().destinationCity = destination;
+
+        Pages.getInstance().trainticketpage.openDatePicker();
+        Pages.getInstance().trainticketpage.selectDate(month, day);
+
+        Pages.getInstance().trainticketpage.enterFrom(source);
+        Pages.getInstance().trainticketpage.enterTo(destination);
     }
 
     @When("user clicks on search trains")
